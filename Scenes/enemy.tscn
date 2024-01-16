@@ -151,6 +151,19 @@ shape = SubResource("CircleShape2D_w70a8")
 position = Vector2(-30, 19)
 shape = SubResource("CircleShape2D_w70a8")
 
+[node name="RayCast2DSide" type="RayCast2D" parent="."]
+position = Vector2(-3, 21)
+target_position = Vector2(10, 0)
+
+[node name="RayCast2DDownLeft" type="RayCast2D" parent="."]
+position = Vector2(-15, 41)
+
+[node name="RayCast2DDownRight" type="RayCast2D" parent="."]
+position = Vector2(9, 41)
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Area2DRight" to="." method="_on_area_2d_area_entered_right"]
+[connection signal="area_exited" from="Area2DRight" to="." method="_on_area_2d_right_area_exited"]
 [connection signal="area_entered" from="Area2DLeft" to="." method="_on_area_2d_area_entered_left"]
+[connection signal="area_exited" from="Area2DLeft" to="." method="_on_area_2d_left_area_exited"]

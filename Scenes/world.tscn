@@ -1634,9 +1634,9 @@ sources/0 = SubResource("TileSetAtlasSource_4r6iy")
 
 [sub_resource type="Curve2D" id="Curve2D_ihaii"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 706, 225, 0, 0, 0, 0, 810, 225, 0, 0, 0, 0, 706, 225)
+"points": PackedVector2Array(0, 0, 0, 0, 706, 225, 0, 0, 0, 0, 720, 223, 0, 0, 0, 0, 810, 225, 0, 0, 0, 0, 706, 225)
 }
-point_count = 3
+point_count = 4
 
 [node name="World" type="Node"]
 script = ExtResource("1_ytfwk")
@@ -1697,6 +1697,19 @@ rotates = false
 cubic_interp = false
 
 [node name="Enemy1" parent="Ennemies/Path2D/PathFollow2D" instance=ExtResource("7_v42vl")]
+position = Vector2(74, -23)
+
+[node name="Path2D2" type="Path2D" parent="Ennemies"]
+position = Vector2(-57, -1)
+curve = SubResource("Curve2D_ihaii")
+metadata/_edit_group_ = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Ennemies/Path2D2"]
+position = Vector2(706, 225)
+rotates = false
+cubic_interp = false
+
+[node name="Enemy1" parent="Ennemies/Path2D2/PathFollow2D" instance=ExtResource("7_v42vl")]
 position = Vector2(74, -23)
 
 [node name="Player" type="Node" parent="."]

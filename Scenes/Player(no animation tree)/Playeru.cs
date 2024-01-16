@@ -14,14 +14,14 @@ public partial class Playeru : CharacterBody2D
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public bool canTakeDamage = true;
 	public string state = "default";
-	private void TakeDamage(double delta)
+	public void TakeDamage(double delta)
 	{
 		float direction = 1.0f;
 		if (animation.FlipH)
 		{
 			direction = -1.0f;
 		}
-		velocity.X = -100.0f * direction;
+		velocity.X = -100.0f * direction * (float)delta;
 		velocity.Y = -100.0f;
 		state = "damaged";
 	}
