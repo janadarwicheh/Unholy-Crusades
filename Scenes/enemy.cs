@@ -16,8 +16,10 @@ public partial class enemy : CharacterBody2D
 	public int moveDir = 1;
 	[Export]
 	public int motionRange;
-	
-	
+	[Export]
+	public float speed = 25.0f;
+	Vector2 velocity;
+	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	
 	private void attack()
 	{
@@ -64,18 +66,20 @@ public partial class enemy : CharacterBody2D
 	private bool shouldTurn()
 	{
 		if (moveDir == 1)
-			return Down[1].IsColliding();
+			return !Down[1].IsColliding();
 		if (moveDir == -1)
-			return Down[0].IsColliding();
-		return Side.IsColliging();
+			return !Down[0].IsColliding();
+		return Side.IsColliding();
 	}
 	
 	public override void _Ready()
 	{
+		velocity = Vector2.Zero;
+		velocity.X = speed;
 		area_right = GetNode<Area2D>("Area2DRight");
 		area_left = GetNode<Area2D>("Area2DLeft");
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		player = (Playeru)GetParent().GetParent().GetParent().GetParent().FindChild("Player(no animation tree)");
+		player = (Playeru)GetParent().GetParent().FindChild("Player(no animation tree)");
 		Down[0] = GetNode<RayCast2D>("RayCast2DDownLeft");
 		Down[1] = GetNode<RayCast2D>("RayCast2DDownRight");
 		Side = GetNode<RayCast2D>("RayCast2DSide");
@@ -85,9 +89,16 @@ public partial class enemy : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		frames = delta;
+		velocity = Velocity;
 		if (shouldTurn())
 			moveDir *= -1;
-		Side.CastTo = new Vector2(10*moveDir, 0);
+		if (moveDir == -1)
+			animation.FlipH = true;
+		else
+		{
+			animation.FlipH = false;
+		}
+		Side.TargetPosition = new Vector2(10*moveDir, 0);
 		if (animation.FlipH)
 		{
 			area_right.Monitoring = false;
@@ -99,8 +110,17 @@ public partial class enemy : CharacterBody2D
 			area_left.Monitoring = false;
 		}
 		if (!animationlock)
+		{
 			animation.Play("default");
-
+			velocity.X = speed * moveDir;
+		}
+		else
+		{
+			velocity.X = 0;
+		}
+		velocity.Y += gravity * (float)delta;
+		Velocity = velocity;
+		MoveAndSlide();
 	}
 }
 

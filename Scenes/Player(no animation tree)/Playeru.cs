@@ -7,7 +7,7 @@ public partial class Playeru : CharacterBody2D
 	[Export]
 	public const float Speed = 200.0f;
 	[Export]
-	public const float JumpVelocity = -200.0f;
+	public const float JumpVelocity = -225.0f;
 	public Vector2 velocity;
 	bool lock_anim = false;
 	AnimatedSprite2D animation;
