@@ -65,11 +65,13 @@ public partial class enemy : CharacterBody2D
 	
 	private bool shouldTurn()
 	{
+		if (Side.IsColliding())
+			return true;
 		if (moveDir == 1)
 			return !Down[1].IsColliding();
 		if (moveDir == -1)
 			return !Down[0].IsColliding();
-		return Side.IsColliding();
+		return false;
 	}
 	
 	public override void _Ready()
@@ -93,21 +95,24 @@ public partial class enemy : CharacterBody2D
 		if (shouldTurn())
 			moveDir *= -1;
 		if (moveDir == -1)
+		{
 			animation.FlipH = true;
+		}
 		else
 		{
 			animation.FlipH = false;
 		}
-		Side.TargetPosition = new Vector2(10*moveDir, 0);
 		if (animation.FlipH)
 		{
 			area_right.Monitoring = false;
 			area_left.Monitoring = true;
+			Side.TargetPosition = new Vector2(-10, 0);
 		}
 		else
 		{
 			area_right.Monitoring = true;
 			area_left.Monitoring = false;
+			Side.TargetPosition = new Vector2(10, 0);
 		}
 		if (!animationlock)
 		{

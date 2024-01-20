@@ -126,6 +126,7 @@ radius = 22.0
 position = Vector2(1, -1)
 collision_layer = 4
 collision_mask = 3
+floor_constant_speed = true
 script = ExtResource("1_vdahw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -153,6 +154,7 @@ position = Vector2(-30, 19)
 shape = SubResource("CircleShape2D_w70a8")
 
 [node name="RayCast2DSide" type="RayCast2D" parent="."]
+modulate = Color(0.129412, 1, 1, 1)
 position = Vector2(-3, 21)
 target_position = Vector2(10, 0)
 
