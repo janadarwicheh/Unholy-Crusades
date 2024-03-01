@@ -131,13 +131,14 @@ script = ExtResource("1_vdahw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_706eq")
-animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-3, 21)
 shape = SubResource("CapsuleShape2D_ne0vh")
 
 [node name="Area2DRight" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 3
 metadata/_edit_group_ = true
@@ -147,6 +148,7 @@ position = Vector2(23, 18)
 shape = SubResource("CircleShape2D_w70a8")
 
 [node name="Area2DLeft" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DLeft"]
@@ -154,14 +156,17 @@ position = Vector2(-30, 19)
 shape = SubResource("CircleShape2D_w70a8")
 
 [node name="RayCast2DSide" type="RayCast2D" parent="."]
+visible = false
 modulate = Color(0.129412, 1, 1, 1)
 position = Vector2(-3, 21)
 target_position = Vector2(10, 0)
 
 [node name="RayCast2DDownLeft" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(-15, 41)
 
 [node name="RayCast2DDownRight" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(9, 41)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
