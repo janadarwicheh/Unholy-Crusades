@@ -16,9 +16,9 @@ public class Stats
     }
 }
 
-public class HP : Stats
+public class HitPoints : Stats
 {
-    public HP(int amount) : base(amount)
+    public HitPoints(int amount) : base(amount)
     {
         Amount = amount;
     }
@@ -28,9 +28,9 @@ public class HP : Stats
     }
 }
 
-public class Hit_Points : Stats 
+public class Attack : Stats 
 {
-    public Hit_Points(int amount) : base(amount)
+    public Attack(int amount) : base(amount)
     {
         Amount = amount;
     }
@@ -56,18 +56,18 @@ public abstract class Capacities
 {
     public Capacities(int damageAmount, int healAmount, int[] rng, int range, int cooldown)
     {
-        Damage_Amount = damageAmount;
-        Heal_Amount = healAmount;
-        RNG = rng;
+        DamageAmount = damageAmount;
+        HealAmount = healAmount;
+        Rng = rng;
         Range = range;
         Cooldown = cooldown;
     }
     
-    protected int Damage_Amount { get; set; }
+    protected int DamageAmount { get; set; }
     
-    protected int Heal_Amount { get; set; } 
+    protected int HealAmount { get; set; } 
     
-    protected int[] RNG { get; set; }
+    protected int[] Rng { get; set; }
     
     protected int  Range { get;  set  ; }
     
