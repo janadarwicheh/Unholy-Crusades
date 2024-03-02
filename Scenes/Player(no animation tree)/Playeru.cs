@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.ComponentModel;
+using Skull.Scenes.Entities;
 
 public partial class Playeru : CharacterBody2D
 {
@@ -14,6 +15,9 @@ public partial class Playeru : CharacterBody2D
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public bool canTakeDamage = true;
 	public string state = "default";
+
+	public EntityComponent Parameters { get; }
+	
 	public void TakeDamage(double delta)
 	{
 		float direction = 1.0f;
