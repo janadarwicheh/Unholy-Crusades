@@ -14,6 +14,7 @@ public partial class enemy : CharacterBody2D
 	double frames;
 	RayCast2D[] Down = new RayCast2D[2];
 	RayCast2D Side;
+	[Export]
 	public int moveDir = 1;
 	[Export]
 	public int motionRange;
