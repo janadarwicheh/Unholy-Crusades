@@ -1,6 +1,6 @@
 ﻿namespace Skull.Scenes.Player;
 
-public class Eldric
+public partial class Eldric : Playeru
 {
     
 }

@@ -7,8 +7,6 @@ public partial class World : Node
 	public Playeru player;
 	public override void _Ready()
 	{
-		player = GetNode<Playeru>("Player/RemoteTransform2D/Player(no animation tree)");
-
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
