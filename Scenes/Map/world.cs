@@ -4,7 +4,9 @@ namespace Skull.Scenes.Map;
 
 public partial class World : Node
 {
-	public Playeru player;
+	private Playeru _joueur;
+	private PackedScene tamer;
+	private bool CharacterChosen = false;
 	public override void _Ready()
 	{
 	}
@@ -12,9 +14,36 @@ public partial class World : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (player.GlobalPosition.Y > 1000)
+		if (!CharacterChosen)
 		{
-			player.GlobalPosition = new Vector2(215, 190);
+			if (Input.IsActionJustPressed("choose_eldric"))
+			{
+				tamer = (PackedScene)GD.Load("res://Scenes/Player/Eldric.tscn");
+				CharacterChosen = true;
+			}
+			else if (Input.IsActionJustPressed("choose_matt"))
+			{
+				tamer = (PackedScene)GD.Load("res://Scenes/Player/Eldric.tscn");
+				CharacterChosen = true;
+			}
+			if (CharacterChosen)
+			{
+				_joueur = (Playeru)tamer.Instantiate();
+				Camera2D cam = new Camera2D();
+				cam.PositionSmoothingEnabled = true;
+				_joueur.AddChild(cam);
+				_joueur.Position = new Vector2(0, 0);
+				GetNode("Player/RemoteTransform2D").AddChild(_joueur);
+				var a = (RemoteTransform2D)GetNode("Player/RemoteTransform2D");
+				a.RemotePath = _joueur.GetPath();
+				a.UpdateScale = false;
+				CurrentInfo.player = _joueur;
+			}
+		}
+		else
+		if (_joueur.GlobalPosition.Y > 1000)
+		{
+			_joueur.GlobalPosition = new Vector2(215, 190);
 		}
 	}
 }

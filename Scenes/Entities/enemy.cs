@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using Skull.Scenes;
 using Skull.Scenes.Entities.Stats;
 
 public partial class enemy : CharacterBody2D
@@ -9,7 +10,6 @@ public partial class enemy : CharacterBody2D
 	Area2D area_left;
 	bool animationlock;
 	public AnimatedSprite2D animation;
-	public Playeru player;
 	public bool entered = false;
 	double frames;
 	RayCast2D[] Down = new RayCast2D[2];
@@ -31,7 +31,7 @@ public partial class enemy : CharacterBody2D
 	{
 		if (entered && animation.Animation == "attack" && (animation.Frame == 1 || animation.Frame == 2))
 		{
-			player.TakeDamage(frames);
+			CurrentInfo.player.TakeDamage(frames);
 		}
 	}
 	private void _on_area_2d_area_entered_right(Area2D area)
@@ -83,7 +83,6 @@ public partial class enemy : CharacterBody2D
 		area_right = GetNode<Area2D>("Area2DRight");
 		area_left = GetNode<Area2D>("Area2DLeft");
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		player = (Playeru)GetParent().GetParent().FindChild("Player(no animation tree)");
 		Down[0] = GetNode<RayCast2D>("RayCast2DDownLeft");
 		Down[1] = GetNode<RayCast2D>("RayCast2DDownRight");
 		Side = GetNode<RayCast2D>("RayCast2DSide");
