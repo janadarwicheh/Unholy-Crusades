@@ -1,28 +1,26 @@
 ﻿using System.Security.AccessControl;
 
-namespace Skull.Scenes.Entities.e.Resources;
+namespace Skull.Scenes.Entities.Resources;
 
 public abstract class Resource
 {
-    protected Resource(string name, ResourceType type, string description, bool getAbility)
+    // Classe qui combine tous types d'objets collectables pour l'inventaire. 
+    protected Resource(string name, ResourceType type, string description)
     {
         Name = name;
         Description = description;
-        GetAbility = getAbility;
         Type = type;
     }
     
     public string Name { get; }
     public ResourceType Type { get; }
-    public bool GetAbility { get; set; }
     public string Description { get; }
     
-    public virtual bool Get(EntityComponent entity, bool newGetAbility)
+    public virtual bool Get(EntityComponent entity)
     {
-        if (GetAbility) 
+        if (GetAbility()) 
         {
             entity.Get(this);
-            GetAbility = newGetAbility;
             return true;
         }
         return false;
@@ -31,5 +29,14 @@ public abstract class Resource
     public virtual string GetInfo()
     {
         return $"Name: {Name}\nType: {Type}\n{Description}";
+    }
+    public virtual bool GetAbility()
+    {
+        return true;
+    }
+
+    public virtual bool Usability()
+    {
+        return true;
     }
 }

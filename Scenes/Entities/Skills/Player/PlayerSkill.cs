@@ -1,8 +1,6 @@
-﻿namespace Skull.Scenes.Entities.Skills;
+﻿namespace Skull.Scenes.Entities.Skills.Player;
 
-public class PlayerSkill: Skill
+public enum SkillType
 {
-    public PlayerSkill(int damageAmount, int healAmount, int[] rng, int range, int cooldown) : base(damageAmount, healAmount, rng, range, cooldown)
-    {
-    }
+    Attack, Special1, Special2, Ultimate 
 }

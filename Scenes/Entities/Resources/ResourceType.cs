@@ -1,6 +1,6 @@
-﻿namespace Skull.Scenes.Entities.e.Resources;
+﻿namespace Skull.Scenes.Entities.Resources;
 
-public enum RessourceType
+public enum ResourceType
 {
     Armor,
     ArmorEldric,

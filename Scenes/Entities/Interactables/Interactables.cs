@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Skull.Scenes.Entities.e.Resources;
+using Skull.Scenes.Entities.Resources;
 
 namespace Skull.Scenes.Entities.Interactables;
 
