@@ -22,7 +22,6 @@ public partial class enemy : CharacterBody2D
 	public float speed = 25.0f;
 	Vector2 velocity;
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	public int Knockbackpower = 200;
 	
 	private void attack()
 	{
@@ -32,7 +31,7 @@ public partial class enemy : CharacterBody2D
 	{
 		if (entered && animation.Animation == "attack" && (animation.Frame == 1 || animation.Frame == 2))
 		{
-			player.TakeDamage(frames,this);
+			CurrentInfo.player.TakeDamage(frames,this);
 		}
 	}
 	private void _on_area_2d_area_entered_right(Area2D area)
