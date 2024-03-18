@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using Skull.Scenes.Entities;
 
 public partial class Playeru : CharacterBody2D
@@ -17,19 +18,68 @@ public partial class Playeru : CharacterBody2D
 	public string state = "default";
 	public bool doubleJump = false;
 	public EntityComponent Parameters { get; }
+	public int knockback  = 200;
+	public int Cooldown { get; set; }
+	public bool gotHit = false;
+	public bool CanLaunch { get; set; } = true;
 	public float DoubleJumpVelocity { get; } = -175;
 	
-	public void TakeDamage(double delta)
+	
+	public void StartCooldown()
 	{
-		float direction = 1.0f;
-		if (animation.FlipH)
+		if (CanLaunch)
 		{
-			direction = -1.0f;
+			CanLaunch = false;
+			Task.Delay(Cooldown).ContinueWith(t => CanLaunch = true);
 		}
-		velocity.X = -100.0f * direction * (float)delta;
-		velocity.Y = -100.0f;
-		state = "damaged";
 	}
+	
+	public void Hit()
+	{
+		Cooldown = 500;
+		
+		if (gotHit)
+		{
+			SetCollisionLayerValue(2, false);
+			SetCollisionLayerValue(4, false);
+			StartCooldown();
+			SetCollisionLayerValue(4, true);
+			SetCollisionLayerValue(2, true);
+			gotHit = false;
+		}
+		
+	}
+
+
+	public void TakeDamage(double delta, enemy a)
+	{
+		
+		var knockbackDirection = (a.Velocity)-velocity.Normalized() * knockback;
+		velocity = knockbackDirection;
+		if (a.Velocity.X ==0 && velocity.X ==0 )
+		{
+			if (a.animation.FlipH)
+			{
+				velocity.X = -(a.Knockbackpower);
+			}
+			else
+			{
+				velocity.X = (a.Knockbackpower);
+			}
+			
+		}
+		if (IsOnFloor())
+		{
+			velocity.Y = -100;
+			
+		}
+		
+		MoveAndSlide();
+		state = "damaged";
+		gotHit = true;
+		
+	}
+	
 	private void update()
 	{
 		if(IsOnFloor())
@@ -126,7 +176,7 @@ public partial class Playeru : CharacterBody2D
 				var a = collision.GetCollider();
 				if (a.GetType() == typeof(enemy))
 				{
-					TakeDamage(delta);
+					TakeDamage(delta,(enemy)a);
 					animation.Play("hurt");
 					Velocity = velocity;
 					MoveAndSlide();
