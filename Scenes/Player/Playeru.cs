@@ -60,11 +60,11 @@ public partial class Playeru : CharacterBody2D
 		{
 			if (a.animation.FlipH)
 			{
-				velocity.X = -(a.Knockbackpower);
+				velocity.X = -(a.KnockbackPower);
 			}
 			else
 			{
-				velocity.X = (a.Knockbackpower);
+				velocity.X = (a.KnockbackPower);
 			}
 			
 		}

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using Skull.Scenes;
 using Skull.Scenes.Entities.Stats;
 
 public partial class enemy : CharacterBody2D
@@ -22,6 +23,7 @@ public partial class enemy : CharacterBody2D
 	public float speed = 25.0f;
 	Vector2 velocity;
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	public int KnockbackPower = 200;
 	
 	private void attack()
 	{
