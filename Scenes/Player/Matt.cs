@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Godot;
 using Skull.Scenes.Entities;
-using Skull.Scenes.Entities.Resources;
 using Skull.Scenes.Entities.Resources.Equipment;
 using Skull.Scenes.Entities.Skills;
 using Skull.Scenes.Entities.Skills.Player;
 using Skull.Scenes.Entities.Stats;
 using Armor = Skull.Scenes.Entities.Resources.Equipment.Armor;
+using Resource = Skull.Scenes.Entities.Resources.Resource;
 
 namespace Skull.Scenes.Player;
 
@@ -20,17 +22,21 @@ public partial class Matt : Playeru
     public Dictionary<SkillType, Skill> MeleeSkills { get; set; }
     public Dictionary<SkillType, Skill> RangedSkills { get; set; }
     public string CurrentForm { get; set; }
-    public EntityComponent EC { get; set; }
     public Matt()
     {
-        EC = new EntityComponent(new List<Resource>(), new Dictionary<StatType, Stat>(){{StatType.HitPoints, new HitPoints(150)},{StatType.Attack, new Attack(10)}, {StatType.NaturalArmor, new NaturalArmor(8)}, {StatType.Speed, new Speed(95)}}, null,null);
+        GD.Print("MATT CHOSEN");
+        Parameters = new EntityComponent(new List<Resource>(), new Dictionary<StatType, Stat>(){{StatType.HitPoints, new HitPoints(50)},{StatType.Attack, new Attack(7)}, {StatType.NaturalArmor, new NaturalArmor(10)}, {StatType.Speed, new Speed(200)}}, new ObsidianHammer(),new LeatherJacket());
         CurrentForm = "Melee";
-        // MeleeSkills = new Dictionary<SkillType, Skill>(){{Skills.Slash, "Slash"}, {Skills.Bash, "Bash"}, {Skills.Heal, "Heal"}};
-        // RangedSkills = rangedSkills;
     }
+    
+    
     public override void _Ready()
     {
         base._Ready();
     }
-    
+
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+    }
 }

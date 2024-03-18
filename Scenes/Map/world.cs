@@ -1,4 +1,6 @@
+using System;
 using Godot;
+using Skull.Scenes.Entities.Skills;
 
 namespace Skull.Scenes.Map;
 
@@ -23,7 +25,7 @@ public partial class World : Node
 			}
 			else if (Input.IsActionJustPressed("choose_matt"))
 			{
-				tamer = (PackedScene)GD.Load("res://Scenes/Player/Eldric.tscn");
+				tamer = (PackedScene)GD.Load("res://Scenes/Player/Matt.tscn");
 				CharacterChosen = true;
 			}
 			if (CharacterChosen)
@@ -41,9 +43,11 @@ public partial class World : Node
 			}
 		}
 		else
-		if (_joueur.GlobalPosition.Y > 1000)
 		{
-			_joueur.GlobalPosition = new Vector2(215, 190);
+			if (_joueur.GlobalPosition.Y > 1000)
+			{
+				_joueur.GlobalPosition = new Vector2(215, 190);
+			}
 		}
 	}
 }
