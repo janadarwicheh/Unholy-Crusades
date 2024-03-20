@@ -49,20 +49,23 @@ public class EntityComponent
             CurrentStats[stat.Key].Amount = stat.Value.Amount + BonusStats[stat.Key].Amount;
         }
     }
-    
+
+     public void UnequipWeapon()
+     {
+         if (CurrentArmor == null)
+             return;
+         foreach (var stat in CurrentWeapon.GivenStats)
+         {
+             BonusStats[stat.Type].Amount -= stat.Amount;
+         }
+
+         Inventory.Add(CurrentWeapon);
+     }
     public void EquipWeapon(Weapon weapon)
     {
         if (weapon.GetAbility())
         {
-            if (CurrentWeapon != null)
-            {
-                foreach (var stat in CurrentWeapon.GivenStats)
-                {
-                    BonusStats[stat.Type].Amount -= stat.Amount;
-                }
-
-                Inventory.Add(CurrentWeapon);
-            }
+            UnequipWeapon();
 
             CurrentWeapon = weapon;
             foreach (var stat in weapon.GivenStats)
@@ -77,20 +80,24 @@ public class EntityComponent
             GD.Print("You do not have the ability to use this weapon");
         }
     }
-    
+
+    public void UnequipArmor()
+    {
+        if (CurrentArmor != null)
+        {
+            foreach (var stat in CurrentArmor.GivenStats)
+            {
+                BonusStats[stat.Type].Amount -= stat.Amount;
+            }
+
+            Inventory.Add(CurrentArmor);
+        }
+    }
     public void EquipArmor(Armor armor)
     {
         if(armor.Usability())
         {
-            if (CurrentArmor != null)
-            {
-                foreach (var stat in CurrentArmor.GivenStats)
-                {
-                    BonusStats[stat.Type].Amount -= stat.Amount;
-                }
-
-                Inventory.Add(CurrentArmor);
-            }
+            UnequipArmor();
 
             CurrentArmor = armor;
             foreach (var stat in armor.GivenStats)
@@ -109,5 +116,18 @@ public class EntityComponent
     public void Get(Resource res)
     {
         Inventory.Add(res);
+    }
+}
+
+public class EntityHandler : EntityComponent
+{
+    public EntityHandler(int hp, int attack, int armor, int speed, Weapon? currentWeapon, Armor? currentArmor) : base(new List<Resource>(), new Dictionary<StatType, Stat> ()
+        {
+            { StatType.HitPoints , new HitPoints(hp)},
+            { StatType.Attack , new Attack(attack)},
+            { StatType.NaturalArmor , new NaturalArmor(armor)},
+            { StatType.Speed , new Speed(speed)}
+        }, currentWeapon, currentArmor)
+    {
     }
 }

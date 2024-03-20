@@ -45,8 +45,7 @@ public partial class World : Node
 		}
 		else
 		{
-			GD.Print(_joueur.GlobalPosition.X);
-			GD.Print(_joueur.GlobalPosition.Y);
+
 		}
 	}
 }

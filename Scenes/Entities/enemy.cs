@@ -1,8 +1,12 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Skull.Scenes;
+using Skull.Scenes.Entities;
+using Skull.Scenes.Entities.Skills;
 using Skull.Scenes.Entities.Stats;
+using Resource = Skull.Scenes.Entities.Resources.Resource;
 
 public partial class enemy : CharacterBody2D
 {
@@ -22,8 +26,10 @@ public partial class enemy : CharacterBody2D
 	[Export]
 	public float speed = 250.0f;
 	Vector2 velocity;
-	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	public int KnockbackPower = 200;
+	public float gravity = CurrentInfo.gravity;
+	public int KnockbackPower = 40000;
+	public EntityComponent Parameters;
+	public HitboxHandler Hitboxes;
 	
 	private void attack()
 	{
@@ -89,6 +95,8 @@ public partial class enemy : CharacterBody2D
 		Down[0] = GetNode<RayCast2D>("RayCast2DDownLeft");
 		Down[1] = GetNode<RayCast2D>("RayCast2DDownRight");
 		Side = GetNode<RayCast2D>("RayCast2DSide");
+		Parameters = new EntityHandler(30, 4, 2, 250, null, null);
+		Hitboxes = new HitboxHandler(this);
 	}
 	
 	

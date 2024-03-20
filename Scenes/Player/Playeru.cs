@@ -24,6 +24,7 @@ public partial class Playeru : CharacterBody2D
 	public bool gotHit = false;
 	public bool CanLaunch { get; set; } = true;
 	public float DoubleJumpVelocity { get; } = -175 * 20;
+	public HitboxHandler Hitboxes;
 	
 	
 	public void StartCooldown()
@@ -116,7 +117,8 @@ public partial class Playeru : CharacterBody2D
 	{
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		Speed = Parameters.CurrentStats[StatType.Speed].Amount * 40;
-		GD.Print(Speed);
+		GD.Print("Speed :" + Speed);
+		Hitboxes = new HitboxHandler(this);
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -130,7 +132,7 @@ public partial class Playeru : CharacterBody2D
 				velocity.Y += gravity * (float)delta;
 				if (velocity.Y < -10)
 					animation.Play("jump");
-				else if (velocity.Y>10)
+				else if (velocity.Y > 10)
 					animation.Play("fall");
 				else 
 					animation.Play("jump_to_fall");
