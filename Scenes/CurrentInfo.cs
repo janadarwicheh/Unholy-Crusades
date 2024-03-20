@@ -13,7 +13,7 @@ public partial class CurrentInfo : Node
         CurrentScene = (World)GetTree().CurrentScene;
     }
 
-    public static void Update()
+    public void Update()
     {
         CurrentScene = (World)GetTree().CurrentScene;
     }
