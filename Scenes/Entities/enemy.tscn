@@ -1,39 +1,53 @@
-[gd_scene load_steps=11 format=3 uid="uid://de8q5mo127ymg"]
+[gd_scene load_steps=25 format=3 uid="uid://c6gpxjm8g8l6a"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/enemy.cs" id="1_vdahw"]
-[ext_resource type="Texture2D" uid="uid://bptjujxbet67e" path="res://Assets/Colour2/Outline/120x80_PNGSheets/_AttackNoMovement.png" id="2_ggiol"]
-[ext_resource type="Texture2D" uid="uid://5yf3k3n1jeqo" path="res://Assets/Medieval_Castle_Asset_Pack/Characters/knight/matting/blloob.PNG" id="3_p6lrb"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_841ww"]
-atlas = ExtResource("2_ggiol")
-region = Rect2(0, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6m8fc"]
-atlas = ExtResource("2_ggiol")
-region = Rect2(120, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_12d46"]
-atlas = ExtResource("2_ggiol")
-region = Rect2(240, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cvbxt"]
-atlas = ExtResource("2_ggiol")
-region = Rect2(360, 0, 120, 80)
+[ext_resource type="Texture2D" uid="uid://y44qbras3q5t" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-1.png" id="2_xou6a"]
+[ext_resource type="Texture2D" uid="uid://0hx3f1js6qs8" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-2.png" id="3_g38ws"]
+[ext_resource type="Texture2D" uid="uid://drhywmlyuvctv" path="res://Assets/animation/demon-courte/Marche_Melee-1.png" id="3_sjhxk"]
+[ext_resource type="Texture2D" uid="uid://bls8ykq6vlvxv" path="res://Assets/animation/demon-courte/Marche_Melee-2.png" id="4_ibuw4"]
+[ext_resource type="Texture2D" uid="uid://di2osoxg603xp" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-3.png" id="4_yku7d"]
+[ext_resource type="Texture2D" uid="uid://ct01bcieoyyjh" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-4.png" id="5_cwnty"]
+[ext_resource type="Texture2D" uid="uid://d21ftuhnl2fpp" path="res://Assets/animation/demon-courte/Marche_Melee-3.png" id="5_n773q"]
+[ext_resource type="Texture2D" uid="uid://ds1p4dbui2c5n" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-5.png" id="6_cteeh"]
+[ext_resource type="Texture2D" uid="uid://ckog2a0drjtqk" path="res://Assets/animation/demon-courte/Marche_Melee-4.png" id="6_imxae"]
+[ext_resource type="Texture2D" uid="uid://3rdfwob7wpq4" path="res://Assets/animation/demon-courte/Marche_Melee-5.png" id="7_pdncr"]
+[ext_resource type="Texture2D" uid="uid://lit6jvq54j2s" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-6.png" id="7_vwn1r"]
+[ext_resource type="Texture2D" uid="uid://cdt4hbuk78xw5" path="res://Assets/animation/demon-courte/Marche_Melee-6.png" id="8_a7ucx"]
+[ext_resource type="Texture2D" uid="uid://d1m1lcjplj3r8" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-7.png" id="8_ehbqt"]
+[ext_resource type="Texture2D" uid="uid://c5s0qdp3ogtwj" path="res://Assets/animation/demon-courte/Marche_Melee-7.png" id="9_c2e6t"]
+[ext_resource type="Texture2D" uid="uid://2ncjne74n0qn" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-8.png" id="9_r5u5j"]
+[ext_resource type="Texture2D" uid="uid://6w81iwb7wc05" path="res://Assets/animation/demon-courte/Marche_Melee-8.png" id="10_0pfux"]
+[ext_resource type="Texture2D" uid="uid://ddltxjd5rotlk" path="res://Assets/animation/demon-courte/Marche_Melee-9.png" id="11_hgpgq"]
+[ext_resource type="Texture2D" uid="uid://t4lt5t11utut" path="res://Assets/animation/demon-courte/Marche_Melee-10.png" id="12_egaar"]
+[ext_resource type="Texture2D" uid="uid://cr1oasylkqiq3" path="res://Assets/animation/demon-courte/Marche_Melee-11.png" id="13_5qxk2"]
+[ext_resource type="Texture2D" uid="uid://rwidoxgdayfl" path="res://Assets/animation/demon-courte/Marche_Melee-12.png" id="14_kfmfi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_706eq"]
 animations = [{
 "frames": [{
-"duration": 4.0,
-"texture": SubResource("AtlasTexture_841ww")
+"duration": 1.0,
+"texture": ExtResource("2_xou6a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6m8fc")
+"texture": ExtResource("3_g38ws")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_12d46")
+"texture": ExtResource("4_yku7d")
 }, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_cvbxt")
+"duration": 1.0,
+"texture": ExtResource("5_cwnty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cteeh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vwn1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ehbqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_r5u5j")
 }],
 "loop": false,
 "name": &"attack",
@@ -41,19 +55,52 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_p6lrb")
+"texture": ExtResource("3_sjhxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ibuw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n773q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_imxae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pdncr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_a7ucx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_c2e6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0pfux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hgpgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_egaar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5qxk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_kfmfi")
 }],
 "loop": true,
 "name": &"default",
-"speed": 8.0
+"speed": 18.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ne0vh"]
-radius = 9.0
-height = 38.0
+radius = 233.0
+height = 1088.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w70a8"]
-radius = 22.0
+radius = 205.407
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(1, -1)
@@ -64,14 +111,16 @@ script = ExtResource("1_vdahw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_706eq")
+animation = &"attack"
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-3, 21)
+position = Vector2(14, 0)
 shape = SubResource("CapsuleShape2D_ne0vh")
 
 [node name="Area2DRight" type="Area2D" parent="."]
-visible = false
+position = Vector2(266, 59)
 collision_layer = 8
 collision_mask = 3
 metadata/_edit_group_ = true
@@ -81,28 +130,23 @@ position = Vector2(23, 18)
 shape = SubResource("CircleShape2D_w70a8")
 
 [node name="Area2DLeft" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DLeft"]
-position = Vector2(-30, 19)
+position = Vector2(-235, 82)
 shape = SubResource("CircleShape2D_w70a8")
 
-[node name="RayCast2DSide" type="RayCast2D" parent="."]
-visible = false
-modulate = Color(0.129412, 1, 1, 1)
-position = Vector2(-3, 21)
-target_position = Vector2(10, 0)
-
 [node name="RayCast2DDownLeft" type="RayCast2D" parent="."]
-visible = false
-position = Vector2(-15, 41)
-target_position = Vector2(0, 20)
+position = Vector2(-221, 141)
+target_position = Vector2(-7, 566)
 
 [node name="RayCast2DDownRight" type="RayCast2D" parent="."]
-visible = false
-position = Vector2(9, 41)
-target_position = Vector2(0, 20)
+position = Vector2(248, 140)
+target_position = Vector2(-2, 567)
+
+[node name="RayCast2DSide" type="RayCast2D" parent="."]
+target_position = Vector2(400, 0)
+hit_from_inside = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

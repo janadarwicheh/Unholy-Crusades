@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using Skull.Scenes;
 using Skull.Scenes.Entities;
 using Skull.Scenes.Entities.Skills;
 
@@ -9,11 +10,11 @@ public partial class Playeru : CharacterBody2D
 {
 	public float Speed { get; set; }
 	[Export]
-	public const float JumpVelocity = -225.0f;
+	public const float JumpVelocity = -225.0f * 25;
 	public Vector2 velocity;
 	bool lock_anim = false;
 	AnimatedSprite2D animation;
-	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	public float gravity = CurrentInfo.gravity;
 	public bool canTakeDamage = true;
 	public string state = "default";
 	public bool doubleJump = false;
@@ -22,7 +23,7 @@ public partial class Playeru : CharacterBody2D
 	public int Cooldown { get; set; } = 500000;
 	public bool gotHit = false;
 	public bool CanLaunch { get; set; } = true;
-	public float DoubleJumpVelocity { get; } = -175;
+	public float DoubleJumpVelocity { get; } = -175 * 30;
 	
 	
 	public void StartCooldown()
@@ -114,7 +115,7 @@ public partial class Playeru : CharacterBody2D
 	public override void _Ready()
 	{
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		Speed = Parameters.CurrentStats[StatType.Speed].Amount * 2;
+		Speed = Parameters.CurrentStats[StatType.Speed].Amount * 40;
 		GD.Print(Speed);
 	}
 	public override void _PhysicsProcess(double delta)
