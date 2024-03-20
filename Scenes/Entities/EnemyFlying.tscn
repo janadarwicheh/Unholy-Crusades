@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://de8q5mo127ymg"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/enemy.cs" id="1_o7ult"]
+[ext_resource type="Texture2D" uid="uid://bptjujxbet67e" path="res://Assets/Colour2/Outline/120x80_PNGSheets/_AttackNoMovement.png" id="2_uq5td"]
+[ext_resource type="Texture2D" uid="uid://5yf3k3n1jeqo" path="res://Assets/Medieval_Castle_Asset_Pack/Characters/knight/matting/blloob.PNG" id="3_c50bf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_841ww"]
+atlas = ExtResource("2_uq5td")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m8fc"]
+atlas = ExtResource("2_uq5td")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12d46"]
+atlas = ExtResource("2_uq5td")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvbxt"]
+atlas = ExtResource("2_uq5td")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_706eq"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_841ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m8fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12d46")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_cvbxt")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_c50bf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ne0vh"]
+radius = 9.0
+height = 38.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w70a8"]
+radius = 22.0
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(1, -1)
+collision_layer = 4
+collision_mask = 3
+floor_constant_speed = true
+script = ExtResource("1_o7ult")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_706eq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-3, 21)
+shape = SubResource("CapsuleShape2D_ne0vh")
+
+[node name="Area2DRight" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DRight"]
+position = Vector2(23, 18)
+shape = SubResource("CircleShape2D_w70a8")
+
+[node name="Area2DLeft" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DLeft"]
+position = Vector2(-30, 19)
+shape = SubResource("CircleShape2D_w70a8")
+
+[node name="RayCast2DSide" type="RayCast2D" parent="."]
+visible = false
+modulate = Color(0.129412, 1, 1, 1)
+position = Vector2(-3, 21)
+target_position = Vector2(10, 0)
+
+[node name="RayCast2DDownLeft" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(-15, 41)
+target_position = Vector2(0, 20)
+
+[node name="RayCast2DDownRight" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(9, 41)
+target_position = Vector2(0, 20)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="area_entered" from="Area2DRight" to="." method="_on_area_2d_area_entered_right"]
+[connection signal="area_exited" from="Area2DRight" to="." method="_on_area_2d_right_area_exited"]
+[connection signal="area_entered" from="Area2DLeft" to="." method="_on_area_2d_area_entered_left"]
+[connection signal="area_exited" from="Area2DLeft" to="." method="_on_area_2d_left_area_exited"]

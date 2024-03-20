@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dll7uno7i7l1r" path="res://Assets/version_one/rock_small.PNG" id="3_08m1t"]
 [ext_resource type="Texture2D" uid="uid://dkxqlk8dqqgp3" path="res://Assets/version_one/grass.PNG" id="3_tdgrk"]
 [ext_resource type="Texture2D" uid="uid://3qagecvn2qc1" path="res://Assets/version_one/BIGGRASS.PNG" id="5_6grb8"]
-[ext_resource type="PackedScene" uid="uid://c6gpxjm8g8l6a" path="res://Scenes/enemy.tscn" id="7_v42vl"]
+[ext_resource type="PackedScene" uid="uid://c6gpxjm8g8l6a" path="res://Scenes/Entities/Enemy.tscn" id="7_v42vl"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ohrgn"]
 tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 5, 1, 65536, 0, 65537, 65536, 5, 2, 131072, 0, 65538, 131072, 5, 3, 196608, 0, 65539, 196608, 5, 4, 262144, 0, 65540, 262144, 5, 5, 327680, 0, 65541, 327680, 5)
@@ -1929,5 +1929,5 @@ position = Vector2(26475, 5542)
 [node name="Player" type="Node" parent="."]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
-position = Vector2(2376, 6642)
+position = Vector2(2224, 6062)
 metadata/_edit_group_ = true
