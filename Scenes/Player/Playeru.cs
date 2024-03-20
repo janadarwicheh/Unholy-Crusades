@@ -3,11 +3,11 @@ using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Skull.Scenes.Entities;
+using Skull.Scenes.Entities.Skills;
 
 public partial class Playeru : CharacterBody2D
 {
-	[Export]
-	public const float Speed = 200.0f;
+	public float Speed { get; set; }
 	[Export]
 	public const float JumpVelocity = -225.0f;
 	public Vector2 velocity;
@@ -17,9 +17,9 @@ public partial class Playeru : CharacterBody2D
 	public bool canTakeDamage = true;
 	public string state = "default";
 	public bool doubleJump = false;
-	public EntityComponent Parameters { get; }
+	public EntityComponent Parameters { get; set; }
 	public int knockback  = 200;
-	public int Cooldown { get; set; }
+	public int Cooldown { get; set; } = 500000;
 	public bool gotHit = false;
 	public bool CanLaunch { get; set; } = true;
 	public float DoubleJumpVelocity { get; } = -175;
@@ -29,14 +29,12 @@ public partial class Playeru : CharacterBody2D
 	{
 		if (CanLaunch)
 		{
-			CanLaunch = false;
-			Task.Delay(Cooldown).ContinueWith(t => CanLaunch = true);
+			Task.Delay(Cooldown).ContinueWith(t => gotHit = false);
 		}
 	}
 	
 	public void Hit()
 	{
-		Cooldown = 500;
 		
 		if (gotHit)
 		{
@@ -45,7 +43,6 @@ public partial class Playeru : CharacterBody2D
 			StartCooldown();
 			SetCollisionLayerValue(4, true);
 			SetCollisionLayerValue(2, true);
-			gotHit = false;
 		}
 		
 	}
@@ -117,6 +114,8 @@ public partial class Playeru : CharacterBody2D
 	public override void _Ready()
 	{
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		Speed = Parameters.CurrentStats[StatType.Speed].Amount * 2;
+		GD.Print(Speed);
 	}
 	public override void _PhysicsProcess(double delta)
 	{

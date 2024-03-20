@@ -19,7 +19,7 @@ public class EntityComponent
     public List<Resource> Inventory;
     public EntityComponent(List<Resource> inventory, Dictionary<StatType, Stat> baseStats, Weapon? currentWeapon, Armor? currentArmor)
     {
-        CurrentStats = baseStats;
+        CurrentStats = new Dictionary<StatType, Stat>() {{ StatType.Attack, new Attack(0) }, { StatType.HitPoints, new HitPoints(0) }, { StatType.NaturalArmor, new NaturalArmor(0) }, { StatType.Speed, new Speed(0)}};
         Inventory = inventory;
         BaseStats = baseStats;
         CurrentWeapon = currentWeapon;
@@ -39,9 +39,10 @@ public class EntityComponent
                 BonusStats[stat.Type].Amount += stat.Amount;
             }
         }
+        UpdateStats();
     }
     
-    public void UpdateStats()
+     public void UpdateStats()
     {
         foreach (var stat in BaseStats)
         {

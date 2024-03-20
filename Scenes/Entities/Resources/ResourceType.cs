@@ -6,8 +6,8 @@ public enum ResourceType
     ArmorEldric,
     ArmorMatt,
     Weapon,
-    WeaponEldric,
-    WeaponMatt,
+    FireArm,
+    Shield,
     Consumable,
     Story,
 }
