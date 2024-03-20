@@ -138,8 +138,8 @@ script = ExtResource("1_lv8su")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gxo5y")
-animation = &"jump"
-frame_progress = 0.885912
+animation = &"hurt"
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(30, 2)
