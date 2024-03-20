@@ -20,7 +20,7 @@ public partial class enemy : CharacterBody2D
 	[Export]
 	public int motionRange;
 	[Export]
-	public float speed = 25.0f;
+	public float speed = 250.0f;
 	Vector2 velocity;
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public int KnockbackPower = 200;
@@ -110,13 +110,13 @@ public partial class enemy : CharacterBody2D
 		{
 			area_right.Monitoring = false;
 			area_left.Monitoring = true;
-			Side.TargetPosition = new Vector2(-10, 0);
+			Side.TargetPosition = new Vector2(-400, 0);
 		}
 		else
 		{
 			area_right.Monitoring = true;
 			area_left.Monitoring = false;
-			Side.TargetPosition = new Vector2(10, 0);
+			Side.TargetPosition = new Vector2(400, 0);
 		}
 		if (!animationlock)
 		{
