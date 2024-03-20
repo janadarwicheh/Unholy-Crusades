@@ -12,15 +12,15 @@ border_width_bottom = 10
 border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_103n6"]
-font_size = 50
+font_size = 300
 outline_size = 50
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Screen" type="CanvasLayer"]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_right = 651.0
-offset_bottom = 361.0
+offset_right = 3903.0
+offset_bottom = 2160.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ksvs1")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
@@ -32,7 +32,7 @@ theme_override_constants/margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 75
+theme_override_constants/separation = 350
 
 [node name="GAME OVER" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -45,11 +45,11 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 300
 
 [node name="RESTART" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 200
 action_mode = 0
 text = " RESTART 
 "
@@ -57,7 +57,7 @@ script = ExtResource("1_v3uj3")
 
 [node name="QUIT" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 200
 text = "QUIT
 "
 script = ExtResource("1_ynfaj")
