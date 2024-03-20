@@ -12,4 +12,9 @@ public partial class CurrentInfo : Node
     {
         CurrentScene = (World)GetTree().CurrentScene;
     }
+
+    public void Update()
+    {
+        CurrentScene = (World)GetTree().CurrentScene;
+    }
 }
