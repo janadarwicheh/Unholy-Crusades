@@ -17,7 +17,6 @@ public partial class Eldric : Playeru
 	public Dictionary<SkillType, Skill> RangedSkills { get; set; }
 	public Eldric()
 	{
-		GD.Print("ELDRIC CHOSEN");
 		Parameters = new EntityComponent(new List<Resource>(), new Dictionary<StatType, Stat>(){{StatType.HitPoints, new HitPoints(80)},{StatType.Attack, new Attack(10)}, {StatType.NaturalArmor, new NaturalArmor(8)}, {StatType.Speed, new Speed(90)}}, new BronzeWarHammer(),new IronChestplate());
 	}
 	public override void _Ready()

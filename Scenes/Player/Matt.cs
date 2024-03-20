@@ -24,7 +24,6 @@ public partial class Matt : Playeru
     public string CurrentForm { get; set; }
     public Matt()
     {
-        GD.Print("MATT CHOSEN");
         Parameters = new EntityComponent(new List<Resource>(), new Dictionary<StatType, Stat>(){{StatType.HitPoints, new HitPoints(50)},{StatType.Attack, new Attack(7)}, {StatType.NaturalArmor, new NaturalArmor(10)}, {StatType.Speed, new Speed(200)}}, new ObsidianHammer(),new LeatherJacket());
         CurrentForm = "Melee";
     }

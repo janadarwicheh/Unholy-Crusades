@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://3qagecvn2qc1" path="res://Assets/version_one/BIGGRASS.PNG" id="5_6grb8"]
 [ext_resource type="Texture2D" uid="uid://dvtknma038o3" path="res://Assets/version_one/grass V2.png" id="5_7tw2u"]
 [ext_resource type="Texture2D" uid="uid://cjkwpl78w5li7" path="res://Assets/version_one/dirt.png" id="6_y81xw"]
-[ext_resource type="PackedScene" uid="uid://c6gpxjm8g8l6a" path="res://Scenes/Entities/enemy.tscn" id="7_v42vl"]
+[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/enemy.tscn" id="7_v42vl"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ohrgn"]
 tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 5, 1, 65536, 0, 65537, 65536, 5, 2, 131072, 0, 65538, 131072, 5, 3, 196608, 0, 65539, 196608, 5, 4, 262144, 0, 65540, 262144, 5, 5, 327680, 0, 65541, 327680, 5)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhn2s8vrmpjde"]
+[gd_scene load_steps=6 format=3 uid="uid://d2rkcjm74kfvb"]
 
-[ext_resource type="Script" path="res://Scenes/Start/Eldric.cs" id="1_2gr2f"]
-[ext_resource type="Script" path="res://Scenes/Start/Matt.cs" id="2_bd4wl"]
+[ext_resource type="Script" path="res://Scenes/Start/Choose_Eldric.cs" id="1_2gr2f"]
+[ext_resource type="Script" path="res://Scenes/Start/Choose_Matt.cs" id="2_bd4wl"]
 [ext_resource type="Script" path="res://Scenes/GameOver/QUIT.cs" id="3_l0owj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atgcv"]
@@ -74,6 +74,6 @@ theme_override_font_sizes/font_size = 50
 text = "QUIT"
 script = ExtResource("3_l0owj")
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Eldric" to="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Eldric" method="Eldric_Pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Matt" to="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Matt" method="Matt_Pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Eldric" to="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Eldric" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Matt" to="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Matt" method="_on_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/QUIT" to="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/QUIT" method="_on_quit_pressed"]

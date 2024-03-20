@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c6gpxjm8g8l6a"]
+[gd_scene load_steps=25 format=3 uid="uid://de8q5mo127ymg"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/enemy.cs" id="1_vdahw"]
 [ext_resource type="Texture2D" uid="uid://y44qbras3q5t" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-1.png" id="2_xou6a"]

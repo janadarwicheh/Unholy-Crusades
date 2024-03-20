@@ -10,6 +10,7 @@ public partial class CurrentInfo : Node
     public static float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle() * 20;
     public override void _Ready()
     {
+        player = new Playeru();
         CurrentScene = (World)GetTree().CurrentScene;
     }
 
