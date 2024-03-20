@@ -10,7 +10,7 @@ public partial class Playeru : CharacterBody2D
 {
 	public float Speed { get; set; }
 	[Export]
-	public const float JumpVelocity = -225.0f * 20;
+	public const float JumpVelocity = -225.0f * 25;
 	public Vector2 velocity;
 	bool lock_anim = false;
 	AnimatedSprite2D animation;
@@ -23,7 +23,7 @@ public partial class Playeru : CharacterBody2D
 	public int Cooldown { get; set; } = 500000;
 	public bool gotHit = false;
 	public bool CanLaunch { get; set; } = true;
-	public float DoubleJumpVelocity { get; } = -175 * 20;
+	public float DoubleJumpVelocity { get; } = -175 * 30;
 	
 	
 	public void StartCooldown()
