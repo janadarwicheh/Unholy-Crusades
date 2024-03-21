@@ -26,8 +26,6 @@ public partial class Eldric : Playeru
 
 	public override void _PhysicsProcess(double delta)
 	{
-		
 		base._PhysicsProcess(delta);
-		
 	}
 }
