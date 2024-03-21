@@ -14,6 +14,7 @@ public partial class Playeru : CharacterBody2D
 	public Vector2 velocity;
 	bool lock_anim = false;
 	AnimatedSprite2D animation;
+	public Area2D Attack;
 	public float gravity = CurrentInfo.gravity;
 	public bool canTakeDamage = true;
 	public string state = "default";
@@ -49,7 +50,20 @@ public partial class Playeru : CharacterBody2D
 		
 	}
 
-
+	public void on_animation_finished()
+	{
+		if (animation.Animation == "Attack")
+		{
+			GD.Print("aa");
+			state = "default";
+			Attack.Monitoring = false;
+		}
+	}
+	public void attack()
+	{
+		Attack.Monitoring = true;
+		state = "attacking";
+	}
 	public void TakeDamage(double delta, enemy a)
 	{
 		
@@ -84,21 +98,26 @@ public partial class Playeru : CharacterBody2D
 		if(IsOnFloor())
 			lock_anim = false;
 
-		if(!lock_anim)
+		if (state == "attacking")
+			animation.Play("Attack");
+		else 
 		{
-			if(velocity.X>0)
-			{
-				animation.FlipH = false;
-				animation.Play("run");
-			}
-			else if(velocity.X<0)
-			{
-				animation.FlipH = true;
-				animation.Play("run");
-			}
-			else
-			{
-				animation.Play("idle");
+			if (!lock_anim)
+			{ 
+				if (velocity.X > 0)
+				{
+					animation.FlipH = false;
+					animation.Play("run");
+				}
+				else if (velocity.X < 0)
+				{
+					animation.FlipH = true;
+					animation.Play("run");
+				}
+				else
+				{
+					animation.Play("idle");
+				}
 			}
 		}
 	
@@ -118,14 +137,19 @@ public partial class Playeru : CharacterBody2D
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		Speed = Parameters.CurrentStats[StatType.Speed].Amount * 40;
 		GD.Print("Speed :" + Speed);
+		Attack = GetNode<Area2D>("Attaque");
 		Hitboxes = new HitboxHandler(this);
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		if(state == "default")
+		if(state == "default" || state == "attacking")
 		{
 			velocity = Velocity;
 			// Add the gravity.
+			if (Input.IsActionJustPressed("Attack") == (state != "attacking"))
+			{
+				attack();
+			}
 			if (!IsOnFloor())
 			{
 				lock_anim = true;
@@ -185,7 +209,7 @@ public partial class Playeru : CharacterBody2D
 				}
 			}
 		}
-		else
+		else if (state == "damaged")
 		{
 			velocity.Y += gravity * (float)delta;
 			Velocity = velocity;

@@ -1,15 +1,23 @@
-[gd_scene load_steps=24 format=3 uid="uid://cs5na5sxwlwt3"]
+[gd_scene load_steps=33 format=3 uid="uid://cs5na5sxwlwt3"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Eldric.cs" id="1_lv8su"]
+[ext_resource type="Texture2D" uid="uid://bev58cit3xb80" path="res://Assets/animation/eledrich attaque/Eld_Attaque_1-1.png" id="2_h251e"]
+[ext_resource type="Texture2D" uid="uid://dfku5q30nyw0k" path="res://Assets/animation/eledrich attaque/Eld_Attaque_1-2.png" id="3_1kv6q"]
 [ext_resource type="Texture2D" uid="uid://f81pqupdt77m" path="res://Assets/animation/eldrich saute/Eld_Saute-1.png" id="3_a7ftg"]
 [ext_resource type="Texture2D" uid="uid://cmiur3hxycwui" path="res://Assets/animation/eldrich saute/Eld_Saute-2.png" id="4_455yk"]
+[ext_resource type="Texture2D" uid="uid://c8t3gll3emh6g" path="res://Assets/animation/eledrich attaque/Eld_Attaque_1-3.png" id="4_sm5l5"]
+[ext_resource type="Texture2D" uid="uid://bwtxtstj6m5m3" path="res://Assets/animation/eledrich attaque/Eld_Attaque_1-4.png" id="5_78vgm"]
 [ext_resource type="Texture2D" uid="uid://c6upmk147tstj" path="res://Assets/animation/eldrich saute/Eld_Saute-3.png" id="5_yx1fp"]
+[ext_resource type="Texture2D" uid="uid://d224y8ufrmvwd" path="res://Assets/animation/eledrich attaque/Eld_Attaque_1-5.png" id="6_1njgu"]
 [ext_resource type="Texture2D" uid="uid://qk81pqughmlf" path="res://Assets/animation/eldrich saute/Eld_Saute-4.png" id="6_2cmlb"]
+[ext_resource type="Texture2D" uid="uid://dsmylyyq0gjfu" path="res://Assets/animation/eledrich attaque/Eld_Attaque_1-6.png" id="7_db85c"]
 [ext_resource type="Texture2D" uid="uid://datt55ac5g2iw" path="res://Assets/animation/eldrich marche/Eld_Marche-1.png" id="7_eesia"]
 [ext_resource type="Texture2D" uid="uid://j8v653762qbo" path="res://Assets/animation/eldrich saute/Eld_Saute-5.png" id="7_eyuyi"]
 [ext_resource type="Texture2D" uid="uid://fqk786qp7hyp" path="res://Assets/animation/eldrich saute/Eld_Saute-6.png" id="8_h0pxl"]
 [ext_resource type="Texture2D" uid="uid://cxxxia15y5vvi" path="res://Assets/animation/eldrich marche/Eld_Marche-2.png" id="8_jaj1d"]
+[ext_resource type="Texture2D" uid="uid://bmynw6jxltreo" path="res://Assets/animation/eledrich attaque/Eld_Attaque_1-7.png" id="8_s5f2v"]
 [ext_resource type="Texture2D" uid="uid://d1525dspwhyad" path="res://Assets/animation/eldrich marche/Eld_Marche-3.png" id="9_0i2te"]
+[ext_resource type="Texture2D" uid="uid://bhc0b80fvhepd" path="res://Assets/animation/eledrich attaque/Eld_Attaque_1-8.png" id="9_fifhd"]
 [ext_resource type="Texture2D" uid="uid://dmufql8c3fs5b" path="res://Assets/animation/eldrich saute/Eld_Saute-7.png" id="9_xvb0n"]
 [ext_resource type="Texture2D" uid="uid://bpsg0rqa21s2a" path="res://Assets/animation/eldrich saute/Eld_Saute-8.png" id="10_1022j"]
 [ext_resource type="Texture2D" uid="uid://be8wvccqqwcw6" path="res://Assets/animation/eldrich marche/Eld_Marche-4.png" id="10_n3uun"]
@@ -28,6 +36,35 @@ height = 1052.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gxo5y"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h251e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1kv6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sm5l5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_78vgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1njgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_db85c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s5f2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fifhd")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("7_eesia")
@@ -131,6 +168,9 @@ animations = [{
 "speed": 18.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ddp7w"]
+radius = 479.0
+
 [node name="Player(no animation tree)" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
@@ -142,8 +182,9 @@ shape = SubResource("CapsuleShape2D_joesv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gxo5y")
-animation = &"jump"
-frame_progress = 0.198129
+animation = &"Attack"
+frame = 7
+frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -152,3 +193,14 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(6, 3)
 shape = SubResource("CapsuleShape2D_joesv")
+
+[node name="Attaque" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attaque"]
+position = Vector2(457, 4)
+shape = SubResource("CircleShape2D_ddp7w")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="on_animation_finished"]

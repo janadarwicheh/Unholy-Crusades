@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cypayl3cswcoq"]
+[gd_scene load_steps=28 format=3 uid="uid://cypayl3cswcoq"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Matt.cs" id="1_vbc3d"]
 [ext_resource type="Texture2D" uid="uid://c4esqedhmalp" path="res://Assets/animation/matt marche/Matt_Marche-1.png" id="2_hx41k"]
@@ -143,6 +143,9 @@ animations = [{
 radius = 267.0
 height = 1046.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvrrw"]
+radius = 479.0
+
 [node name="Player(no animation tree)" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
@@ -161,3 +164,14 @@ shape = SubResource("CapsuleShape2D_joesv")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-5, 17)
 shape = SubResource("CapsuleShape2D_joesv")
+
+[node name="Attaque" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attaque"]
+position = Vector2(457, 4)
+shape = SubResource("CircleShape2D_kvrrw")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="on_animation_finished"]
