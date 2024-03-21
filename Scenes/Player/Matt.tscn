@@ -1,18 +1,26 @@
-[gd_scene load_steps=28 format=3 uid="uid://cypayl3cswcoq"]
+[gd_scene load_steps=36 format=3 uid="uid://cypayl3cswcoq"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Matt.cs" id="1_vbc3d"]
+[ext_resource type="Texture2D" uid="uid://bdlrw407bfjma" path="res://Assets/animation/matt attaque/Matt_Attaque_1-1.png" id="2_an47x"]
 [ext_resource type="Texture2D" uid="uid://c4esqedhmalp" path="res://Assets/animation/matt marche/Matt_Marche-1.png" id="2_hx41k"]
 [ext_resource type="Texture2D" uid="uid://cs10ej2t46tn7" path="res://Assets/animation/matt saute/Matt_Jump-1.png" id="3_coxre"]
+[ext_resource type="Texture2D" uid="uid://xpykap53cpyi" path="res://Assets/animation/matt attaque/Matt_Attaque_1-2.png" id="3_wsuu3"]
+[ext_resource type="Texture2D" uid="uid://bc2vhn4dkrnr" path="res://Assets/animation/matt attaque/Matt_Attaque_1-3.png" id="4_2xwa4"]
 [ext_resource type="Texture2D" uid="uid://bdf7f8a5s3wpj" path="res://Assets/animation/matt saute/Matt_Jump-2.png" id="4_57c6m"]
 [ext_resource type="Texture2D" uid="uid://d2qcdy0u7sty5" path="res://Assets/animation/matt marche/Matt_Marche-2.png" id="4_vb44v"]
 [ext_resource type="Texture2D" uid="uid://caqf6x2a403nc" path="res://Assets/animation/matt saute/Matt_Jump-3.png" id="5_dneqo"]
 [ext_resource type="Texture2D" uid="uid://d170dfwhkx0ww" path="res://Assets/animation/matt marche/Matt_Marche-3.png" id="5_pefu5"]
+[ext_resource type="Texture2D" uid="uid://bf5e5cnncwln4" path="res://Assets/animation/matt attaque/Matt_Attaque_1-5.png" id="5_ptw7b"]
 [ext_resource type="Texture2D" uid="uid://cljpfpvnqltu5" path="res://Assets/animation/matt marche/Matt_Marche-4.png" id="6_0eucm"]
 [ext_resource type="Texture2D" uid="uid://dkmmjdjt5vxxb" path="res://Assets/animation/matt saute/Matt_Jump-4.png" id="6_7xs6t"]
+[ext_resource type="Texture2D" uid="uid://floakplfxx8" path="res://Assets/animation/matt attaque/Matt_Attaque_1-4.png" id="6_eataf"]
 [ext_resource type="Texture2D" uid="uid://c43qhoyu8vram" path="res://Assets/animation/matt saute/Matt_Jump-5.png" id="7_14n21"]
+[ext_resource type="Texture2D" uid="uid://komtt3cjbsym" path="res://Assets/animation/matt attaque/Matt_Attaque_1-6.png" id="7_lsjt0"]
 [ext_resource type="Texture2D" uid="uid://c773uy18stao6" path="res://Assets/animation/matt marche/Matt_Marche-5.png" id="7_oxu37"]
+[ext_resource type="Texture2D" uid="uid://c1hscojftv5ps" path="res://Assets/animation/matt attaque/Matt_Attaque_1-7.png" id="8_0l5ib"]
 [ext_resource type="Texture2D" uid="uid://cymdcngwoexh5" path="res://Assets/animation/matt marche/Matt_Marche-6.png" id="8_2eyr8"]
 [ext_resource type="Texture2D" uid="uid://d0njs18mged5y" path="res://Assets/animation/matt saute/Matt_Jump-6.png" id="8_vl4b2"]
+[ext_resource type="Texture2D" uid="uid://b06dghq54hkst" path="res://Assets/animation/matt attaque/Matt_Attaque_1-8.png" id="9_75wkm"]
 [ext_resource type="Texture2D" uid="uid://djqiakm1darvn" path="res://Assets/animation/matt saute/Matt_Jump-7.png" id="9_lnarw"]
 [ext_resource type="Texture2D" uid="uid://b6o6vu1ox3kmf" path="res://Assets/animation/matt marche/Matt_Marche-7.png" id="9_rx163"]
 [ext_resource type="Texture2D" uid="uid://c1onq85nu5pvu" path="res://Assets/animation/matt marche/Matt_Marche-8.png" id="10_ch0ox"]
@@ -27,6 +35,35 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gxo5y"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_an47x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wsuu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2xwa4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ptw7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eataf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lsjt0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0l5ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_75wkm")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 16.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_hx41k")
@@ -153,7 +190,7 @@ script = ExtResource("1_vbc3d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gxo5y")
-animation = &"run"
+animation = &"Attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 21)
