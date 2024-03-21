@@ -101,7 +101,6 @@ public partial class enemy : CharacterBody2D
 		Down[1] = GetNode<RayCast2D>("RayCast2DDownRight");
 		Side = GetNode<RayCast2D>("RayCast2DSide");
 		Parameters = new EntityHandler(30, 4, 2, 250, null, null);
-		Hitboxes = new HitboxHandler(this);
 	}
 	
 	

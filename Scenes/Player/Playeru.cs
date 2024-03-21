@@ -83,7 +83,7 @@ public partial class Playeru : CharacterBody2D
 		}
 		if (IsOnFloor())
 		{
-			velocity.Y = -100;
+			velocity.Y = -2000;
 			
 		}
 		
@@ -138,7 +138,6 @@ public partial class Playeru : CharacterBody2D
 		Speed = Parameters.CurrentStats[StatType.Speed].Amount * 40;
 		GD.Print("Speed :" + Speed);
 		Attack = GetNode<Area2D>("Attaque");
-		Hitboxes = new HitboxHandler(this);
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -150,7 +149,7 @@ public partial class Playeru : CharacterBody2D
 			{
 				attack();
 			}
-			if (!IsOnFloor())
+			if (!IsOnFloor() && animation.Animation != "attacking")
 			{
 				lock_anim = true;
 				velocity.Y += gravity * (float)delta;
@@ -161,7 +160,7 @@ public partial class Playeru : CharacterBody2D
 				else 
 					animation.Play("jump_to_fall");
 			}
-			else
+			else if (IsOnFloor())
 				lock_anim = false;
 				
 
