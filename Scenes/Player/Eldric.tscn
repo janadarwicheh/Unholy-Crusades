@@ -1,35 +1,26 @@
 [gd_scene load_steps=24 format=3 uid="uid://cs5na5sxwlwt3"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Eldric.cs" id="1_lv8su"]
-[ext_resource type="Texture2D" uid="uid://c5g4ytjqs31er" path="res://Assets/Colour2/Outline/120x80_PNGSheets/_Jump.png" id="5_g00ys"]
+[ext_resource type="Texture2D" uid="uid://f81pqupdt77m" path="res://Assets/animation/eldrich saute/Eld_Saute-1.png" id="3_a7ftg"]
+[ext_resource type="Texture2D" uid="uid://cmiur3hxycwui" path="res://Assets/animation/eldrich saute/Eld_Saute-2.png" id="4_455yk"]
+[ext_resource type="Texture2D" uid="uid://c6upmk147tstj" path="res://Assets/animation/eldrich saute/Eld_Saute-3.png" id="5_yx1fp"]
+[ext_resource type="Texture2D" uid="uid://qk81pqughmlf" path="res://Assets/animation/eldrich saute/Eld_Saute-4.png" id="6_2cmlb"]
 [ext_resource type="Texture2D" uid="uid://datt55ac5g2iw" path="res://Assets/animation/eldrich marche/Eld_Marche-1.png" id="7_eesia"]
-[ext_resource type="Texture2D" uid="uid://j8v653762qbo" path="res://Assets/animation/eldrich saute/Eld_Saute-5.png" id="7_hnqe2"]
+[ext_resource type="Texture2D" uid="uid://j8v653762qbo" path="res://Assets/animation/eldrich saute/Eld_Saute-5.png" id="7_eyuyi"]
+[ext_resource type="Texture2D" uid="uid://fqk786qp7hyp" path="res://Assets/animation/eldrich saute/Eld_Saute-6.png" id="8_h0pxl"]
 [ext_resource type="Texture2D" uid="uid://cxxxia15y5vvi" path="res://Assets/animation/eldrich marche/Eld_Marche-2.png" id="8_jaj1d"]
-[ext_resource type="Texture2D" uid="uid://fqk786qp7hyp" path="res://Assets/animation/eldrich saute/Eld_Saute-6.png" id="8_kqc21"]
 [ext_resource type="Texture2D" uid="uid://d1525dspwhyad" path="res://Assets/animation/eldrich marche/Eld_Marche-3.png" id="9_0i2te"]
-[ext_resource type="Texture2D" uid="uid://dmufql8c3fs5b" path="res://Assets/animation/eldrich saute/Eld_Saute-7.png" id="9_4010p"]
-[ext_resource type="Texture2D" uid="uid://bpsg0rqa21s2a" path="res://Assets/animation/eldrich saute/Eld_Saute-8.png" id="10_bp0kb"]
+[ext_resource type="Texture2D" uid="uid://dmufql8c3fs5b" path="res://Assets/animation/eldrich saute/Eld_Saute-7.png" id="9_xvb0n"]
+[ext_resource type="Texture2D" uid="uid://bpsg0rqa21s2a" path="res://Assets/animation/eldrich saute/Eld_Saute-8.png" id="10_1022j"]
 [ext_resource type="Texture2D" uid="uid://be8wvccqqwcw6" path="res://Assets/animation/eldrich marche/Eld_Marche-4.png" id="10_n3uun"]
 [ext_resource type="Texture2D" uid="uid://l4lsfkwabb1i" path="res://Assets/animation/eldrich marche/Eld_Marche-5.png" id="11_c17hc"]
-[ext_resource type="Texture2D" uid="uid://bnntm2ck3iact" path="res://Assets/animation/eldrich saute/Eld_Saute-9.png" id="11_kue7h"]
+[ext_resource type="Texture2D" uid="uid://bnntm2ck3iact" path="res://Assets/animation/eldrich saute/Eld_Saute-9.png" id="11_qo81g"]
 [ext_resource type="Texture2D" uid="uid://dtpk1r3vb3cux" path="res://Assets/animation/eldrich marche/Eld_Marche-6.png" id="12_udde1"]
 [ext_resource type="Texture2D" uid="uid://c7og3vojujbik" path="res://Assets/animation/eldrich marche/Eld_Marche-7.png" id="13_2vuwf"]
 [ext_resource type="Texture2D" uid="uid://xpa0xtx0t2ui" path="res://Assets/animation/eldrich marche/Eld_Marche-8.png" id="14_5hesm"]
 [ext_resource type="Texture2D" uid="uid://bjihb7dsjfcoh" path="res://Assets/animation/eldrich marche/Eld_Marche-9.png" id="15_vkttc"]
 [ext_resource type="Texture2D" uid="uid://body6rgsv5n1y" path="res://Assets/animation/eldrich marche/Eld_Marche-10.png" id="16_vusrk"]
 [ext_resource type="Texture2D" uid="uid://fgl2mgesw8mb" path="res://Assets/animation/eldrich marche/Eld_Marche-11.png" id="17_4rjvd"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mu40b"]
-atlas = ExtResource("5_g00ys")
-region = Rect2(0, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a5axt"]
-atlas = ExtResource("5_g00ys")
-region = Rect2(120, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8jh4x"]
-atlas = ExtResource("5_g00ys")
-region = Rect2(240, 0, 120, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gxo5y"]
 animations = [{
@@ -59,17 +50,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mu40b")
+"texture": ExtResource("3_a7ftg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a5axt")
+"texture": ExtResource("4_455yk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8jh4x")
+"texture": ExtResource("5_yx1fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2cmlb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eyuyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_h0pxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xvb0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1022j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qo81g")
 }],
 "loop": true,
 "name": &"jump",
-"speed": 8.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -129,7 +138,8 @@ script = ExtResource("1_lv8su")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gxo5y")
-animation = &"fall"
+animation = &"jump"
+frame_progress = 0.198129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-105, -61)
