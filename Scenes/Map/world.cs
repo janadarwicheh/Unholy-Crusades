@@ -47,7 +47,6 @@ public partial class World : Node
 		}
 		else
 		{
-			GD.Print("ZZAZEAE");
 		}
 	}
 }

@@ -35,6 +35,11 @@ public partial class enemy : CharacterBody2D
 	{
 		animation.Play("attack");
 	}
+
+	private void _on_attacked(Area2D area2D)
+	{
+		GD.Print("ATTACKED");
+	}
 	private void _on_animated_sprite_2d_frame_changed()
 	{
 		if (entered && animation.Animation == "attack" && (animation.Frame == 1 || animation.Frame == 2))
