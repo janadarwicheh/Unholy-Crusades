@@ -1887,7 +1887,7 @@ texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-260.215, -271.529, 256, -256, 256, 237.588, -256, 243.245)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_034hg"]
 texture = ExtResource("5_6grb8")
