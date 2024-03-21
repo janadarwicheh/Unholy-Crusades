@@ -29,7 +29,7 @@ public partial class menu : Control
     private void _on_play_pressed()
     {
         GD.Print("Play button");
-        GetTree().ChangeSceneToFile("res://Scenes/Map/world1.tscn");
+        GetTree().ChangeSceneToFile("res://Scenes/Start/Start.tscn");
     }
     private void _on_texture_button_pressed()
     {
