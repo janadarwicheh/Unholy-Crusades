@@ -49,5 +49,10 @@ public partial class World : Node
 		{
 			GD.Print("ZZAZEAE");
 		}
+
+		if (Joueur.GlobalPosition.Y >= 21480)
+		{
+			Joueur.GlobalPosition = new Vector2(2224, 6062);
+		}
 	}
 }
