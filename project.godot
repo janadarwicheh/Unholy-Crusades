@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Unholy Crusade"
 run/main_scene="res://menu.tscn"
-config/features=PackedStringArray("4.2", "C#", "Forward Plus")
+config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
@@ -76,6 +76,11 @@ choose_eldric={
 2d_render/layer_2="HitBox ennemi"
 2d_render/layer_3="HurtBox player"
 2d_render/layer_4="HurtBox ennemi"
+2d_physics/layer_1="Environnement"
+2d_physics/layer_2="Corps Joueur"
+2d_physics/layer_3="Corps Ennemis"
+2d_physics/layer_4="Hitbox des attaques des joueurs"
+2d_physics/layer_5="Hitbox des attaques des ennemis"
 
 [physics]
 

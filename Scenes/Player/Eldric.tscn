@@ -22,6 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://body6rgsv5n1y" path="res://Assets/animation/eldrich marche/Eld_Marche-10.png" id="16_vusrk"]
 [ext_resource type="Texture2D" uid="uid://fgl2mgesw8mb" path="res://Assets/animation/eldrich marche/Eld_Marche-11.png" id="17_4rjvd"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_joesv"]
+radius = 236.0
+height = 1052.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_gxo5y"]
 animations = [{
 "frames": [{
@@ -127,26 +131,24 @@ animations = [{
 "speed": 18.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_joesv"]
-radius = 236.0
-height = 1052.0
-
 [node name="Player(no animation tree)" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_lv8su")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 3)
+shape = SubResource("CapsuleShape2D_joesv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gxo5y")
 animation = &"jump"
 frame_progress = 0.198129
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-105, -61)
-shape = SubResource("CapsuleShape2D_joesv")
-
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-103, -56)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6, 3)
 shape = SubResource("CapsuleShape2D_joesv")
