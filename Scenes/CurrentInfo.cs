@@ -8,6 +8,7 @@ public partial class CurrentInfo : Node
     public static World CurrentScene;
     public static Playeru player;
     public static float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle() * 20;
+    public static bool FrameCounter = false;
     public override void _Ready()
     {
         player = new Playeru();
@@ -17,5 +18,10 @@ public partial class CurrentInfo : Node
     public void Update()
     {
         CurrentScene = (World)GetTree().CurrentScene;
+    }
+
+    public override void _Process(double delta)
+    {
+        FrameCounter = !FrameCounter;
     }
 }

@@ -6,27 +6,32 @@ using Skull.Scenes;
 using Skull.Scenes.Entities;
 using Skull.Scenes.Entities.Skills;
 
-public partial class Playeru : CharacterBody2D
+public partial class Playeru : Entity
 {
 	public float Speed { get; set; }
 	[Export]
 	public const float JumpVelocity = -225.0f * 30;
 	public Vector2 velocity;
 	bool lock_anim = false;
-	AnimatedSprite2D animation;
 	public Area2D Attack;
 	public float gravity = CurrentInfo.gravity;
 	public bool canTakeDamage = true;
 	public string state = "default";
 	public bool doubleJump = false;
-	public EntityComponent Parameters { get; set; }
 	public int knockback  = 200;
 	public int Cooldown { get; set; } = 500000;
 	public bool gotHit = false;
 	public bool CanLaunch { get; set; } = true;
 	public float DoubleJumpVelocity { get; } = -175 * 25;
-	public HitboxHandler Hitboxes;
 	
+	
+	public override void _Ready()
+	{
+		Animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		Speed = Parameters.CurrentStats[StatType.Speed].Amount * 40;
+		GD.Print("Speed :" + Speed);
+		Attack = GetNode<Area2D>("Attaque");
+	}
 	
 	public void StartCooldown()
 	{
@@ -52,7 +57,7 @@ public partial class Playeru : CharacterBody2D
 
 	public void on_animation_finished()
 	{
-		if (animation.Animation == "Attack")
+		if (Animation.Animation == "Attack")
 		{
 			GD.Print("aa");
 			state = "default";
@@ -71,7 +76,7 @@ public partial class Playeru : CharacterBody2D
 		velocity = knockbackDirection;
 		if (a.Velocity.X ==0 && velocity.X ==0 )
 		{
-			if (a.animation.FlipH)
+			if (a.Animation.FlipH)
 			{
 				velocity.X = -(a.KnockbackPower);
 			}
@@ -99,24 +104,24 @@ public partial class Playeru : CharacterBody2D
 			lock_anim = false;
 
 		if (state == "attacking")
-			animation.Play("Attack");
+			Animation.Play("Attack");
 		else 
 		{
 			if (!lock_anim)
 			{ 
 				if (velocity.X > 0)
 				{
-					animation.FlipH = false;
-					animation.Play("run");
+					Animation.FlipH = false;
+					Animation.Play("run");
 				}
 				else if (velocity.X < 0)
 				{
-					animation.FlipH = true;
-					animation.Play("run");
+					Animation.FlipH = true;
+					Animation.Play("run");
 				}
 				else
 				{
-					animation.Play("idle");
+					Animation.Play("idle");
 				}
 			}
 		}
@@ -132,13 +137,6 @@ public partial class Playeru : CharacterBody2D
 		if (!doubleJump)
 			velocity.Y = DoubleJumpVelocity;
 	}
-	public override void _Ready()
-	{
-		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		Speed = Parameters.CurrentStats[StatType.Speed].Amount * 40;
-		GD.Print("Speed :" + Speed);
-		Attack = GetNode<Area2D>("Attaque");
-	}
 	public override void _PhysicsProcess(double delta)
 	{
 		if(state == "default" || state == "attacking")
@@ -149,16 +147,16 @@ public partial class Playeru : CharacterBody2D
 			{
 				attack();
 			}
-			if (!IsOnFloor() && animation.Animation != "attacking")
+			if (!IsOnFloor() && Animation.Animation != "attacking")
 			{
 				lock_anim = true;
 				velocity.Y += gravity * (float)delta;
 				if (velocity.Y < -10)
-					animation.Play("jump");
+					Animation.Play("jump");
 				else if (velocity.Y > 10)
-					animation.Play("fall");
+					Animation.Play("fall");
 				else 
-					animation.Play("jump_to_fall");
+					Animation.Play("jump_to_fall");
 			}
 			else if (IsOnFloor())
 				lock_anim = false;
@@ -202,7 +200,7 @@ public partial class Playeru : CharacterBody2D
 				if (a.GetType() == typeof(enemy))
 				{
 					TakeDamage(delta,(enemy)a);
-					animation.Play("hurt");
+					Animation.Play("hurt");
 					Velocity = velocity;
 					MoveAndSlide();
 				}
@@ -213,7 +211,7 @@ public partial class Playeru : CharacterBody2D
 			velocity.Y += gravity * (float)delta;
 			Velocity = velocity;
 			MoveAndSlide();
-			animation.Play("hurt");
+			Animation.Play("hurt");
 			if(IsOnFloor())
 				state = "default";
 		}

@@ -11,12 +11,6 @@ using Resource = Skull.Scenes.Entities.Resources.Resource;
 
 namespace Skull.Scenes.Player;
 
-public class MeleeAttack : Skill
-{
-    public MeleeAttack(int damageAmount, int healAmount, int[] rng, int range, int cooldown) : base(damageAmount, healAmount, rng, range, cooldown)
-    {
-    }
-}
 public partial class Matt : Playeru
 {
     public Dictionary<SkillType, Skill> MeleeSkills { get; set; }

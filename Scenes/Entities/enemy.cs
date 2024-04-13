@@ -8,12 +8,11 @@ using Skull.Scenes.Entities.Skills;
 using Skull.Scenes.Entities.Stats;
 using Resource = Skull.Scenes.Entities.Resources.Resource;
 
-public partial class enemy : CharacterBody2D
+public partial class enemy : Entity
 {
 	Area2D area_right;
 	Area2D area_left;
 	bool animationlock;
-	public AnimatedSprite2D animation;
 	public Playeru player;
 	public bool entered = false;
 	double frames;
@@ -28,12 +27,10 @@ public partial class enemy : CharacterBody2D
 	Vector2 velocity;
 	public float gravity = CurrentInfo.gravity;
 	public int KnockbackPower = 40000;
-	public EntityComponent Parameters;
-	public HitboxHandler Hitboxes;
 	
 	private void attack()
 	{
-		animation.Play("attack");
+		Animation.Play("attack");
 	}
 
 	private void _on_attacked(Area2D area2D)
@@ -42,21 +39,21 @@ public partial class enemy : CharacterBody2D
 	}
 	private void _on_animated_sprite_2d_frame_changed()
 	{
-		if (entered && animation.Animation == "attack" && (animation.Frame == 1 || animation.Frame == 2))
+		if (entered && Animation.Animation == "attack" && (Animation.Frame == 1 || Animation.Frame == 2))
 		{
 			CurrentInfo.player.TakeDamage(frames,this);
 		}
 	}
 	private void _on_area_2d_area_entered_right(Area2D area)
 	{
-		animation.FlipH = false;
+		Animation.FlipH = false;
 		entered = true;
 		animationlock = true;
 		attack();
 	}
 	private void _on_area_2d_area_entered_left(Area2D area)
 	{
-		animation.FlipH = true;
+		Animation.FlipH = true;
 		animationlock = true;
 		entered = true;
 		attack();
@@ -72,7 +69,7 @@ public partial class enemy : CharacterBody2D
 	}
 	private void _on_animated_sprite_2d_animation_finished()
 	{
-		if (animation.Animation == "attack")
+		if (Animation.Animation == "attack")
 		{
 			animationlock = false;
 		}
@@ -95,8 +92,8 @@ public partial class enemy : CharacterBody2D
 		velocity.X = speed;
 		area_right = GetNode<Area2D>("Area2DRight");
 		area_left = GetNode<Area2D>("Area2DLeft");
-		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		player = (Playeru)GetParent().GetParent().FindChild("Player(no animation tree)");
+		Animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		player = (Playeru)GetParent().GetParent().FindChild("Player(no Animation tree)");
 		Down[0] = GetNode<RayCast2D>("RayCast2DDownLeft");
 		Down[1] = GetNode<RayCast2D>("RayCast2DDownRight");
 		Side = GetNode<RayCast2D>("RayCast2DSide");
@@ -112,13 +109,13 @@ public partial class enemy : CharacterBody2D
 			moveDir *= -1;
 		if (moveDir == -1)
 		{
-			animation.FlipH = true;
+			Animation.FlipH = true;
 		}
 		else
 		{
-			animation.FlipH = false;
+			Animation.FlipH = false;
 		}
-		if (animation.FlipH)
+		if (Animation.FlipH)
 		{
 			area_right.Monitoring = false;
 			area_left.Monitoring = true;
@@ -132,7 +129,7 @@ public partial class enemy : CharacterBody2D
 		}
 		if (!animationlock)
 		{
-			animation.Play("default");
+			Animation.Play("default");
 			velocity.X = speed * moveDir;
 		}
 		else
