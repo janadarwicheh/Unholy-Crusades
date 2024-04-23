@@ -19,13 +19,4 @@ public partial class Eldric : Playeru
 	{
 		Parameters = new EntityComponent(new List<Resource>(), new Dictionary<StatType, Stat>(){{StatType.HitPoints, new HitPoints(80)},{StatType.Attack, new Attack(10)}, {StatType.NaturalArmor, new NaturalArmor(8)}, {StatType.Speed, new Speed(90)}}, new BronzeWarHammer(),new IronChestplate());
 	}
-	public override void _Ready()
-	{
-		base._Ready();
-	}
-
-	public override void _PhysicsProcess(double delta)
-	{
-		base._PhysicsProcess(delta);
-	}
 }

@@ -21,15 +21,4 @@ public partial class Matt : Playeru
         Parameters = new EntityComponent(new List<Resource>(), new Dictionary<StatType, Stat>(){{StatType.HitPoints, new HitPoints(50)},{StatType.Attack, new Attack(7)}, {StatType.NaturalArmor, new NaturalArmor(10)}, {StatType.Speed, new Speed(200)}}, new ObsidianHammer(),new LeatherJacket());
         CurrentForm = "Melee";
     }
-    
-    
-    public override void _Ready()
-    {
-        base._Ready();
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        base._PhysicsProcess(delta);
-    }
 }

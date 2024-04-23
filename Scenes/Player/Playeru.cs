@@ -215,5 +215,11 @@ public partial class Playeru : Entity
 			if(IsOnFloor())
 				state = "default";
 		}
+		
+		if (Position.Y > 50000)
+		{
+			GetTree().ChangeSceneToFile("res://UI/GameOver/game_over_screen.tscn");
+		}
+		// added code for functionality of the Game Over screen
 	}
 }
