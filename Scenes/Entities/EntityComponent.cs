@@ -121,13 +121,11 @@ public class EntityComponent
 
 public class EntityHandler : EntityComponent
 {
-    public EntityHandler(int hp, int attack, int armor, int speed, Weapon? currentWeapon, Armor? currentArmor) : base(new List<Resource>(), new Dictionary<StatType, Stat> ()
+    public EntityHandler(int hp, int attack, int armor, int speed, Weapon? currentWeapon, Armor? currentArmor) : base(new List<Resource>(), new Dictionary<StatType, Stat>()
         {
-            { StatType.HitPoints , new HitPoints(hp)},
-            { StatType.Attack , new Attack(attack)},
-            { StatType.NaturalArmor , new NaturalArmor(armor)},
-            { StatType.Speed , new Speed(speed)}
-        }, currentWeapon, currentArmor)
-    {
-    }
+            { StatType.HitPoints, new HitPoints(hp) },
+            { StatType.Attack, new Attack(attack) },
+            { StatType.NaturalArmor, new NaturalArmor(armor) },
+            { StatType.Speed, new Speed(speed) }
+        }, currentWeapon, currentArmor){}
 }

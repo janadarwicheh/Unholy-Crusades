@@ -1,6 +1,6 @@
 ﻿namespace Skull.Scenes.Entities.Skills.Player;
 
-public enum SkillType
+public enum PlayerSkill
 {
     Attack, Special1, Special2, Ultimate 
 }

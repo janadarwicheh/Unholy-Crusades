@@ -6,12 +6,12 @@ namespace Skull.Scenes;
 public partial class CurrentInfo : Node
 {
     public static World CurrentScene;
-    public static Playeru player;
-    public static float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle() * 20;
+    public static Playeru Player;
+    public static float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle() * 20;
     public static bool FrameCounter = false;
     public override void _Ready()
     {
-        player = new Playeru();
+        Player = new Playeru();
         CurrentScene = (World)GetTree().CurrentScene;
     }
 

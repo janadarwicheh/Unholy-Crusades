@@ -20,13 +20,13 @@ public partial class MultiplayerController : Control
 		Multiplayer.ConnectionFailed += ConnectionFailed;
 	}
 
-	//Runs when a player connects and runs on all peers
+	//Runs when a Player connects and runs on all peers
 	private void PeerConnected(long id)
 	{
 		GD.Print("Player Connected! " + id.ToString());
 	}
 
-	//Runs when a player disconnect and runs on all peers
+	//Runs when a Player disconnect and runs on all peers
 	private void PeerDisconnected(long id)
 	{
 		GD.Print("Player Disconnected: " + id.ToString());

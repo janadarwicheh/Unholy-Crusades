@@ -6,7 +6,7 @@ namespace Skull.Scenes.Entities.Skills;
 
 public abstract class Skill
 {
-    public Skill(Entity user, string name, int damageAmount, int healAmount, int[] rng, int range, int cooldown, Animation animation)
+    public Skill(Parameters.Entity user, string name, int damageAmount, int healAmount, int[] rng, int range, int cooldown, Animation animation)
     {
         User = user;
         Name = name;
@@ -21,7 +21,7 @@ public abstract class Skill
     // IMPORTANT: FAIRE CORRESPONDRE NOM DE LA CAPACITÉ AVEC LE NOM DE L'ANIMATION ET DE L'AREA2D POUR LA HITBOX
     public string Name { get; set; }
     
-    public Entity User { get; set; }
+    public Parameters.Entity User { get; set; }
     public Animation Animation { get; set; }
     protected int DamageAmount { get; set; }
     
