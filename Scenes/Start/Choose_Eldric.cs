@@ -8,6 +8,6 @@ public partial class Choose_Eldric : Button
     public void _on_pressed()
     {
         GetTree().ChangeSceneToFile("res://Scenes/Map/world1.tscn");
-        CurrentInfo.player = new Eldric();
+        CurrentInfo.Player = new Eldric();
     }
 }

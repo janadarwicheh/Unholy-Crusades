@@ -12,7 +12,7 @@ public partial class World : Node
 	public bool CharacterChosen = false;
 	public override void _Ready()
 	{
-		Joueur = CurrentInfo.player;
+		Joueur = CurrentInfo.Player;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,12 +20,12 @@ public partial class World : Node
 	{
 		if (!CharacterChosen)
 		{
-			if (CurrentInfo.player is Eldric)
+			if (CurrentInfo.Player is Eldric)
 			{
 				Tamer = (PackedScene)GD.Load("res://Scenes/Player/Eldric.tscn");
 				CharacterChosen = true;
 			}
-			else if (CurrentInfo.player is Matt)
+			else if (CurrentInfo.Player is Matt)
 			{
 				Tamer = (PackedScene)GD.Load("res://Scenes/Player/Matt.tscn");
 				CharacterChosen = true;
@@ -42,16 +42,13 @@ public partial class World : Node
 				var a = (RemoteTransform2D)GetNode("Player/RemoteTransform2D");
 				a.RemotePath = Joueur.GetPath();
 				a.UpdateScale = false;
-				CurrentInfo.player = Joueur;
+				CurrentInfo.Player = Joueur;
 			}
 		}
-		else
-		{
-		}
 
-		if (Joueur.GlobalPosition.Y >= 21480)
+		if (Joueur.GlobalPosition.Y >= 30000)
 		{
-			Joueur.GlobalPosition = new Vector2(2224, 6062);
+			GetTree().ChangeSceneToFile("res://Scenes/GameOver/game_over_screen.tscn");
 		}
 	}
 }

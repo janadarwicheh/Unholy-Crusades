@@ -5,7 +5,7 @@ namespace Skull.Scenes.Entities.Stats;
 
 public abstract class Stat
 {
-    public int Amount ;
+    public int Amount { get; set; }
     public StatType Type;
     
     public Stat(int amount)
@@ -14,9 +14,9 @@ public abstract class Stat
     }
   
 
-    public void Change(int amount)
+    public virtual void Change(int amount)
     {
-        
+        Amount += amount;
     }
 }
 
@@ -26,10 +26,6 @@ public class HitPoints : Stat
     {
         Amount = amount; 
         Type = StatType.HitPoints;
-    }
-    public void Death()
-    {
-        
     }
 }
 

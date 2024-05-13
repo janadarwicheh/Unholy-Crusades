@@ -1,219 +1,150 @@
+#nullable enable
+using Skull.Scenes.Entities.Skills.Player;
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Skull.Scenes;
 using Skull.Scenes.Entities;
+using Skull.Scenes.Entities.Parameters;
 using Skull.Scenes.Entities.Skills;
+using Entity = Skull.Scenes.Entities.Parameters.Entity;
+using Skull.Scenes.Entities.Skills.Player;
 
 public partial class Playeru : Entity
 {
-	public float Speed { get; set; }
-	[Export]
-	public const float JumpVelocity = -225.0f * 30;
-	public Vector2 velocity;
-	bool lock_anim = false;
-	public Area2D Attack;
-	public float gravity = CurrentInfo.gravity;
-	public bool canTakeDamage = true;
-	public string state = "default";
-	public bool doubleJump = false;
-	public int knockback  = 200;
-	public int Cooldown { get; set; } = 500000;
-	public bool gotHit = false;
-	public bool CanLaunch { get; set; } = true;
-	public float DoubleJumpVelocity { get; } = -175 * 25;
-	
-	
-	public override void _Ready()
+	protected AnimationTree AnimationTree;
+	protected Sprite2D Sprite;
+	private float _gravity;
+	protected float JumpVelocity = -6000;
+	public bool jumped = false;
+	protected float Speed;
+	public Skill? CastingSkill = null;
+	public Dictionary<PlayerSkill, Skill> Skills = new Dictionary<PlayerSkill, Skill>();
+	public void UpdateAnimationParamaters()
 	{
-		Animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		Speed = Parameters.CurrentStats[StatType.Speed].Amount * 40;
-		GD.Print("Speed :" + Speed);
-		Attack = GetNode<Area2D>("Attaque");
-	}
-	
-	public void StartCooldown()
-	{
-		if (CanLaunch)
+		if (IsOnFloor())
 		{
-			Task.Delay(Cooldown).ContinueWith(t => gotHit = false);
-		}
-	}
-	
-	public void Hit()
-	{
-		
-		if (gotHit)
-		{
-			SetCollisionLayerValue(2, false);
-			SetCollisionLayerValue(4, false);
-			StartCooldown();
-			SetCollisionLayerValue(4, true);
-			SetCollisionLayerValue(2, true);
-		}
-		
-	}
-
-	public void on_animation_finished()
-	{
-		if (Animation.Animation == "Attack")
-		{
-			GD.Print("aa");
-			state = "default";
-			Attack.Monitoring = false;
-		}
-	}
-	public void attack()
-	{
-		Attack.Monitoring = true;
-		state = "attacking";
-	}
-	public void TakeDamage(double delta, enemy a)
-	{
-		
-		var knockbackDirection = (a.Velocity)-velocity.Normalized() * knockback;
-		velocity = knockbackDirection;
-		if (a.Velocity.X ==0 && velocity.X ==0 )
-		{
-			if (a.Animation.FlipH)
+			AnimationTree.Set("parameters/conditions/Airborne", false);
+			AnimationTree.Set("parameters/conditions/Grounded", true);
+			AnimationTree.Set("parameters/conditions/Jump", false);
+			if (CastingSkill!=null)
 			{
-				velocity.X = -(a.KnockbackPower);
+				AnimationTree.Set("parameters/conditions/SkillUsed", true);
 			}
 			else
 			{
-				velocity.X = (a.KnockbackPower);
-			}
-			
-		}
-		if (IsOnFloor())
-		{
-			velocity.Y = -2000;
-			
-		}
-		
-		MoveAndSlide();
-		state = "damaged";
-		gotHit = true;
-		
-	}
-	
-	private void update()
-	{
-		if(IsOnFloor())
-			lock_anim = false;
-
-		if (state == "attacking")
-			Animation.Play("Attack");
-		else 
-		{
-			if (!lock_anim)
-			{ 
-				if (velocity.X > 0)
+				AnimationTree.Set("parameters/conditions/SkillUsed", false);
+				if (Velocity.X > 0)
 				{
-					Animation.FlipH = false;
-					Animation.Play("run");
+					AnimationTree.Set("parameters/conditions/Idle", false);
+					AnimationTree.Set("parameters/conditions/IsMoving", true);
+					Sprite.FlipH = false;
 				}
-				else if (velocity.X < 0)
+				else if (Velocity.X < 0)
 				{
-					Animation.FlipH = true;
-					Animation.Play("run");
+					AnimationTree.Set("parameters/conditions/Idle", false);
+					AnimationTree.Set("parameters/conditions/IsMoving", true);
+					Sprite.FlipH = true;
 				}
 				else
 				{
-					Animation.Play("idle");
+					AnimationTree.Set("parameters/conditions/Idle", true);
+					AnimationTree.Set("parameters/conditions/IsMoving", false);
 				}
 			}
 		}
-	
-		
+		else
+		{
+				if (jumped)
+				{
+					AnimationTree.Set("parameters/conditions/Jump", true);
+					jumped = false;
+				}
+				else
+				{
+					AnimationTree.Set("parameters/conditions/Airborne", true);
+				}
+				AnimationTree.Set("parameters/conditions/Grounded", false);
+				AnimationTree.Set("parameters/conditions/Idle", false);
+				AnimationTree.Set("parameters/conditions/IsMoving", false);
+		}
+
 	}
-	private void Jump()
+
+	protected void SkillUsed()
 	{
-		velocity.Y += JumpVelocity;
+		if (CastingSkill != null)
+		{
+			if (Input.IsActionJustPressed("attack"))
+			{
+				CastingSkill = Skills[PlayerSkill.Attack];
+			}
+			else if (Input.IsActionJustPressed("special1"))
+			{
+				CastingSkill = Skills[PlayerSkill.Special1];
+			}
+			else if (Input.IsActionJustPressed("special2"))
+			{
+				CastingSkill = Skills[PlayerSkill.Special2];
+			}
+			else if (Input.IsActionJustPressed("ult"))
+			{
+				CastingSkill = Skills[PlayerSkill.Ultimate];
+			}
+
+			CastingSkill.Launch();
+		}
 	}
-	private void DoubleJump()
+	public override void _Ready()
 	{
-		if (!doubleJump)
-			velocity.Y = DoubleJumpVelocity;
+		Sprite = GetNode<Sprite2D>("Sprite2D");
+		AnimationTree = GetNode<AnimationTree>("AnimationTree");
+		AnimationTree.Active = true;
+		_gravity = CurrentInfo.Gravity;
 	}
+
+	protected void Reload()
+	{
+		// This function will reload every parameter with updated stats and values. Must be called after every change in those values. 
+		_gravity = CurrentInfo.Gravity;
+		CurrentInfo.Player = this;
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
-		if(state == "default" || state == "attacking")
+		Vector2 velocity = Velocity;
+		float run_mult = 1.5f;
+		if (Input.IsActionPressed("shift"))
 		{
-			velocity = Velocity;
-			// Add the gravity.
-			if (Input.IsActionJustPressed("Attack") == (state != "attacking"))
-			{
-				attack();
-			}
-			if (!IsOnFloor() && Animation.Animation != "attacking")
-			{
-				lock_anim = true;
-				velocity.Y += gravity * (float)delta;
-				if (velocity.Y < -10)
-					Animation.Play("jump");
-				else if (velocity.Y > 10)
-					Animation.Play("fall");
-				else 
-					Animation.Play("jump_to_fall");
-			}
-			else if (IsOnFloor())
-				lock_anim = false;
-				
-
-			// Handle Jump.
-			if (Input.IsActionJustPressed("jump") && IsOnFloor())
-			{
-				lock_anim = true;
-				Jump();
-			}
-			if (Input.IsActionJustPressed("jump") && !IsOnFloor())
-			{
-				lock_anim = true;
-				DoubleJump();
-				doubleJump = true;
-			}
-			if (IsOnFloor())
-			{
-				doubleJump = false;
-			}
-			
-			// Get the input direction and handle the movement/deceleration.
-			// As good practice, you should replace UI actions with custom gameplay actions.
-			Vector2 direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
-			if (direction != Vector2.Zero)
-			{
-				velocity.X = direction.X * Speed;
-			}
-			else
-			{
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-			}
-			Velocity = velocity;
-			update();
-			MoveAndSlide();
-			for (int i = 0; i < GetSlideCollisionCount(); i++)
-			{
-				var collision = GetSlideCollision(i);
-				var a = collision.GetCollider();
-				if (a.GetType() == typeof(enemy))
-				{
-					TakeDamage(delta,(enemy)a);
-					Animation.Play("hurt");
-					Velocity = velocity;
-					MoveAndSlide();
-				}
-			}
+			Speed = (Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000)*run_mult;
 		}
-		else if (state == "damaged")
+		else
 		{
-			velocity.Y += gravity * (float)delta;
-			Velocity = velocity;
-			MoveAndSlide();
-			Animation.Play("hurt");
-			if(IsOnFloor())
-				state = "default";
+			Speed = Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000;
 		}
+		if (!IsOnFloor())
+		{
+			velocity.Y += _gravity * (float)delta;
+		}
+		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+		{
+			velocity.Y = JumpVelocity;
+			jumped = true;
+		}
+		Vector2 direction = Input.GetVector("move_left", "move_right", "ui_up", "ui_down");
+		if (direction != Vector2.Zero)
+		{
+			velocity.X = direction.X * Speed;
+		}
+		else
+		{
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+		}
+		Velocity = velocity;
+		UpdateAnimationParamaters();
+		MoveAndSlide();
 	}
+	
 }

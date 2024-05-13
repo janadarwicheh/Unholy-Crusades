@@ -4,18 +4,21 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Skull.Scenes;
 using Skull.Scenes.Entities;
+using Skull.Scenes.Entities.Parameters;
 using Skull.Scenes.Entities.Skills;
 using Skull.Scenes.Entities.Stats;
+using Entity = Skull.Scenes.Entities.Parameters.Entity;
+using EntityComponent = Skull.Scenes.Entities.Parameters.EntityComponent;
+using EntityHandler = Skull.Scenes.Entities.Parameters.EntityHandler;
 using Resource = Skull.Scenes.Entities.Resources.Resource;
 
-public partial class enemy : Entity
+public partial class Enemy : Entity
 {
 	Area2D area_right;
 	Area2D area_left;
-	bool animationlock;
-	public Playeru player;
-	public bool entered = false;
-	double frames;
+	bool MovementLock = false;
+	public Sprite2D Sprite2D;
+	public AnimationTree AnimationTree;
 	RayCast2D[] Down = new RayCast2D[2];
 	RayCast2D Side;
 	[Export]
@@ -23,59 +26,24 @@ public partial class enemy : Entity
 	[Export]
 	public int motionRange;
 	[Export]
-	public float speed = 250.0f;
+	public float speed = 400.0f;
 	Vector2 velocity;
-	public float gravity = CurrentInfo.gravity;
-	public int KnockbackPower = 40000;
+	public float gravity = CurrentInfo.Gravity;
 	
-	private void attack()
-	{
-		Animation.Play("attack");
-	}
-
-	private void _on_attacked(Area2D area2D)
-	{
-		GD.Print("ATTACKED");
-	}
-	private void _on_animated_sprite_2d_frame_changed()
-	{
-		if (entered && Animation.Animation == "attack" && (Animation.Frame == 1 || Animation.Frame == 2))
-		{
-			CurrentInfo.player.TakeDamage(frames,this);
-		}
-	}
 	private void _on_area_2d_area_entered_right(Area2D area)
 	{
-		Animation.FlipH = false;
-		entered = true;
-		animationlock = true;
-		attack();
+		MovementLock = true;
+		AnimationTree.Set("parameters/conditions/InRange", true);
+		AnimationTree.Set("parameters/conditions/InRange", false);
 	}
 	private void _on_area_2d_area_entered_left(Area2D area)
 	{
-		Animation.FlipH = true;
-		animationlock = true;
-		entered = true;
-		attack();
-	}
-	private void _on_area_2d_right_area_exited(Area2D area)
-	{
-		entered = false;
+		MovementLock = true;
+		AnimationTree.Set("parameters/conditions/InRange", true);
+		AnimationTree.Set("parameters/conditions/InRange", false);
 	}
 	
-	private void _on_area_2d_left_area_exited(Area2D area)
-	{
-		entered = false;
-	}
-	private void _on_animated_sprite_2d_animation_finished()
-	{
-		if (Animation.Animation == "attack")
-		{
-			animationlock = false;
-		}
-	}
-	
-	private bool shouldTurn()
+	private bool ShouldTurn()
 	{
 		if (Side.IsColliding())
 			return true;
@@ -88,12 +56,12 @@ public partial class enemy : Entity
 	
 	public override void _Ready()
 	{
+		AnimationTree = GetNode<AnimationTree>("AnimationTree");
+		Sprite2D = GetNode<Sprite2D>("Sprite2D");
 		velocity = Vector2.Zero;
 		velocity.X = speed;
 		area_right = GetNode<Area2D>("Area2DRight");
 		area_left = GetNode<Area2D>("Area2DLeft");
-		Animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		player = (Playeru)GetParent().GetParent().FindChild("Player(no Animation tree)");
 		Down[0] = GetNode<RayCast2D>("RayCast2DDownLeft");
 		Down[1] = GetNode<RayCast2D>("RayCast2DDownRight");
 		Side = GetNode<RayCast2D>("RayCast2DSide");
@@ -103,19 +71,18 @@ public partial class enemy : Entity
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		frames = delta;
 		velocity = Velocity;
-		if (shouldTurn())
+		if (ShouldTurn())
 			moveDir *= -1;
 		if (moveDir == -1)
 		{
-			Animation.FlipH = true;
+			Sprite2D.FlipH = true;
 		}
 		else
 		{
-			Animation.FlipH = false;
+			Sprite2D.FlipH = false;
 		}
-		if (Animation.FlipH)
+		if (Sprite2D.FlipH)
 		{
 			area_right.Monitoring = false;
 			area_left.Monitoring = true;
@@ -127,9 +94,8 @@ public partial class enemy : Entity
 			area_left.Monitoring = false;
 			Side.TargetPosition = new Vector2(400, 0);
 		}
-		if (!animationlock)
+		if (!MovementLock)
 		{
-			Animation.Play("default");
 			velocity.X = speed * moveDir;
 		}
 		else

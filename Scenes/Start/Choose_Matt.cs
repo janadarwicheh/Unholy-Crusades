@@ -8,6 +8,6 @@ public partial class Choose_Matt : Button
     public void _on_pressed()
     {
         GetTree().ChangeSceneToFile("res://Scenes/Map/world1.tscn");
-        CurrentInfo.player = new Matt();
+        CurrentInfo.Player = new Matt();
     }
 }

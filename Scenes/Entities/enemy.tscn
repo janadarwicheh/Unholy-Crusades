@@ -1,99 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://de8q5mo127ymg"]
+[gd_scene load_steps=17 format=3 uid="uid://de8q5mo127ymg"]
 
-[ext_resource type="Script" path="res://Scenes/Entities/enemy.cs" id="1_vdahw"]
-[ext_resource type="Texture2D" uid="uid://y44qbras3q5t" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-1.png" id="2_xou6a"]
-[ext_resource type="Texture2D" uid="uid://0hx3f1js6qs8" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-2.png" id="3_g38ws"]
-[ext_resource type="Texture2D" uid="uid://drhywmlyuvctv" path="res://Assets/animation/demon-courte/Marche_Melee-1.png" id="3_sjhxk"]
-[ext_resource type="Texture2D" uid="uid://bls8ykq6vlvxv" path="res://Assets/animation/demon-courte/Marche_Melee-2.png" id="4_ibuw4"]
-[ext_resource type="Texture2D" uid="uid://di2osoxg603xp" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-3.png" id="4_yku7d"]
-[ext_resource type="Texture2D" uid="uid://ct01bcieoyyjh" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-4.png" id="5_cwnty"]
-[ext_resource type="Texture2D" uid="uid://d21ftuhnl2fpp" path="res://Assets/animation/demon-courte/Marche_Melee-3.png" id="5_n773q"]
-[ext_resource type="Texture2D" uid="uid://ds1p4dbui2c5n" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-5.png" id="6_cteeh"]
-[ext_resource type="Texture2D" uid="uid://ckog2a0drjtqk" path="res://Assets/animation/demon-courte/Marche_Melee-4.png" id="6_imxae"]
-[ext_resource type="Texture2D" uid="uid://3rdfwob7wpq4" path="res://Assets/animation/demon-courte/Marche_Melee-5.png" id="7_pdncr"]
-[ext_resource type="Texture2D" uid="uid://lit6jvq54j2s" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-6.png" id="7_vwn1r"]
-[ext_resource type="Texture2D" uid="uid://cdt4hbuk78xw5" path="res://Assets/animation/demon-courte/Marche_Melee-6.png" id="8_a7ucx"]
-[ext_resource type="Texture2D" uid="uid://d1m1lcjplj3r8" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-7.png" id="8_ehbqt"]
-[ext_resource type="Texture2D" uid="uid://c5s0qdp3ogtwj" path="res://Assets/animation/demon-courte/Marche_Melee-7.png" id="9_c2e6t"]
-[ext_resource type="Texture2D" uid="uid://2ncjne74n0qn" path="res://Assets/animation/demon-courte-attaque/Attaque_Melee-8.png" id="9_r5u5j"]
-[ext_resource type="Texture2D" uid="uid://6w81iwb7wc05" path="res://Assets/animation/demon-courte/Marche_Melee-8.png" id="10_0pfux"]
-[ext_resource type="Texture2D" uid="uid://ddltxjd5rotlk" path="res://Assets/animation/demon-courte/Marche_Melee-9.png" id="11_hgpgq"]
-[ext_resource type="Texture2D" uid="uid://t4lt5t11utut" path="res://Assets/animation/demon-courte/Marche_Melee-10.png" id="12_egaar"]
-[ext_resource type="Texture2D" uid="uid://cr1oasylkqiq3" path="res://Assets/animation/demon-courte/Marche_Melee-11.png" id="13_5qxk2"]
-[ext_resource type="Texture2D" uid="uid://rwidoxgdayfl" path="res://Assets/animation/demon-courte/Marche_Melee-12.png" id="14_kfmfi"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_706eq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_xou6a")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_g38ws")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_yku7d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_cwnty")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_cteeh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_vwn1r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_ehbqt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_r5u5j")
-}],
-"loop": false,
-"name": &"attack",
-"speed": 13.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_sjhxk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_ibuw4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_n773q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_imxae")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_pdncr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_a7ucx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_c2e6t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_0pfux")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_hgpgq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_egaar")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_5qxk2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_kfmfi")
-}],
-"loop": true,
-"name": &"default",
-"speed": 18.0
-}]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemy.cs" id="1_bhul4"]
+[ext_resource type="Script" path="res://Scenes/Entities/Parameters/HitboxEnemy.cs" id="2_4nu24"]
+[ext_resource type="Texture2D" uid="uid://bmk2glt845sdy" path="res://Assets/animation/demon-courte/Marche Melee.png" id="2_bvyd0"]
+[ext_resource type="Texture2D" uid="uid://xyy0fhdd8j81" path="res://Assets/animation/demon-courte-attaque/demon-courte-attaque.png" id="3_ri4mm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ne0vh"]
 radius = 233.0
@@ -102,18 +12,190 @@ height = 1088.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_w70a8"]
 radius = 382.0
 
+[sub_resource type="Animation" id="Animation_kmx3c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_bvyd0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+
+[sub_resource type="Animation" id="Animation_5quib"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ri4mm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_nyp7g"]
+resource_name = "walk"
+length = 1.15
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_bvyd0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ifyp7"]
+_data = {
+"RESET": SubResource("Animation_kmx3c"),
+"attack": SubResource("Animation_5quib"),
+"walk": SubResource("Animation_nyp7g")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lsu8r"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_te0yg"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7f0m7"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d6j31"]
+advance_mode = 2
+advance_condition = &"InRange"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_viwvo"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6n4xr"]
+states/attack/node = SubResource("AnimationNodeAnimation_lsu8r")
+states/attack/position = Vector2(604, 100)
+states/walk/node = SubResource("AnimationNodeAnimation_te0yg")
+states/walk/position = Vector2(359, 100)
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_7f0m7"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_d6j31"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_viwvo")]
+
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(1, -1)
 collision_layer = 4
 collision_mask = 3
 floor_constant_speed = true
-script = ExtResource("1_vdahw")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_706eq")
-animation = &"attack"
-frame = 7
-frame_progress = 1.0
+script = ExtResource("1_bhul4")
+moveDir = null
+motionRange = null
+speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(14, 0)
@@ -121,8 +203,9 @@ shape = SubResource("CapsuleShape2D_ne0vh")
 
 [node name="Area2DRight" type="Area2D" parent="."]
 position = Vector2(266, 59)
-collision_layer = 8
-collision_mask = 3
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_4nu24")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DRight"]
@@ -130,7 +213,9 @@ position = Vector2(23, 18)
 shape = SubResource("CircleShape2D_w70a8")
 
 [node name="Area2DLeft" type="Area2D" parent="."]
-collision_layer = 8
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_4nu24")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DLeft"]
 position = Vector2(-235, 82)
@@ -156,10 +241,23 @@ collision_mask = 8
 position = Vector2(14, 0)
 shape = SubResource("CapsuleShape2D_ne0vh")
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="area_entered" from="Area2DRight" to="." method="_on_area_2d_area_entered_right"]
-[connection signal="area_exited" from="Area2DRight" to="." method="_on_area_2d_right_area_exited"]
-[connection signal="area_entered" from="Area2DLeft" to="." method="_on_area_2d_area_entered_left"]
-[connection signal="area_exited" from="Area2DLeft" to="." method="_on_area_2d_left_area_exited"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("2_bvyd0")
+hframes = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ifyp7")
+}
+speed_scale = 1.5
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ifyp7")
+}
+tree_root = SubResource("AnimationNodeStateMachine_6n4xr")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/InRange = false
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_attacked"]
