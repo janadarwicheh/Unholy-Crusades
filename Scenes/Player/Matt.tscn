@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://btt543yogbbcc" path="res://Installer/matt marche/Matt_Marche.png" id="2_1yj73"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/Hurtbox.cs" id="2_l02j8"]
 [ext_resource type="Texture2D" uid="uid://c4esqedhmalp" path="res://Installer/matt marche/Matt_Marche-1.png" id="3_ydut1"]
-[ext_resource type="Texture2D" uid="uid://bp1i8lkip02ya" path="res://Assets/animation/matt attaque/matt_attaque.png" id="5_4v7us"]
+[ext_resource type="Texture2D" uid="uid://bp1i8lkip02ya" path="res://Installer/matt attaque/matt_attaque.png" id="5_4v7us"]
 [ext_resource type="Texture2D" uid="uid://b2f8ytb8q0n2r" path="res://Installer/matt saute/Matt_Jump_pafini.png" id="7_iyrn5"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/Hitbox.cs" id="7_ojt46"]
 
@@ -494,8 +494,8 @@ position = Vector2(-5, 17)
 shape = SubResource("CapsuleShape2D_joesv")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 16
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("2_l02j8")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
@@ -532,6 +532,8 @@ parameters/walk/blend_position = Vector2(0, 0)
 [node name="Skills" type="Node" parent="."]
 
 [node name="Attack" type="Area2D" parent="Skills"]
+collision_layer = 0
+collision_mask = 0
 monitoring = false
 script = ExtResource("7_ojt46")
 

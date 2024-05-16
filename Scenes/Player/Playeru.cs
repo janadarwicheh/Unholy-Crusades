@@ -21,6 +21,7 @@ public partial class Playeru : Entity
 	public bool jumped = false;
 	protected float Speed;
 	public Skill? CastingSkill = null;
+	float run_mult = 1.5f;
 	public Dictionary<PlayerSkill, Skill> Skills = new Dictionary<PlayerSkill, Skill>();
 	public void UpdateAnimationParamaters()
 	{
@@ -32,6 +33,8 @@ public partial class Playeru : Entity
 			if (CastingSkill!=null)
 			{
 				AnimationTree.Set("parameters/conditions/SkillUsed", true);
+				AnimationTree.Set("parameters/conditions/Idle", false);
+				AnimationTree.Set("parameters/conditions/IsMoving", false);
 			}
 			else
 			{
@@ -73,27 +76,11 @@ public partial class Playeru : Entity
 
 	}
 
-	protected void SkillUsed()
+	protected void SkillUsed(PlayerSkill sk)
 	{
-		if (CastingSkill != null)
+		if (CastingSkill == null)
 		{
-			if (Input.IsActionJustPressed("attack"))
-			{
-				CastingSkill = Skills[PlayerSkill.Attack];
-			}
-			else if (Input.IsActionJustPressed("special1"))
-			{
-				CastingSkill = Skills[PlayerSkill.Special1];
-			}
-			else if (Input.IsActionJustPressed("special2"))
-			{
-				CastingSkill = Skills[PlayerSkill.Special2];
-			}
-			else if (Input.IsActionJustPressed("ult"))
-			{
-				CastingSkill = Skills[PlayerSkill.Ultimate];
-			}
-
+			CastingSkill = Skills[sk];
 			CastingSkill.Launch();
 		}
 	}
@@ -115,32 +102,44 @@ public partial class Playeru : Entity
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
-		float run_mult = 1.5f;
-		if (Input.IsActionPressed("shift"))
+		if (Input.IsActionJustPressed("attack"))
 		{
-			Speed = (Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000)*run_mult;
-		}
-		else
-		{
-			Speed = Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000;
-		}
-		if (!IsOnFloor())
-		{
-			velocity.Y += _gravity * (float)delta;
-		}
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-		{
-			velocity.Y = JumpVelocity;
-			jumped = true;
-		}
-		Vector2 direction = Input.GetVector("move_left", "move_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
-		{
-			velocity.X = direction.X * Speed;
-		}
-		else
-		{
+			SkillUsed(PlayerSkill.Attack);
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+		}
+		else
+		{
+
+			if (Input.IsActionPressed("shift"))
+			{
+				Speed = (Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000)*run_mult;
+			}
+			else
+			{
+				Speed = Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000;
+			}
+			if (!IsOnFloor())
+			{
+				velocity.Y += _gravity * (float)delta;
+			}
+			if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+			{
+				velocity.Y = JumpVelocity;
+				jumped = true;
+			}
+			Vector2 direction = Input.GetVector("move_left", "move_right", "ui_up", "ui_down");
+			if (direction != Vector2.Zero && Math.Abs(velocity.X)< Math.Abs(Speed))
+			{
+				velocity.X += direction.X * Speed/10;
+			}
+			else if (direction != Vector2.Zero)
+			{
+				
+			}
+			else 
+			{
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			}
 		}
 		Velocity = velocity;
 		UpdateAnimationParamaters();

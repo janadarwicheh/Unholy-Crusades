@@ -19,6 +19,7 @@ public partial class Hurtbox : Area2D
 
 	private void OnAreaEntered(Area2D area)
 	{
+		GD.Print(Owner.Name+" Area Entered HurtBox "+ area.Name);
 		((Entity)(area.Owner)).TakeDamage((Entity)Owner, 0, 1);
 	}
 }

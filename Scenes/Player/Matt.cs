@@ -21,11 +21,16 @@ public partial class Matt : Playeru
     {
         Parameters = new EntityHandler(50, 7, 10, 200, new ObsidianHammer(), new LeatherJacket());
         CurrentForm = "Melee";
+        Skills.Add();
     }
     
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
     }
+}
+public class MattAttack: Skill
+{
+
 }
 

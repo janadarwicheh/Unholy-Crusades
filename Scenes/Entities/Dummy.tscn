@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsu8jedj2oso5"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/Parameters/HurtboxEnemy.cs" id="1_24hta"]
+[ext_resource type="Script" path="res://Scenes/Entities/Parameters/Hitbox.cs" id="1_l6lc7"]
+[ext_resource type="Script" path="res://Scenes/Entities/Parameters/HitboxEnemy.cs" id="1_t0y12"]
+[ext_resource type="Texture2D" uid="uid://dx61q6xfpnjib" path="res://icon.svg" id="2_404wi"]
+[ext_resource type="Script" path="res://Scenes/Entities/Parameters/Hurtbox.cs" id="3_bahi6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvpbr"]
+size = Vector2(125, 123)
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(10, 10)
+
+[node name="HitboxAlly" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_l6lc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxAlly"]
+position = Vector2(0.5, -2.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_qvpbr")
+
+[node name="HitBoxEnemy" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+script = ExtResource("1_t0y12")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxEnemy"]
+position = Vector2(0.5, -2.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_qvpbr")
+
+[node name="HurtboxAlly" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+script = ExtResource("3_bahi6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxAlly"]
+position = Vector2(0.5, -2.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_qvpbr")
+
+[node name="HurtBoxEnemy" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+script = ExtResource("1_24hta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxEnemy"]
+position = Vector2(0.5, -2.5)
+shape = SubResource("RectangleShape2D_qvpbr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 1)
+texture = ExtResource("2_404wi")

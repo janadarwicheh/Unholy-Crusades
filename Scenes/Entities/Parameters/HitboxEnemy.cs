@@ -11,4 +11,16 @@ public partial class HitboxEnemy : Area2D
 		CollisionMask = 0;
 	}
 	
+	public override void _Ready()
+	{
+		AreaEntered += OnAreaEntered;
+		GD.Print(CollisionLayer, CollisionMask);
+	}
+	
+	private void OnAreaEntered(Area2D area)
+	{
+		GD.Print(Owner.Name+ " Area Entered HitBox enemy "+ area.Name);
+		((Entity)(area.Owner)).TakeDamage((Entity)Owner, 0, 1);
+	}
+	
 }
