@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
-public class HitBox
+/*public class HitBox
 {
     
     //Chaque capacité/atttaque aura une hitbox. Chacune sera définie dans des fichiers différents en fonction de l'appartenance. Les personnages auront donc une liste de capacités, et ces capaicités invoqueront leur hitbox respective. 
@@ -60,5 +60,5 @@ public class HitBox
         }
     }
     
-}
+}*/
 

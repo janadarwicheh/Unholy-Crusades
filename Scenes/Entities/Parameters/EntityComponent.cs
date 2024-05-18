@@ -60,6 +60,7 @@ public class EntityComponent
          }
 
          Inventory.Add(CurrentWeapon);
+         UpdateStats();
      }
     public void EquipWeapon(Weapon weapon)
     {
@@ -87,11 +88,12 @@ public class EntityComponent
         {
             foreach (var stat in CurrentArmor.GivenStats)
             {
-                BonusStats[stat.Type].Amount -= stat.Amount;
             }
 
             Inventory.Add(CurrentArmor);
         }
+
+        UpdateStats();
     }
     public void EquipArmor(Armor armor)
     {

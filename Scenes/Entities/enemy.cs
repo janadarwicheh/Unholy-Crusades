@@ -1,19 +1,11 @@
 using Godot;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Skull.Scenes;
-using Skull.Scenes.Entities;
 using Skull.Scenes.Entities.Parameters;
-using Skull.Scenes.Entities.Skills;
-using Skull.Scenes.Entities.Stats;
-using Entity = Skull.Scenes.Entities.Parameters.Entity;
-using EntityComponent = Skull.Scenes.Entities.Parameters.EntityComponent;
-using EntityHandler = Skull.Scenes.Entities.Parameters.EntityHandler;
-using Resource = Skull.Scenes.Entities.Resources.Resource;
 
 public partial class Enemy : Entity
 {
+	// Called when the node enters the scene tree for the first time.
 	Area2D area_right;
 	Area2D area_left;
 	bool MovementLock = false;
@@ -107,11 +99,3 @@ public partial class Enemy : Entity
 		MoveAndSlide();
 	}
 }
-
-
-
-
-
-
-
-

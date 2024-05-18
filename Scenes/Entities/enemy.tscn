@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://de8q5mo127ymg"]
+[gd_scene load_steps=18 format=3 uid="uid://de8q5mo127ymg"]
 
-[ext_resource type="Script" path="res://Scenes/Entities/Enemy.cs" id="1_bhul4"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemy.cs" id="1_wdxll"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/HitboxEnemy.cs" id="2_4nu24"]
 [ext_resource type="Texture2D" uid="uid://bmk2glt845sdy" path="res://Installer/demon-courte/Marche Melee.png" id="2_bvyd0"]
+[ext_resource type="Script" path="res://Scenes/Entities/Parameters/HurtboxEnemy.cs" id="3_oit0j"]
 [ext_resource type="Texture2D" uid="uid://xyy0fhdd8j81" path="res://Installer/demon-courte-attaque/demon-courte-attaque.png" id="3_ri4mm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ne0vh"]
@@ -192,10 +193,7 @@ position = Vector2(1, -1)
 collision_layer = 4
 collision_mask = 3
 floor_constant_speed = true
-script = ExtResource("1_bhul4")
-moveDir = null
-motionRange = null
-speed = null
+script = ExtResource("1_wdxll")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(14, 0)
@@ -229,13 +227,10 @@ target_position = Vector2(-7, 566)
 position = Vector2(248, 140)
 target_position = Vector2(-2, 567)
 
-[node name="RayCast2DSide" type="RayCast2D" parent="."]
-target_position = Vector2(400, 0)
-hit_from_inside = true
-
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 8
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_oit0j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(14, 0)
@@ -259,5 +254,10 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_6n4xr")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/InRange = false
+
+[node name="RayCast2DSide" type="RayCast2D" parent="."]
+position = Vector2(8, 462)
+target_position = Vector2(405, -10)
+hit_from_inside = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_attacked"]

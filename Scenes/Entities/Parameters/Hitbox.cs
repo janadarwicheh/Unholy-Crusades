@@ -2,6 +2,7 @@ using Godot;
 using System;
 using Skull.Scenes.Entities;
 using Skull.Scenes.Entities.Parameters;
+using Skull.Scenes.Entities.Projetctiles;
 using Entity = Skull.Scenes.Entities.Parameters.Entity;
 
 public partial class Hitbox : Area2D
@@ -12,18 +13,24 @@ public partial class Hitbox : Area2D
 	public Hitbox()
 	{
 		CollisionLayer = 8;
-		CollisionMask = 0;
+		CollisionMask = 4;
 	}
 
 	public override void _Ready()
 	{
+		Monitorable = true;
+		Monitoring = true;
 		AreaEntered += OnAreaEntered;
-		GD.Print(CollisionLayer, CollisionMask);
 	}
 	
+
 	private void OnAreaEntered(Area2D area)
 	{
+		if (GetParent() is IProjectile)
+		{
+			GD.Print("bullet entered");
+			((IProjectile)GetParent()).AreaEntered();
+		}
 		GD.Print(Owner.Name+" Area Entered HitBox "+ area.Name);
-		((Entity)(area.Owner)).TakeDamage((Entity)Owner, 0, 1);
 	}
 }

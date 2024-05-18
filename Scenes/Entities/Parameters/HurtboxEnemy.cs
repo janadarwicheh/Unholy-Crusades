@@ -15,12 +15,11 @@ public partial class HurtboxEnemy : Area2D
 	public override void _Ready()
 	{
 		AreaEntered += OnAreaEntered;
-		GD.Print(CollisionLayer, CollisionMask);
 	}
 
 	private void OnAreaEntered(Area2D area)
 	{
-		GD.Print(Owner.Name+" Area Entered HurtBox Enemy by " + area.Name);
-		((Entity)(area.Owner)).TakeDamage((Entity)Owner, 0, 1);
+		GD.Print(Owner.Name+"'s HurtboxEnemy has been Entered by " + area.Name);
+		((Entity)(Owner)).TakeDamage((Entity)area.Owner, 0, 1);
 	}
 }

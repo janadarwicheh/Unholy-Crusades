@@ -15,13 +15,14 @@ using Skull.Scenes.Entities.Skills.Player;
 public partial class Playeru : Entity
 {
 	protected AnimationTree AnimationTree;
-	protected Sprite2D Sprite;
+	public Sprite2D Sprite;
 	private float _gravity;
 	protected float JumpVelocity = -6000;
 	public bool jumped = false;
 	protected float Speed;
 	public Skill? CastingSkill = null;
 	float run_mult = 1.5f;
+	private Vector2 currentdir;
 	public Dictionary<PlayerSkill, Skill> Skills = new Dictionary<PlayerSkill, Skill>();
 	public void UpdateAnimationParamaters()
 	{
@@ -60,11 +61,22 @@ public partial class Playeru : Entity
 		}
 		else
 		{
+				if (CastingSkill!=null)
+				{
+					AnimationTree.Set("parameters/conditions/SkillUsed", true);
+					AnimationTree.Set("parameters/conditions/Idle", false);
+					AnimationTree.Set("parameters/conditions/IsMoving", false);
+				}
+				else
+				{
+					AnimationTree.Set("parameters/conditions/SkillUsed", false);
+				}
 				if (jumped)
 				{
 					AnimationTree.Set("parameters/conditions/Jump", true);
 					jumped = false;
 				}
+				
 				else
 				{
 					AnimationTree.Set("parameters/conditions/Airborne", true);
@@ -81,8 +93,9 @@ public partial class Playeru : Entity
 		if (CastingSkill == null)
 		{
 			CastingSkill = Skills[sk];
-			CastingSkill.Launch();
+			Skills[sk].Launch();
 		}
+		
 	}
 	public override void _Ready()
 	{
@@ -101,14 +114,17 @@ public partial class Playeru : Entity
 
 	public override void _PhysicsProcess(double delta)
 	{
+		CastingSkill = null;
 		Vector2 velocity = Velocity;
-		if (Input.IsActionJustPressed("attack"))
 		{
-			SkillUsed(PlayerSkill.Attack);
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-		}
-		else
-		{
+			if (Input.IsActionJustPressed("attack"))
+			{
+				SkillUsed(PlayerSkill.Attack);
+			}
+			else if (Input.IsActionJustPressed("special1"))
+			{
+				SkillUsed(PlayerSkill.Special1);
+			}
 
 			if (Input.IsActionPressed("shift"))
 			{
@@ -130,12 +146,18 @@ public partial class Playeru : Entity
 			Vector2 direction = Input.GetVector("move_left", "move_right", "ui_up", "ui_down");
 			if (direction != Vector2.Zero && Math.Abs(velocity.X)< Math.Abs(Speed))
 			{
+				currentdir = direction;
 				velocity.X += direction.X * Speed/10;
 			}
-			else if (direction != Vector2.Zero)
+			else if (Math.Abs(velocity.X)>Math.Abs(Speed))
+			{
+				velocity.X -= Speed;
+			}
+			else if (direction != Vector2.Zero && currentdir == direction)
 			{
 				
 			}
+			
 			else 
 			{
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);

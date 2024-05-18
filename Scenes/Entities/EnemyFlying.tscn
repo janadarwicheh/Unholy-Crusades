@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://de8q5mo127ymg"]
 
-[ext_resource type="Script" path="res://Scenes/Entities/enemy.cs" id="1_o7ult"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemy.cs" id="1_o7ult"]
 [ext_resource type="Texture2D" uid="uid://bptjujxbet67e" path="res://Assets/Colour2/Outline/120x80_PNGSheets/_AttackNoMovement.png" id="2_uq5td"]
 [ext_resource type="Texture2D" uid="uid://5yf3k3n1jeqo" path="res://Assets/Medieval_Castle_Asset_Pack/Characters/knight/matting/blloob.PNG" id="3_c50bf"]
 
