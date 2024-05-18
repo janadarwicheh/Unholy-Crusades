@@ -1,31 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2rkcjm74kfvb"]
+[gd_scene load_steps=9 format=3 uid="uid://d2rkcjm74kfvb"]
 
 [ext_resource type="Script" path="res://Scenes/Start/Choose_Eldric.cs" id="1_2gr2f"]
+[ext_resource type="Texture2D" uid="uid://bu4dyscqyx07m" path="res://Assets/UserInterface/Fantasy Wooden GUI/Fantasy Wooden GUI  Free/PNG/UI board Medium  parchment.png" id="1_nwr0x"]
 [ext_resource type="Script" path="res://Scenes/Start/Choose_Matt.cs" id="2_bd4wl"]
+[ext_resource type="Texture2D" uid="uid://c4agfxv3puvya" path="res://Assets/UserInterface/Fantasy Wooden GUI/Fantasy Wooden GUI  Free/PNG/IRONY TITLE  Large.png" id="2_hxf7w"]
+[ext_resource type="FontFile" uid="uid://cfexm7qgcg0jh" path="res://Assets/UserInterface/Fantasy Wooden GUI/Fantasy Wooden GUI  Free/Font/Fonts/buddychampionbold.ttf" id="3_h3bfw"]
 [ext_resource type="Script" path="res://Scenes/GameOver/QUIT.cs" id="3_l0owj"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atgcv"]
-bg_color = Color(0.235294, 0.235294, 0.235294, 1)
-border_width_left = 25
-border_width_top = 25
-border_width_right = 25
-border_width_bottom = 25
-
-[sub_resource type="LabelSettings" id="LabelSettings_1i4i0"]
-font_size = 100
-font_color = Color(0.890196, 0.890196, 0.890196, 1)
+[ext_resource type="Texture2D" uid="uid://cpt7swx36m5uc" path="res://Assets/UserInterface/Fantasy Wooden GUI/Fantasy Wooden GUI  Free/PNG/TextBTN_Big.png" id="6_qimoh"]
+[ext_resource type="Texture2D" uid="uid://dmuj4mbugjx6o" path="res://Assets/UserInterface/Fantasy Wooden GUI/Fantasy Wooden GUI  Free/PNG/UI board Small  stone.png" id="7_8sn68"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = -1
-anchor_right = 1.153
-anchor_bottom = 1.199
-offset_right = -296.76
-offset_bottom = -220.92
+anchor_right = 1.0
+anchor_bottom = 0.986
+offset_top = 629.0
+offset_right = -9.0
+offset_bottom = 288.12
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_atgcv")
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer"]
+position = Vector2(1911, 447)
+scale = Vector2(5.74706, 4.71421)
+texture = ExtResource("1_nwr0x")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -38,10 +37,16 @@ theme_override_constants/margin_bottom = 40
 layout_mode = 2
 theme_override_constants/separation = 100
 
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer"]
+position = Vector2(1883, 42.9999)
+scale = Vector2(2.56827, 1.69266)
+texture = ExtResource("2_hxf7w")
+
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_h3bfw")
+theme_override_font_sizes/font_size = 100
 text = "Choose your character"
-label_settings = SubResource("LabelSettings_1i4i0")
 horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -56,22 +61,43 @@ layout_mode = 2
 theme_override_constants/separation = 150
 alignment = 1
 
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+position = Vector2(109, 62)
+scale = Vector2(1.16642, 1.22321)
+texture = ExtResource("6_qimoh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+position = Vector2(518, 61)
+scale = Vector2(1.13683, 1.24554)
+texture = ExtResource("6_qimoh")
+
 [node name="Eldric" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_h3bfw")
 theme_override_font_sizes/font_size = 100
 text = "Eldric"
+flat = true
 script = ExtResource("1_2gr2f")
 
 [node name="Matt" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_h3bfw")
 theme_override_font_sizes/font_size = 100
 text = "Matt"
+flat = true
 script = ExtResource("2_bd4wl")
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+position = Vector2(299, 279)
+scale = Vector2(1, 0.496564)
+texture = ExtResource("7_8sn68")
 
 [node name="QUIT" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("3_h3bfw")
+theme_override_font_sizes/font_size = 100
 text = "QUIT"
+flat = true
 script = ExtResource("3_l0owj")
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Eldric" to="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Eldric" method="_on_pressed"]
