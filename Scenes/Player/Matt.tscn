@@ -502,7 +502,7 @@ states/jump/position = Vector2(448, -27)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_ybcpj")
 states/walk/position = Vector2(597, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_b2v0c"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_qbq4n"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_bonow"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_bitv8"), "jump", "walk", SubResource("AnimationNodeStateMachineTransition_3cg10"), "walk", "jump", SubResource("AnimationNodeStateMachineTransition_w7xsq"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_smkb6"), "jump", "airborne", SubResource("AnimationNodeStateMachineTransition_y6p6d"), "airborne", "idle", SubResource("AnimationNodeStateMachineTransition_jo6kn"), "idle", "airborne", SubResource("AnimationNodeStateMachineTransition_euho1"), "walk", "airborne", SubResource("AnimationNodeStateMachineTransition_lhxu7"), "SkillUsed", "idle", SubResource("AnimationNodeStateMachineTransition_whhdf"), "idle", "SkillUsed", SubResource("AnimationNodeStateMachineTransition_blux1"), "walk", "SkillUsed", SubResource("AnimationNodeStateMachineTransition_x4ds6"), "jump", "SkillUsed", SubResource("AnimationNodeStateMachineTransition_ir5jo"), "airborne", "SkillUsed", SubResource("AnimationNodeStateMachineTransition_i5acp")]
-graph_offset = Vector2(98, 82.824)
+graph_offset = Vector2(123, 116.824)
 
 [node name="Matt" type="CharacterBody2D"]
 collision_layer = 2

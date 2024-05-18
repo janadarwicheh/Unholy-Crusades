@@ -73,7 +73,7 @@ public class MattShoot : Skill
         }
         Instance.SpawnPos = User.GlobalPosition;
         Instance.Parameters = new EntityHandler(1, User.Parameters.CurrentStats[StatType.Attack].Amount/2, 0, 0, null, null);
-        User.Owner.AddChild(Instance);
+        User.GetParent().AddChild(Instance);
         return true;
     }
 
