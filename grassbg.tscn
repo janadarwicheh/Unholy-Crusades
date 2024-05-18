@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg4p5xt13dy6l"]
+
+[ext_resource type="Texture2D" uid="uid://chiglr1y8frk6" path="res://Assets/BLUEDARKBG.png" id="1_orj87"]
+
+[node name="grassbg" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(67598, 21605)
+scale = Vector2(48.4713, 28.7777)
+texture = ExtResource("1_orj87")
+metadata/_edit_group_ = true
