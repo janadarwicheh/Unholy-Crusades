@@ -6,8 +6,8 @@ using Skull.Scenes.Entities.Parameters;
 public partial class Enemy : Entity
 {
 	// Called when the node enters the scene tree for the first time.
-	Area2D area_right;
-	Area2D area_left;
+	Godot.Area2D area_right;
+	Godot.Area2D area_left;
 	bool MovementLock = false;
 	public Sprite2D Sprite2D;
 	public AnimationTree AnimationTree;
@@ -22,13 +22,13 @@ public partial class Enemy : Entity
 	Vector2 velocity;
 	public float gravity = CurrentInfo.Gravity;
 	
-	private void _on_area_2d_area_entered_right(Area2D area)
+	private void _on_area_2d_area_entered_right(Godot.Area2D area)
 	{
 		MovementLock = true;
 		AnimationTree.Set("parameters/conditions/InRange", true);
 		AnimationTree.Set("parameters/conditions/InRange", false);
 	}
-	private void _on_area_2d_area_entered_left(Area2D area)
+	private void _on_area_2d_area_entered_left(Godot.Area2D area)
 	{
 		MovementLock = true;
 		AnimationTree.Set("parameters/conditions/InRange", true);
@@ -52,8 +52,8 @@ public partial class Enemy : Entity
 		Sprite2D = GetNode<Sprite2D>("Sprite2D");
 		velocity = Vector2.Zero;
 		velocity.X = speed;
-		area_right = GetNode<Area2D>("Area2DRight");
-		area_left = GetNode<Area2D>("Area2DLeft");
+		area_right = GetNode<Godot.Area2D>("Area2DRight");
+		area_left = GetNode<Godot.Area2D>("Area2DLeft");
 		Down[0] = GetNode<RayCast2D>("RayCast2DDownLeft");
 		Down[1] = GetNode<RayCast2D>("RayCast2DDownRight");
 		Side = GetNode<RayCast2D>("RayCast2DSide");

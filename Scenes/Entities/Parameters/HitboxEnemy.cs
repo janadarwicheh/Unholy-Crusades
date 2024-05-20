@@ -17,7 +17,7 @@ public partial class HitboxEnemy : Area2D
 		GD.Print(CollisionLayer, CollisionMask);
 	}
 	
-	private void OnAreaEntered(Area2D area)
+	private void OnAreaEntered(Godot.Area2D area)
 	{
 		GD.Print(area.Name + " Area Entered HitBox enemy of "+ GetParent().Name);
 		((Entity)(area.Owner)).TakeDamage((Entity)Owner, 0, 1);

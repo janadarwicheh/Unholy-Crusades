@@ -50,5 +50,6 @@ public partial class World : Node
 		{
 			GetTree().ChangeSceneToFile("res://Scenes/GameOver/game_over_screen.tscn");
 		}
+		
 	}
 }

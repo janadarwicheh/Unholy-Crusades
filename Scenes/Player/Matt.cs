@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Xml;
 using Godot;
+using Godot.Collections;
 using Skull.Scenes.Entities;
 using Skull.Scenes.Entities.Parameters;
 using Skull.Scenes.Entities.Resources.Equipment;
@@ -13,15 +14,18 @@ using Entity = Skull.Scenes.Entities.Parameters.Entity;
 using EntityHandler = Skull.Scenes.Entities.Parameters.EntityHandler;
 using Resource = Skull.Scenes.Entities.Resources.Resource;
 
+
 namespace Skull.Scenes.Player;
 
 public partial class Matt : Playeru
 {
+    private Area2D actionableFinder;
     
     public string CurrentForm { get; set; }
     public PackedScene Projectile { get; set; }
     public override void _Ready()
     {
+        actionableFinder = GetNode<Area2D>("Direction/ActionableFinder");
         base._Ready();
         Projectile = GD.Load<PackedScene>("res://Scenes/Entities/Projetctiles/MattBullet.tscn");
     }
@@ -37,6 +41,18 @@ public partial class Matt : Playeru
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
+    }
+    
+    public void on_f_pressed()
+    {
+        if (Input.IsActionPressed("ui_accepted"))
+        {
+            Array<Area2D> actionables = actionableFinder.GetOverlappingAreas();
+            if (actionables.Count > 0)
+            {
+                (actionables[0] as actionable).Action();
+            }
+        }
     }
 }
 public class MattAttack: Skill
@@ -76,6 +92,8 @@ public class MattShoot : Skill
         User.GetParent().AddChild(Instance);
         return true;
     }
+
+    
 
 }
 
