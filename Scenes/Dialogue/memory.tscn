@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3gvm5y6j7rdf"]
+
+[ext_resource type="Texture2D" uid="uid://b5q43var8osxu" path="res://Assets/npc/memoire.png" id="1_grvh2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djqsb"]
+size = Vector2(1915, 1069)
+
+[node name="Memory" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 32
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(983, 453)
+texture = ExtResource("1_grvh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+position = Vector2(-26.5, 84.5)
+shape = SubResource("RectangleShape2D_djqsb")
