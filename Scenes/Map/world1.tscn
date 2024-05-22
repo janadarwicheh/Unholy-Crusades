@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://chtebexkqy5ep"]
+[gd_scene load_steps=14 format=3 uid="uid://chtebexkqy5ep"]
 
 [ext_resource type="Script" path="res://Scenes/Map/world1.cs" id="1_faljg"]
 [ext_resource type="PackedScene" uid="uid://kbbo28ab7krq" path="res://reversebg.tscn" id="3_ha0gi"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://craangs3rm71j" path="res://Scenes/Entities/Dummy.tscn" id="7_gkxt5"]
 [ext_resource type="PackedScene" uid="uid://dwmj76tvlkphg" path="res://Scenes/Dialogue/actionable.tscn" id="8_jbob4"]
 [ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="8_tvih3"]
+[ext_resource type="Resource" uid="uid://cnerrbo62s1sh" path="res://Scenes/Dialogue/main.dialogue" id="9_1hplb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt4lr"]
 texture = ExtResource("4_jip6k")
@@ -360,6 +361,7 @@ position = Vector2(12641, 5759)
 position = Vector2(5621, 6062)
 
 [node name="Actionable" parent="Ennemies/CharacterBody2D" instance=ExtResource("8_jbob4")]
+DialogueRessource = ExtResource("9_1hplb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ennemies/CharacterBody2D/Actionable"]
 position = Vector2(0.500092, 29.3)

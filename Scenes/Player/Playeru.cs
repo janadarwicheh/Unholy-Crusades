@@ -2,9 +2,9 @@
 using Skull.Scenes.Entities.Skills.Player;
 using Godot;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using Godot.Collections;
 using Skull.Scenes;
 using Skull.Scenes.Entities;
 using Skull.Scenes.Entities.Parameters;
@@ -23,7 +23,8 @@ public partial class Playeru : Entity
 	public Skill? CastingSkill = null;
 	float run_mult = 1.5f;
 	private Vector2 currentdir;
-	public Dictionary<PlayerSkill, Skill> Skills = new Dictionary<PlayerSkill, Skill>();
+	private Area2D actionableFinder;
+	public System.Collections.Generic.Dictionary<PlayerSkill, Skill> Skills = new System.Collections.Generic.Dictionary<PlayerSkill, Skill>();
 	public void UpdateAnimationParamaters()
 	{
 		if (IsOnFloor())
@@ -103,6 +104,7 @@ public partial class Playeru : Entity
 		AnimationTree = GetNode<AnimationTree>("AnimationTree");
 		AnimationTree.Active = true;
 		_gravity = CurrentInfo.Gravity;
+		actionableFinder = GetNode<Area2D>("Direction/ActionableFinder");
 	}
 
 	protected void Reload()
@@ -111,57 +113,68 @@ public partial class Playeru : Entity
 		_gravity = CurrentInfo.Gravity;
 		CurrentInfo.Player = this;
 	}
+	
+	public void on_f_pressed()
+	{
+		Array<Area2D> actionables = actionableFinder.GetOverlappingAreas();
+		if (actionables.Count > 0)
+		{
+			(actionables[0] as actionable).Action();
+		}
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		CastingSkill = null;
 		Vector2 velocity = Velocity;
+		if (Input.IsActionJustPressed("ui_accepted"))
 		{
-			if (Input.IsActionJustPressed("attack"))
-			{
-				SkillUsed(PlayerSkill.Attack);
-			}
-			else if (Input.IsActionJustPressed("special1"))
-			{
-				SkillUsed(PlayerSkill.Special1);
-			}
+			on_f_pressed();
+		}
+		if (Input.IsActionJustPressed("attack"))
+		{
+			SkillUsed(PlayerSkill.Attack);
+		}
+		else if (Input.IsActionJustPressed("special1"))
+		{
+			SkillUsed(PlayerSkill.Special1);
+		}
 
-			if (Input.IsActionPressed("shift"))
-			{
-				Speed = (Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000)*run_mult;
-			}
-			else
-			{
-				Speed = Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000;
-			}
-			if (!IsOnFloor())
-			{
-				velocity.Y += _gravity * (float)delta;
-			}
-			if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			{
-				velocity.Y = JumpVelocity;
-				jumped = true;
-			}
-			Vector2 direction = Input.GetVector("move_left", "move_right", "ui_up", "ui_down");
-			if (direction != Vector2.Zero && Math.Abs(velocity.X)< Math.Abs(Speed))
-			{
-				currentdir = direction;
-				velocity.X += direction.X * Speed/10;
-			}
-			else if (Math.Abs(velocity.X)>Math.Abs(Speed))
-			{
-				velocity.X -= Speed;
-			}
-			else if (direction != Vector2.Zero && currentdir == direction)
-			{
-				
-			}
+		if (Input.IsActionPressed("shift"))
+		{
+			Speed = (Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000)*run_mult;
+		}
+		else
+		{
+			Speed = Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000;
+		}
+		if (!IsOnFloor())
+		{
+			velocity.Y += _gravity * (float)delta;
+		}
+		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+		{
+			velocity.Y = JumpVelocity;
+			jumped = true;
+		}
+		Vector2 direction = Input.GetVector("move_left", "move_right", "ui_up", "ui_down");
+		if (direction != Vector2.Zero && Math.Abs(velocity.X)< Math.Abs(Speed))
+		{
+			currentdir = direction;
+			velocity.X += direction.X * Speed/10;
+		}
+		else if (Math.Abs(velocity.X)>Math.Abs(Speed))
+		{
+			velocity.X -= Speed;
+		}
+		else if (direction != Vector2.Zero && currentdir == direction)
+		{
 			
-			else 
-			{
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-			}
+		}
+		
+		else 
+		{
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
 		Velocity = velocity;
 		UpdateAnimationParamaters();
