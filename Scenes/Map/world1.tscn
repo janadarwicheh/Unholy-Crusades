@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://chtebexkqy5ep"]
+[gd_scene load_steps=15 format=3 uid="uid://chtebexkqy5ep"]
 
 [ext_resource type="Script" path="res://Scenes/Map/world1.cs" id="1_faljg"]
 [ext_resource type="PackedScene" uid="uid://kbbo28ab7krq" path="res://reversebg.tscn" id="3_ha0gi"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="8_tvih3"]
 [ext_resource type="Resource" uid="uid://cnerrbo62s1sh" path="res://Scenes/Dialogue/main.dialogue" id="9_1hplb"]
 [ext_resource type="PackedScene" uid="uid://b3gvm5y6j7rdf" path="res://Scenes/Dialogue/memory.tscn" id="10_26b2y"]
+[ext_resource type="Resource" uid="uid://bqr7q3iinnd8d" path="res://Scenes/Dialogue/intro.dialogue" id="10_kxe65"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt4lr"]
 texture = ExtResource("4_jip6k")
@@ -369,6 +370,19 @@ DialogueStart = "memory1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Memories/Memory1/Actionable"]
 position = Vector2(912.534, 1340)
+scale = Vector2(8.39308, 4.07584)
+shape = SubResource("RectangleShape2D_wf8tb")
+one_way_collision_margin = 0.0
+
+[node name="Memory9" parent="Memories" instance=ExtResource("10_26b2y")]
+position = Vector2(3904, 6624)
+
+[node name="Actionable" parent="Memories/Memory9" instance=ExtResource("8_jbob4")]
+position = Vector2(0, -743)
+DialogueRessource = ExtResource("10_kxe65")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Memories/Memory9/Actionable"]
+position = Vector2(957, 1057)
 scale = Vector2(8.39308, 4.07584)
 shape = SubResource("RectangleShape2D_wf8tb")
 one_way_collision_margin = 0.0
