@@ -3,7 +3,7 @@ using System;
 using Skull.Scenes;
 using Skull.Scenes.Entities.Parameters;
 
-public partial class Enemy : Entity
+public partial class enemy : Entity
 {
 	// Called when the node enters the scene tree for the first time.
 	Godot.Area2D area_right;

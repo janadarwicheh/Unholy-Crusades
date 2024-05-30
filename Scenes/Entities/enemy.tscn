@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://de8q5mo127ymg"]
 
-[ext_resource type="Script" path="res://Scenes/Entities/Enemy.cs" id="1_wdxll"]
+[ext_resource type="Script" path="res://Scenes/Entities/enemy.cs" id="1_wwynu"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/HitboxEnemy.cs" id="2_4nu24"]
 [ext_resource type="Texture2D" uid="uid://bmk2glt845sdy" path="res://Installer/demon-courte/Marche Melee.png" id="2_bvyd0"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/HurtboxEnemy.cs" id="3_oit0j"]
@@ -193,7 +193,7 @@ position = Vector2(1, -1)
 collision_layer = 4
 collision_mask = 3
 floor_constant_speed = true
-script = ExtResource("1_wdxll")
+script = ExtResource("1_wwynu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(14, 0)

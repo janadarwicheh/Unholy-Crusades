@@ -158,23 +158,13 @@ public partial class Playeru : Entity
 			jumped = true;
 		}
 		Vector2 direction = Input.GetVector("move_left", "move_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero && Math.Abs(velocity.X)< Math.Abs(Speed))
+		if (direction != Vector2.Zero)
 		{
-			currentdir = direction;
-			velocity.X += direction.X * Speed/10;
+			velocity.X = Mathf.MoveToward(Velocity.X, Speed * direction.X, Speed/8);
 		}
-		else if (Math.Abs(velocity.X)>Math.Abs(Speed))
-		{
-			velocity.X -= Speed;
-		}
-		else if (direction != Vector2.Zero && currentdir == direction)
-		{
-			
-		}
-		
 		else 
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed/8);
 		}
 		Velocity = velocity;
 		UpdateAnimationParamaters();

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cjkwpl78w5li7" path="res://Assets/version_one/dirt.png" id="7_ecve7"]
 [ext_resource type="PackedScene" uid="uid://cypayl3cswcoq" path="res://Scenes/Player/Matt.tscn" id="7_q8o7u"]
 [ext_resource type="PackedScene" uid="uid://craangs3rm71j" path="res://Scenes/Entities/Dummy.tscn" id="8_r0tof"]
-[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/Enemy.tscn" id="9_oote1"]
+[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/enemy.tscn" id="9_oote1"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ohrgn"]
 tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 5, 1, 65536, 0, 65537, 65536, 5, 2, 131072, 0, 65538, 131072, 5, 3, 196608, 0, 65539, 196608, 5, 4, 262144, 0, 65540, 262144, 5, 5, 327680, 0, 65541, 327680, 5)
