@@ -24,7 +24,20 @@ public partial class Playeru : Entity
 	float run_mult = 1.5f;
 	private Vector2 currentdir;
 	private Area2D actionableFinder;
+	public Area2D Attack;
 	public System.Collections.Generic.Dictionary<PlayerSkill, Skill> Skills = new System.Collections.Generic.Dictionary<PlayerSkill, Skill>();
+	
+	public override void _Ready()
+	{
+		Sprite = GetNode<Sprite2D>("Sprite2D");
+		AnimationTree = GetNode<AnimationTree>("AnimationTree");
+		AnimationTree.Active = true;
+		_gravity = CurrentInfo.Gravity;
+		actionableFinder = GetNode<Area2D>("Direction/ActionableFinder");
+		Attack = GetNode<Area2D>("Attack");
+	}
+	
+	
 	public void UpdateAnimationParamaters()
 	{
 		if (IsOnFloor())
@@ -46,12 +59,14 @@ public partial class Playeru : Entity
 					AnimationTree.Set("parameters/conditions/Idle", false);
 					AnimationTree.Set("parameters/conditions/IsMoving", true);
 					Sprite.FlipH = false;
+					Attack.RotationDegrees = 0;
 				}
 				else if (Velocity.X < 0)
 				{
 					AnimationTree.Set("parameters/conditions/Idle", false);
 					AnimationTree.Set("parameters/conditions/IsMoving", true);
 					Sprite.FlipH = true;
+					Attack.RotationDegrees = 180;
 				}
 				else
 				{
@@ -98,14 +113,6 @@ public partial class Playeru : Entity
 		}
 		
 	}
-	public override void _Ready()
-	{
-		Sprite = GetNode<Sprite2D>("Sprite2D");
-		AnimationTree = GetNode<AnimationTree>("AnimationTree");
-		AnimationTree.Active = true;
-		_gravity = CurrentInfo.Gravity;
-		actionableFinder = GetNode<Area2D>("Direction/ActionableFinder");
-	}
 
 	protected void Reload()
 	{
@@ -125,6 +132,7 @@ public partial class Playeru : Entity
 
 	public override void _PhysicsProcess(double delta)
 	{
+		AnimationTree.Set("parameters/conditions/SkillUsed", false);	
 		CastingSkill = null;
 		Vector2 velocity = Velocity;
 		if (Input.IsActionJustPressed("ui_accepted"))
