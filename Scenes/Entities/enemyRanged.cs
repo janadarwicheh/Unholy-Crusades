@@ -3,9 +3,8 @@ using System;
 using Skull.Scenes;
 using Skull.Scenes.Entities.Parameters;
 
-public partial class enemy : Entity
+public partial class enemyRanged : Entity
 {
-	// Called when the node enters the scene tree for the first time.
 	Godot.Area2D area_right;
 	Godot.Area2D area_left;
 	bool MovementLock = false;
@@ -22,7 +21,6 @@ public partial class enemy : Entity
 	Vector2 velocity;
 	public float gravity = CurrentInfo.Gravity;
 	public AnimationNodeStateMachinePlayback Anim;
-	public Area2D AttackArea;
 	
 	private void _on_area_2d_area_entered_right(Godot.Area2D area)
 	{
@@ -65,8 +63,7 @@ public partial class enemy : Entity
 		Down[0] = GetNode<RayCast2D>("RayCast2DDownLeft");
 		Down[1] = GetNode<RayCast2D>("RayCast2DDownRight");
 		Side = GetNode<RayCast2D>("RayCast2DSide");
-		Parameters = new EntityHandler(30, 4, 4, 250, null, null);
-		AttackArea = GetNode<Area2D>("Attack");
+		Parameters = new EntityHandler(20, 3, 1, 150, null, null);
 	}
 	
 	
@@ -78,12 +75,10 @@ public partial class enemy : Entity
 		if (moveDir == -1)
 		{
 			Sprite2D.FlipH = true;
-			AttackArea.RotationDegrees = 180;
 		}
 		else
 		{
 			Sprite2D.FlipH = false;
-			AttackArea.RotationDegrees = 0;
 		}
 		if (Sprite2D.FlipH)
 		{

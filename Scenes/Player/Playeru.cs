@@ -25,6 +25,8 @@ public partial class Playeru : Entity
 	private Vector2 currentdir;
 	private Area2D actionableFinder;
 	public Area2D Attack;
+	public AnimationNodeStateMachinePlayback AnimationTreePlayback;
+	public AnimationNodeStateMachinePlayback AnimationTreePlaybackSkill;
 	public System.Collections.Generic.Dictionary<PlayerSkill, Skill> Skills = new System.Collections.Generic.Dictionary<PlayerSkill, Skill>();
 	
 	public override void _Ready()
@@ -35,9 +37,16 @@ public partial class Playeru : Entity
 		_gravity = CurrentInfo.Gravity;
 		actionableFinder = GetNode<Area2D>("Direction/ActionableFinder");
 		Attack = GetNode<Area2D>("Attack");
+		AnimationTreePlayback = GetNode<AnimationTree>("AnimationTree").Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();;
+		AnimationTreePlaybackSkill = GetNode<AnimationTree>("AnimationTree").Get("parameters/SkillUsed/playback").As<AnimationNodeStateMachinePlayback>();;
 	}
-	
-	
+
+	public override void Die()
+	{
+		GetTree().ChangeSceneToFile("res://Scenes/GameOver/game_over_screen.tscn");
+	}
+
+
 	public void UpdateAnimationParamaters()
 	{
 		if (IsOnFloor())
@@ -47,9 +56,7 @@ public partial class Playeru : Entity
 			AnimationTree.Set("parameters/conditions/Jump", false);
 			if (CastingSkill!=null)
 			{
-				AnimationTree.Set("parameters/conditions/SkillUsed", true);
-				AnimationTree.Set("parameters/conditions/Idle", false);
-				AnimationTree.Set("parameters/conditions/IsMoving", false);
+				AnimationTreePlayback.Travel("SkillUsed");
 			}
 			else
 			{
@@ -79,7 +86,7 @@ public partial class Playeru : Entity
 		{
 				if (CastingSkill!=null)
 				{
-					AnimationTree.Set("parameters/conditions/SkillUsed", true);
+					AnimationTreePlayback.Travel("SkillUsed");
 					AnimationTree.Set("parameters/conditions/Idle", false);
 					AnimationTree.Set("parameters/conditions/IsMoving", false);
 				}
@@ -108,16 +115,6 @@ public partial class Playeru : Entity
 	{
 		if (CastingSkill == null)
 		{
-			if (sk == PlayerSkill.Attack)
-			{
-				AnimationTree.Set("parameters/conditions/Attack", true);
-				AnimationTree.Set("parameters/conditions/Special1", false);
-			}
-			if (sk == PlayerSkill.Special1)
-			{
-				AnimationTree.Set("parameters/conditions/Attack", false);
-				AnimationTree.Set("parameters/conditions/Special1", true);
-			}
 			CastingSkill = Skills[sk];
 			Skills[sk].Launch();
 		}
