@@ -108,6 +108,16 @@ public partial class Playeru : Entity
 	{
 		if (CastingSkill == null)
 		{
+			if (sk == PlayerSkill.Attack)
+			{
+				AnimationTree.Set("parameters/conditions/Attack", true);
+				AnimationTree.Set("parameters/conditions/Special1", false);
+			}
+			if (sk == PlayerSkill.Special1)
+			{
+				AnimationTree.Set("parameters/conditions/Attack", false);
+				AnimationTree.Set("parameters/conditions/Special1", true);
+			}
 			CastingSkill = Skills[sk];
 			Skills[sk].Launch();
 		}
