@@ -1,7 +1,7 @@
 using Godot;
-using System;
-using Skull.Scenes;
 using Skull.Scenes.Entities.Parameters;
+
+namespace Skull.Scenes.Entities;
 
 public partial class enemyRanged : Entity
 {
@@ -63,7 +63,7 @@ public partial class enemyRanged : Entity
 		Down[0] = GetNode<RayCast2D>("RayCast2DDownLeft");
 		Down[1] = GetNode<RayCast2D>("RayCast2DDownRight");
 		Side = GetNode<RayCast2D>("RayCast2DSide");
-		Parameters = new EntityHandler(20, 3, 1, 150, null, null);
+		Parameters = new Parameters.EntityHandler(20, 3, 1, 150, null, null);
 	}
 	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ddo68ekorft0"]
+[gd_scene load_steps=17 format=3 uid="uid://ddo68ekorft0"]
 
 [ext_resource type="Texture2D" uid="uid://dghoex6usqh5t" path="res://Assets/oak_woods_v1.0/oak_woods_tileset.png" id="2_bwfwl"]
 [ext_resource type="Texture2D" uid="uid://c1uuac0wbt8e6" path="res://Assets/version_one/solFoncer.png" id="3_c4kcn"]
@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cjkwpl78w5li7" path="res://Assets/version_one/dirt.png" id="7_ecve7"]
 [ext_resource type="PackedScene" uid="uid://cypayl3cswcoq" path="res://Scenes/Player/Matt.tscn" id="7_q8o7u"]
 [ext_resource type="PackedScene" uid="uid://craangs3rm71j" path="res://Scenes/Entities/Dummy.tscn" id="8_r0tof"]
-[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/enemy.tscn" id="9_oote1"]
-[ext_resource type="PackedScene" uid="uid://n6lxtdexlle0" path="res://Scenes/Entities/enemyRanged.tscn" id="10_5nwuh"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ohrgn"]
 tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 5, 1, 65536, 0, 65537, 65536, 5, 2, 131072, 0, 65538, 131072, 5, 3, 196608, 0, 65539, 196608, 5, 4, 262144, 0, 65540, 262144, 5, 5, 327680, 0, 65541, 327680, 5)
@@ -1950,9 +1948,3 @@ layer_0/tile_data = PackedInt32Array(262139, 5, 0, 196608, 5, 0, 262140, 5, 0, 2
 
 [node name="Dummy" parent="." instance=ExtResource("8_r0tof")]
 position = Vector2(3730, 785)
-
-[node name="Enemy" parent="." instance=ExtResource("9_oote1")]
-position = Vector2(8217, 906)
-
-[node name="Enemy2" parent="." instance=ExtResource("10_5nwuh")]
-position = Vector2(18389, 769)

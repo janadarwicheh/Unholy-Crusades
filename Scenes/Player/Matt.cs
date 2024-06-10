@@ -79,8 +79,5 @@ public class MattShoot : Skill
         User.GetParent().AddChild(Instance);
         return true;
     }
-
-    
-
 }
 

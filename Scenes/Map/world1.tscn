@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://cnerrbo62s1sh" path="res://Scenes/Dialogue/main.dialogue" id="9_1hplb"]
 [ext_resource type="PackedScene" path="res://Scenes/Dialogue/memory.tscn" id="10_26b2y"]
 [ext_resource type="Resource" uid="uid://bqr7q3iinnd8d" path="res://Scenes/Dialogue/intro.dialogue" id="10_kxe65"]
-[ext_resource type="PackedScene" path="res://Scenes/Entities/enemy.tscn" id="10_n605j"]
+[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="10_n605j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt4lr"]
 texture = ExtResource("4_jip6k")
@@ -371,6 +371,7 @@ position = Vector2(3904, 6624)
 [node name="Actionable" parent="Memories/Memory9" instance=ExtResource("8_jbob4")]
 position = Vector2(0, -743)
 DialogueRessource = ExtResource("10_kxe65")
+DialogueStart = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Memories/Memory9/Actionable"]
 position = Vector2(957, 1057)

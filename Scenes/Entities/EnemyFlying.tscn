@@ -61,6 +61,9 @@ collision_layer = 4
 collision_mask = 3
 floor_constant_speed = true
 script = ExtResource("1_o7ult")
+moveDir = null
+motionRange = null
+speed = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_706eq")

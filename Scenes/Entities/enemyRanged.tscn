@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://n6lxtdexlle0"]
+[gd_scene load_steps=17 format=3 uid="uid://cvswsc5882cs8"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/enemyRanged.cs" id="1_6q8ch"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/HurtboxEnemy.cs" id="2_miuxb"]
@@ -185,7 +185,7 @@ states/walk/node = SubResource("AnimationNodeAnimation_te0yg")
 states/walk/position = Vector2(359, 100)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_7f0m7"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_d6j31"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_viwvo")]
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="EnemyRanged" type="CharacterBody2D"]
 position = Vector2(1, -1)
 collision_layer = 4
 collision_mask = 3
@@ -248,6 +248,10 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_6n4xr")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="RayCast2DSide" type="RayCast2D" parent="."]
+position = Vector2(6, 502)
+target_position = Vector2(387, -11)
 
 [connection signal="area_entered" from="Area2DRight" to="." method="_on_area_2d_area_entered_right"]
 [connection signal="area_entered" from="Area2DLeft" to="." method="_on_area_2d_area_entered_left"]
