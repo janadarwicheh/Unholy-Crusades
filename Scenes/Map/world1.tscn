@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://brcv87cke3nve" path="res://Assets/oak_woods_v1.0/TILESET.png" id="4_jip6k"]
 [ext_resource type="PackedScene" uid="uid://cg4p5xt13dy6l" path="res://grassbg.tscn" id="5_3s1pk"]
 [ext_resource type="PackedScene" uid="uid://dwmj76tvlkphg" path="res://Scenes/Dialogue/actionable.tscn" id="8_jbob4"]
-[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/enemy.tscn" id="8_tvih3"]
+[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="8_tvih3"]
 [ext_resource type="Resource" uid="uid://cnerrbo62s1sh" path="res://Scenes/Dialogue/main.dialogue" id="9_1hplb"]
 [ext_resource type="PackedScene" uid="uid://b3gvm5y6j7rdf" path="res://Scenes/Dialogue/memory.tscn" id="10_26b2y"]
 [ext_resource type="Resource" uid="uid://bqr7q3iinnd8d" path="res://Scenes/Dialogue/intro.dialogue" id="10_kxe65"]
