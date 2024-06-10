@@ -262,15 +262,12 @@ texture = ExtResource("2_bvyd0")
 hframes = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 1.5
 libraries = {
 "": SubResource("AnimationLibrary_ifyp7")
 }
-speed_scale = 1.5
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ifyp7")
-}
 tree_root = SubResource("AnimationNodeStateMachine_6n4xr")
 anim_player = NodePath("../AnimationPlayer")
 

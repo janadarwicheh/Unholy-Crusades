@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://kbbo28ab7krq"]
 
-[ext_resource type="Texture2D" uid="uid://clrjh4kcp4jqy" path="res://Assets/reversedBG.png" id="1_811ox"]
+[ext_resource type="Texture2D" uid="uid://clrjh4kcp4jqy" path="res://Assets/Assets/reversedBG.png" id="1_811ox"]
 
 [node name="reversebg" type="Node2D"]
 

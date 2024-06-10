@@ -1,99 +1,89 @@
 [gd_scene load_steps=23 format=3 uid="uid://dsawdfu0tfhwk"]
 
-[ext_resource type="Texture2D" uid="uid://opm20b8k3otp" path="res://Assets/Medieval_Castle_Asset_Pack/useful tiles/blank.png" id="1_rfcig"]
-[ext_resource type="Texture2D" uid="uid://q712nsnxqpok" path="res://Assets/Medieval_Castle_Asset_Pack/useful tiles/brick_1.png" id="2_apxox"]
-[ext_resource type="Texture2D" uid="uid://b2jy3jjvpdi6x" path="res://Assets/Medieval_Castle_Asset_Pack/useful tiles/brick_2.png" id="3_e82qc"]
-[ext_resource type="Texture2D" uid="uid://bui6gsq6s4epu" path="res://Assets/Medieval_Castle_Asset_Pack/useful tiles/floor_tile_1.png" id="4_t8lga"]
-[ext_resource type="Texture2D" uid="uid://dfmrjbu2ajtuv" path="res://Assets/Medieval_Castle_Asset_Pack/useful tiles/floor_tile_2.png" id="5_p5u8x"]
-[ext_resource type="Texture2D" uid="uid://cdmfp5x2kcn44" path="res://Assets/Medieval_Castle_Asset_Pack/useful tiles/floor_tile_3.png" id="6_ohakb"]
-[ext_resource type="Texture2D" uid="uid://3t53pf8q57u0" path="res://Assets/Medieval_Castle_Asset_Pack/useful tiles/floor_tile_4.png" id="7_7ndw8"]
-[ext_resource type="Texture2D" uid="uid://bggb3jphpyvy4" path="res://Assets/Medieval_Castle_Asset_Pack/useful tiles/wall_6.png" id="8_o645a"]
-[ext_resource type="Texture2D" uid="uid://5vvet856mseg" path="res://Assets/Medieval_Castle_Asset_Pack/useful tiles/wall_9.png" id="9_r3v5h"]
-[ext_resource type="Texture2D" uid="uid://edunay5et2dj" path="res://Assets/Medieval_Castle_Asset_Pack/useful tiles/wall_11.png" id="10_vwr8i"]
+[ext_resource type="Texture2D" uid="uid://djprhc7th7a31" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/blank.png" id="1_5yt10"]
+[ext_resource type="Texture2D" uid="uid://c5s4hq64fgoq4" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/brick_1.png" id="2_nbks2"]
+[ext_resource type="Texture2D" uid="uid://dqh8hpridw4tj" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/brick_2.png" id="3_583jn"]
+[ext_resource type="Texture2D" uid="uid://uxloqoqcplw7" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/floor_tile_1.png" id="4_apbus"]
+[ext_resource type="Texture2D" uid="uid://dbtl2v1wf58y5" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/floor_tile_2.png" id="5_mfcts"]
+[ext_resource type="Texture2D" uid="uid://bkusdsyvcd8b1" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/floor_tile_3.png" id="6_pbw6j"]
+[ext_resource type="Texture2D" uid="uid://crdxclulmwv0y" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/floor_tile_4.png" id="7_4bor1"]
+[ext_resource type="Texture2D" uid="uid://bp3mbmfdl4srg" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/wall_6.png" id="8_l1cv7"]
+[ext_resource type="Texture2D" uid="uid://b1rnk4nbytede" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/wall_9.png" id="9_sudt4"]
+[ext_resource type="Texture2D" uid="uid://dkjlxguveswix" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/wall_11.png" id="10_bqmvh"]
 [ext_resource type="PackedScene" uid="uid://craangs3rm71j" path="res://Scenes/Entities/Dummy.tscn" id="11_heb0e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3448p"]
-texture = ExtResource("1_rfcig")
+texture = ExtResource("1_5yt10")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h5fx1"]
-texture = ExtResource("2_apxox")
+texture = ExtResource("2_nbks2")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6d6cu"]
-texture = ExtResource("3_e82qc")
+texture = ExtResource("3_583jn")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u8myh"]
-texture = ExtResource("4_t8lga")
+texture = ExtResource("4_apbus")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hqv1m"]
-texture = ExtResource("5_p5u8x")
+texture = ExtResource("5_mfcts")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4nfjj"]
-texture = ExtResource("6_ohakb")
+texture = ExtResource("6_pbw6j")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v415u"]
-texture = ExtResource("7_7ndw8")
+texture = ExtResource("7_4bor1")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yw2st"]
-texture = ExtResource("8_o645a")
+texture = ExtResource("8_l1cv7")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l76kl"]
-texture = ExtResource("9_r3v5h")
+texture = ExtResource("9_sudt4")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p54qj"]
-texture = ExtResource("10_vwr8i")
+texture = ExtResource("10_bqmvh")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSet" id="TileSet_23b8r"]
 tile_size = Vector2i(512, 512)
