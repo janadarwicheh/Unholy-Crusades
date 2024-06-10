@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://chtebexkqy5ep"]
+[gd_scene load_steps=16 format=3 uid="uid://chtebexkqy5ep"]
 
 [ext_resource type="Script" path="res://Scenes/Map/world1.cs" id="1_faljg"]
 [ext_resource type="PackedScene" path="res://reversebg.tscn" id="3_ha0gi"]
-[ext_resource type="Texture2D" uid="uid://rbjna1wydj3c" path="res://Assets/oak_woods_v1.0/TERRE.png" id="3_mdth8"]
-[ext_resource type="Texture2D" uid="uid://brcv87cke3nve" path="res://Assets/oak_woods_v1.0/TILESET.png" id="4_jip6k"]
+[ext_resource type="Texture2D" uid="uid://rbjna1wydj3c" path="res://Assets/Assets/oak_woods_v1.0/TERRE.png" id="3_mdth8"]
+[ext_resource type="Texture2D" uid="uid://brcv87cke3nve" path="res://Assets/Assets/oak_woods_v1.0/TILESET.png" id="4_jip6k"]
 [ext_resource type="PackedScene" path="res://grassbg.tscn" id="5_3s1pk"]
 [ext_resource type="PackedScene" path="res://Scenes/Dialogue/actionable.tscn" id="8_jbob4"]
 [ext_resource type="Resource" uid="uid://cnerrbo62s1sh" path="res://Scenes/Dialogue/main.dialogue" id="9_1hplb"]
 [ext_resource type="PackedScene" path="res://Scenes/Dialogue/memory.tscn" id="10_26b2y"]
 [ext_resource type="Resource" uid="uid://bqr7q3iinnd8d" path="res://Scenes/Dialogue/intro.dialogue" id="10_kxe65"]
 [ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="10_n605j"]
+[ext_resource type="PackedScene" uid="uid://dghuse7xns4ji" path="res://UI/PauseMenu/pause_menu.tscn" id="11_3ls61"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt4lr"]
 texture = ExtResource("4_jip6k")
@@ -371,7 +372,6 @@ position = Vector2(3904, 6624)
 [node name="Actionable" parent="Memories/Memory9" instance=ExtResource("8_jbob4")]
 position = Vector2(0, -743)
 DialogueRessource = ExtResource("10_kxe65")
-DialogueStart = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Memories/Memory9/Actionable"]
 position = Vector2(957, 1057)
@@ -500,3 +500,7 @@ position = Vector2(42528, 4920)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 position = Vector2(2224, 6062)
 metadata/_edit_group_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_3ls61")]

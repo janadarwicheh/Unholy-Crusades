@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scenes/Entities/enemy.cs" id="1_wwynu"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/HitboxEnemy.cs" id="2_4nu24"]
-[ext_resource type="Texture2D" uid="uid://bmk2glt845sdy" path="res://Installer/demon-courte/Marche Melee.png" id="2_bvyd0"]
+[ext_resource type="Texture2D" uid="uid://bmk2glt845sdy" path="res://Assets/Assets/animation/demon-courte/Marche Melee.png" id="2_bvyd0"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/HurtboxEnemy.cs" id="3_oit0j"]
-[ext_resource type="Texture2D" uid="uid://xyy0fhdd8j81" path="res://Installer/demon-courte-attaque/demon-courte-attaque.png" id="3_ri4mm"]
+[ext_resource type="Texture2D" uid="uid://xyy0fhdd8j81" path="res://Assets/Assets/animation/demon-courte-attaque/demon-courte-attaque.png" id="3_ri4mm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ne0vh"]
 radius = 233.0

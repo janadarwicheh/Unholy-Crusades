@@ -49,6 +49,7 @@ public partial class pause_menu : Control
 	private void _on_restart_pressed()
 	{
 		GetTree().ReloadCurrentScene();
+		GetTree().Paused = false;
 	}
 	
 	private void _on_quit_pressed()
