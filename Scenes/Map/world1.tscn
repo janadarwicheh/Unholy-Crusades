@@ -1,15 +1,15 @@
 [gd_scene load_steps=15 format=3 uid="uid://chtebexkqy5ep"]
 
 [ext_resource type="Script" path="res://Scenes/Map/world1.cs" id="1_faljg"]
-[ext_resource type="PackedScene" uid="uid://kbbo28ab7krq" path="res://reversebg.tscn" id="3_ha0gi"]
+[ext_resource type="PackedScene" path="res://reversebg.tscn" id="3_ha0gi"]
 [ext_resource type="Texture2D" uid="uid://rbjna1wydj3c" path="res://Assets/oak_woods_v1.0/TERRE.png" id="3_mdth8"]
 [ext_resource type="Texture2D" uid="uid://brcv87cke3nve" path="res://Assets/oak_woods_v1.0/TILESET.png" id="4_jip6k"]
-[ext_resource type="PackedScene" uid="uid://cg4p5xt13dy6l" path="res://grassbg.tscn" id="5_3s1pk"]
-[ext_resource type="PackedScene" uid="uid://dwmj76tvlkphg" path="res://Scenes/Dialogue/actionable.tscn" id="8_jbob4"]
-[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="8_tvih3"]
+[ext_resource type="PackedScene" path="res://grassbg.tscn" id="5_3s1pk"]
+[ext_resource type="PackedScene" path="res://Scenes/Dialogue/actionable.tscn" id="8_jbob4"]
 [ext_resource type="Resource" uid="uid://cnerrbo62s1sh" path="res://Scenes/Dialogue/main.dialogue" id="9_1hplb"]
-[ext_resource type="PackedScene" uid="uid://b3gvm5y6j7rdf" path="res://Scenes/Dialogue/memory.tscn" id="10_26b2y"]
+[ext_resource type="PackedScene" path="res://Scenes/Dialogue/memory.tscn" id="10_26b2y"]
 [ext_resource type="Resource" uid="uid://bqr7q3iinnd8d" path="res://Scenes/Dialogue/intro.dialogue" id="10_kxe65"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/enemy.tscn" id="10_n605j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt4lr"]
 texture = ExtResource("4_jip6k")
@@ -479,32 +479,20 @@ one_way_collision_margin = 0.0
 [node name="Ennemies" type="Node" parent="."]
 process_mode = 1
 
-[node name="Enemy" parent="Ennemies" instance=ExtResource("8_tvih3")]
-position = Vector2(12374, 7140)
+[node name="Enemy" parent="Ennemies" instance=ExtResource("10_n605j")]
+position = Vector2(7426, 7084)
 
-[node name="Enemy2" parent="Ennemies" instance=ExtResource("8_tvih3")]
-position = Vector2(17862, 7054)
+[node name="Enemy2" parent="Ennemies" instance=ExtResource("10_n605j")]
+position = Vector2(14240, 6982)
 
-[node name="Enemy3" parent="Ennemies" instance=ExtResource("8_tvih3")]
-position = Vector2(26742, 6028)
+[node name="Enemy3" parent="Ennemies" instance=ExtResource("10_n605j")]
+position = Vector2(26226, 5903)
 
-[node name="Enemy4" parent="Ennemies" instance=ExtResource("8_tvih3")]
-position = Vector2(30662, 4945)
+[node name="Enemy4" parent="Ennemies" instance=ExtResource("10_n605j")]
+position = Vector2(30661, 5016)
 
-[node name="Enemy5" parent="Ennemies" instance=ExtResource("8_tvih3")]
-position = Vector2(42448, 5024)
-
-[node name="Enemy6" parent="Ennemies" instance=ExtResource("8_tvih3")]
-position = Vector2(55812, 14015)
-
-[node name="Enemy7" parent="Ennemies" instance=ExtResource("8_tvih3")]
-position = Vector2(68099, 14015)
-
-[node name="Enemy8" parent="Ennemies" instance=ExtResource("8_tvih3")]
-position = Vector2(66198, 4874)
-
-[node name="Enemy9" parent="Ennemies" instance=ExtResource("8_tvih3")]
-position = Vector2(57464, 4829)
+[node name="Enemy5" parent="Ennemies" instance=ExtResource("10_n605j")]
+position = Vector2(42528, 4920)
 
 [node name="Player" type="Node" parent="."]
 
