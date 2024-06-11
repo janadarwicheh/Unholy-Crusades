@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dsawdfu0tfhwk"]
+[gd_scene load_steps=26 format=3 uid="uid://dsawdfu0tfhwk"]
 
 [ext_resource type="Texture2D" uid="uid://djprhc7th7a31" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/blank.png" id="1_5yt10"]
 [ext_resource type="Texture2D" uid="uid://c5s4hq64fgoq4" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/brick_1.png" id="2_nbks2"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://bp3mbmfdl4srg" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/wall_6.png" id="8_l1cv7"]
 [ext_resource type="Texture2D" uid="uid://b1rnk4nbytede" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/wall_9.png" id="9_sudt4"]
 [ext_resource type="Texture2D" uid="uid://dkjlxguveswix" path="res://Assets/Medieval_Castle_Asset_Pack/useful-tiles/wall_11.png" id="10_bqmvh"]
-[ext_resource type="PackedScene" uid="uid://craangs3rm71j" path="res://Scenes/Entities/Dummy.tscn" id="11_heb0e"]
+[ext_resource type="PackedScene" uid="uid://dwmj76tvlkphg" path="res://Scenes/Dialogue/actionable.tscn" id="11_2beno"]
+[ext_resource type="Resource" uid="uid://bqr7q3iinnd8d" path="res://Scenes/Dialogue/intro.dialogue" id="12_cg54o"]
+[ext_resource type="Texture2D" uid="uid://bi8idk6v7o8mk" path="res://Assets/king.png" id="13_5td6b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3448p"]
 texture = ExtResource("1_5yt10")
@@ -99,6 +101,9 @@ sources/7 = SubResource("TileSetAtlasSource_yw2st")
 sources/8 = SubResource("TileSetAtlasSource_l76kl")
 sources/9 = SubResource("TileSetAtlasSource_p54qj")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovq2k"]
+size = Vector2(2292, 2806)
+
 [node name="CutScene" type="Node2D"]
 
 [node name="Map" type="Node" parent="."]
@@ -116,7 +121,20 @@ metadata/_edit_group_ = true
 
 [node name="Pnj" type="Node" parent="."]
 
-[node name="Ennemis" type="Node" parent="."]
+[node name="King" type="StaticBody2D" parent="Pnj"]
+position = Vector2(16256, -1280)
 
-[node name="Dummy" parent="Ennemis" instance=ExtResource("11_heb0e")]
-position = Vector2(15406, -1206)
+[node name="Actionable" parent="Pnj/King" instance=ExtResource("11_2beno")]
+position = Vector2(-112, 48)
+DialogueRessource = ExtResource("12_cg54o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pnj/King/Actionable"]
+position = Vector2(43, -214)
+shape = SubResource("RectangleShape2D_ovq2k")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pnj/King/Actionable/CollisionShape2D"]
+position = Vector2(54.0003, -30.5)
+scale = Vector2(10.8, 12.8133)
+texture = ExtResource("13_5td6b")
+
+[node name="Ennemis" type="Node" parent="."]
