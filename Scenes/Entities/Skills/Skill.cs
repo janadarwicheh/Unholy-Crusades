@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Godot;
+using Skull.Scenes.Timers;
 
 namespace Skull.Scenes.Entities.Skills;
 
 public abstract class Skill
 {
-    public Skill(Parameters.Entity user, string name, int damageAmount, int? cooldown)
+    public Skill(Parameters.Entity user, string name, int damageAmount, BasicCooldown? cooldown)
     {
         User = user;
         Name = name;
@@ -20,19 +21,8 @@ public abstract class Skill
     public Parameters.Entity User { get; set; }
     protected int DamageAmount { get; set; }
     
-    protected int? Cooldown { get; set; }
+    public BasicCooldown? Cooldown { get; set; }
     private bool CanLaunch { get; set; }
-
-    public void StartCooldown()
-    {
-        
-        if (Cooldown != null)
-        {
-            CanLaunch = false;
-            Task.Delay((int)Cooldown!).ContinueWith(t => CanLaunch = true);
-        }
-        
-    }
 
     public virtual bool Launch()
     {

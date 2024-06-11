@@ -31,6 +31,7 @@ public partial class Playeru : Entity
 	
 	public override void _Ready()
 	{
+		base._Ready();
 		Sprite = GetNode<Sprite2D>("Sprite2D");
 		AnimationTree = GetNode<AnimationTree>("AnimationTree");
 		AnimationTree.Active = true;
@@ -139,6 +140,7 @@ public partial class Playeru : Entity
 
 	public override void _PhysicsProcess(double delta)
 	{
+		base._PhysicsProcess(delta);
 		AnimationTree.Set("parameters/conditions/SkillUsed", false);	
 		CastingSkill = null;
 		Vector2 velocity = Velocity;

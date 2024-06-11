@@ -55,6 +55,7 @@ public partial class enemy : Entity
 	
 	public override void _Ready()
 	{
+		base._Ready();
 		AnimationTree = GetNode<AnimationTree>("AnimationTree");
 		Anim = GetNode<AnimationTree>("AnimationTree").Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();;
 		Sprite2D = GetNode<Sprite2D>("Sprite2D");
@@ -72,6 +73,7 @@ public partial class enemy : Entity
 	
 	public override void _PhysicsProcess(double delta)
 	{
+		base._PhysicsProcess(delta);
 		velocity = Velocity;
 		if (ShouldTurn())
 			moveDir *= -1;
