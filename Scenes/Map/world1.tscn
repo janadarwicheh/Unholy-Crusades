@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://chtebexkqy5ep"]
+[gd_scene load_steps=19 format=3 uid="uid://chtebexkqy5ep"]
 
 [ext_resource type="Script" path="res://Scenes/Map/world1.cs" id="1_faljg"]
 [ext_resource type="PackedScene" uid="uid://kbbo28ab7krq" path="res://reversebg.tscn" id="3_ha0gi"]
@@ -11,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://bqr7q3iinnd8d" path="res://Scenes/Dialogue/intro.dialogue" id="10_kxe65"]
 [ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="10_n605j"]
 [ext_resource type="PackedScene" uid="uid://dghuse7xns4ji" path="res://UI/PauseMenu/pause_menu.tscn" id="11_3ls61"]
+[ext_resource type="Texture2D" uid="uid://b6gm7vxt0jjm3" path="res://Assets/npc/Marlene.png" id="12_4k87v"]
+[ext_resource type="Resource" uid="uid://cx6tjsmn1y1pd" path="res://Scenes/Dialogue/FIN.dialogue" id="12_dpi1x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt4lr"]
 texture = ExtResource("4_jip6k")
@@ -323,6 +325,9 @@ sources/9 = SubResource("TileSetAtlasSource_x1t11")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wf8tb"]
 size = Vector2(237.449, 337.599)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lohe"]
+size = Vector2(2974, 3058)
+
 [node name="World" type="Node"]
 script = ExtResource("1_faljg")
 
@@ -504,3 +509,21 @@ metadata/_edit_group_ = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_3ls61")]
+
+[node name="NPC" type="Node" parent="."]
+
+[node name="Amandine" type="StaticBody2D" parent="NPC"]
+position = Vector2(295739, -7456)
+
+[node name="Actionable" parent="NPC/Amandine" instance=ExtResource("8_jbob4")]
+position = Vector2(83, 48)
+DialogueRessource = ExtResource("12_dpi1x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Amandine/Actionable"]
+position = Vector2(-48, 214)
+shape = SubResource("RectangleShape2D_0lohe")
+
+[node name="Sprite2D" type="Sprite2D" parent="NPC/Amandine/Actionable/CollisionShape2D"]
+position = Vector2(-229.008, 756)
+scale = Vector2(1.5161, 1.40442)
+texture = ExtResource("12_4k87v")

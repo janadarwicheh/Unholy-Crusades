@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://cx6tjsmn1y1pd"
+path="res://.godot/imported/FIN.dialogue-e91117478ddc3ddf9be654cc9f17f9ea.tres"
+
+[deps]
+
+source_file="res://Scenes/Dialogue/FIN.dialogue"
+dest_files=["res://.godot/imported/FIN.dialogue-e91117478ddc3ddf9be654cc9f17f9ea.tres"]
+
+[params]
+
+defaults=true
