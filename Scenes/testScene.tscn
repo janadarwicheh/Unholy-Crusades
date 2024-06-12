@@ -1959,3 +1959,4 @@ position = Vector2(15469, 761)
 
 [node name="EnemyRanged" parent="." instance=ExtResource("11_of3t0")]
 position = Vector2(18212, 717)
+Sprite2D = null

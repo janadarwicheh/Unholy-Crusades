@@ -1,7 +1,10 @@
 using Godot;
 using Skull.Scenes.Entities.Parameters;
+using Skull.Scenes.Entities.Projetctiles;
+using Skull.Scenes.Entities.Skills;
+using Skull.Scenes.Player;
 using Skull.Scenes.Timers;
-
+using EntityHandler = Skull.Scenes.Entities.Parameters.EntityHandler;
 namespace Skull.Scenes.Entities;
 
 public partial class enemyRanged : Entity
@@ -23,16 +26,37 @@ public partial class enemyRanged : Entity
 	public float gravity = CurrentInfo.Gravity;
 	public AnimationNodeStateMachinePlayback Anim;
 	[Export] public Sprite2D Sprite2D;
+	private PackedScene Projectile;
+
+	private void Shoot()
+	{
+		var Instance = (EnemyBullet)Projectile.Instantiate();
+		if (Sprite2D.FlipH)
+		{
+			Instance.Direction = 4.71239f;
+		}
+		else
+		{
+			Instance.Direction = 1.5708f;
+		}
+		
+		Instance.SpawnPos = GlobalPosition;
+		Instance.Parameters = new Parameters.EntityHandler(1, Parameters.CurrentStats[StatType.Attack].Amount / 2, 0, 0,
+			null, null);
+		AddChild(Instance);
+	}
 	
 	private void _on_area_2d_area_entered_right(Godot.Area2D area)
 	{
 		MovementLock = true;
 		Anim.Travel("attack");
+		Shoot();
 	}
 	private void _on_area_2d_area_entered_left(Godot.Area2D area)
 	{
 		MovementLock = true;
 		Anim.Travel("attack");
+		Shoot();
 	}
 
 	private void _on_animation_tree_animation_finished(string name)
@@ -68,6 +92,7 @@ public partial class enemyRanged : Entity
 		Parameters = new Parameters.EntityHandler(20, 3, 1, 150, null, null);
 		base.RedGlowCooldown = new BasicCooldown(0.2f);
 		AddChild(RedGlowCooldown);
+
 	}
 	
 	

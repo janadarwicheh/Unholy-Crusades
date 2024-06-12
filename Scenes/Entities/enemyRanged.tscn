@@ -9,8 +9,8 @@
 radius = 233.0
 height = 1088.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w70a8"]
-radius = 382.0
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_q2nb3"]
+a = Vector2(-3177, 4)
 
 [sub_resource type="Animation" id="Animation_kmx3c"]
 length = 0.001
@@ -191,6 +191,9 @@ collision_layer = 4
 collision_mask = 3
 floor_constant_speed = true
 script = ExtResource("1_6q8ch")
+moveDir = null
+motionRange = null
+speed = null
 Sprite2D = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -204,8 +207,8 @@ collision_mask = 2
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DRight"]
-position = Vector2(23, 18)
-shape = SubResource("CircleShape2D_w70a8")
+position = Vector2(3182, 0)
+shape = SubResource("SegmentShape2D_q2nb3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1)
@@ -218,7 +221,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DLeft"]
 position = Vector2(-219, 1)
-shape = SubResource("CircleShape2D_w70a8")
+shape = SubResource("SegmentShape2D_q2nb3")
 
 [node name="RayCast2DDownLeft" type="RayCast2D" parent="."]
 position = Vector2(-221, 141)

@@ -377,6 +377,7 @@ position = Vector2(3904, 6624)
 [node name="Actionable" parent="Memories/Memory9" instance=ExtResource("8_jbob4")]
 position = Vector2(0, -743)
 DialogueRessource = ExtResource("10_kxe65")
+DialogueStart = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Memories/Memory9/Actionable"]
 position = Vector2(957, 1057)
@@ -518,6 +519,7 @@ position = Vector2(295739, -7456)
 [node name="Actionable" parent="NPC/Amandine" instance=ExtResource("8_jbob4")]
 position = Vector2(83, 48)
 DialogueRessource = ExtResource("12_dpi1x")
+DialogueStart = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Amandine/Actionable"]
 position = Vector2(-48, 214)
