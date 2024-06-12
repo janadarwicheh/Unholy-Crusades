@@ -10,8 +10,8 @@ public partial class Entity : CharacterBody2D
 {
     public EntityComponent Parameters { get; set; }
     public Dictionary<string, State> states = new Dictionary<string, State>();
-    private Sprite2D _sprite2D;
-    BasicCooldown RedGlowCooldown { get; set; }
+    public Sprite2D _sprite2D;
+    public BasicCooldown RedGlowCooldown { get; set; }
     public bool TakeDamage(Entity entity, int adder, float multiplier)
     {
         if (entity.Parameters.CurrentStats[StatType.Attack].Amount > 0)

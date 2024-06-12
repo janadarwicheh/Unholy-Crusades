@@ -1,5 +1,6 @@
 using Godot;
 using Skull.Scenes.Entities.Parameters;
+using Skull.Scenes.Timers;
 
 namespace Skull.Scenes.Entities;
 
@@ -8,7 +9,7 @@ public partial class enemyRanged : Entity
 	Godot.Area2D area_right;
 	Godot.Area2D area_left;
 	bool MovementLock = false;
-	public Sprite2D Sprite2D;
+
 	public AnimationTree AnimationTree;
 	RayCast2D[] Down = new RayCast2D[2];
 	RayCast2D Side;
@@ -21,6 +22,7 @@ public partial class enemyRanged : Entity
 	Vector2 velocity;
 	public float gravity = CurrentInfo.Gravity;
 	public AnimationNodeStateMachinePlayback Anim;
+	[Export] public Sprite2D Sprite2D;
 	
 	private void _on_area_2d_area_entered_right(Godot.Area2D area)
 	{
@@ -55,7 +57,7 @@ public partial class enemyRanged : Entity
 	{
 		AnimationTree = GetNode<AnimationTree>("AnimationTree");
 		Anim = GetNode<AnimationTree>("AnimationTree").Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();;
-		Sprite2D = GetNode<Sprite2D>("Sprite2D");
+		_sprite2D = Sprite2D; 
 		velocity = Vector2.Zero;
 		velocity.X = speed;
 		area_right = GetNode<Godot.Area2D>("Area2DRight");
@@ -64,11 +66,14 @@ public partial class enemyRanged : Entity
 		Down[1] = GetNode<RayCast2D>("RayCast2DDownRight");
 		Side = GetNode<RayCast2D>("RayCast2DSide");
 		Parameters = new Parameters.EntityHandler(20, 3, 1, 150, null, null);
+		base.RedGlowCooldown = new BasicCooldown(0.2f);
+		AddChild(RedGlowCooldown);
 	}
 	
 	
 	public override void _PhysicsProcess(double delta)
 	{
+		base._PhysicsProcess(delta);
 		velocity = Velocity;
 		if (ShouldTurn())
 			moveDir *= -1;

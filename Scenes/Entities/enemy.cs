@@ -5,7 +5,6 @@ namespace Skull.Scenes.Entities;
 
 public partial class enemy : Entity
 {
-	// Called when the node enters the scene tree for the first time.
 	Godot.Area2D area_right;
 	Godot.Area2D area_left;
 	bool MovementLock = false;
