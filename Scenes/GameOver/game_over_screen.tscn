@@ -57,7 +57,7 @@ texture = ExtResource("3_gpfex")
 
 [node name="GAME OVER" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "GAME OVER"
+text = "Vous avez perdu"
 label_settings = SubResource("LabelSettings_103n6")
 horizontal_alignment = 1
 
@@ -82,7 +82,7 @@ texture = ExtResource("4_lawwl")
 layout_mode = 2
 theme_override_font_sizes/font_size = 200
 action_mode = 0
-text = " RESTART 
+text = "Recommencer
 "
 flat = true
 script = ExtResource("1_v3uj3")
@@ -90,7 +90,7 @@ script = ExtResource("1_v3uj3")
 [node name="QUIT" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 200
-text = "QUIT
+text = "Quitter
 "
 flat = true
 script = ExtResource("1_ynfaj")

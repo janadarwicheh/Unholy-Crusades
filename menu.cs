@@ -59,4 +59,10 @@ public partial class menu : Control
             streamPlayer.Stop();
         }
     }
+    
+    private void _on_tutorial_pressed()
+    {
+        GD.Print("Tutorial button");
+        GetTree().ChangeSceneToFile("res://UI/Tutorial/tutorial.tscn");
+    }
 }

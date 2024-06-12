@@ -56,4 +56,11 @@ public partial class pause_menu : Control
 	{
 		GetTree().Quit();
 	}
+	
+	private void _on_options_pressed()
+	{
+		GD.Print("Option button");
+		GetTree().ChangeSceneToFile("res://options.tscn");
+	}
+
 }
