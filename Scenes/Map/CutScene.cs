@@ -1,11 +1,11 @@
 using System;
 using Godot;
+using Skull.Scenes;
 using Skull.Scenes.Entities.Skills;
 using Skull.Scenes.Player;
 
-namespace Skull.Scenes.Map;
 
-public partial class World : Node
+public partial class CutScene : Node2D
 {
 	public Playeru Joueur;
 	public PackedScene Tamer;
@@ -46,9 +46,9 @@ public partial class World : Node
 			}
 		}
 
-		if (Joueur.GlobalPosition.Y >= 32000)
+		if (Joueur.GlobalPosition.X >= 31000)
 		{
-			GetTree().ChangeSceneToFile("res://Scenes/GameOver/game_over_screen.tscn");
+			GetTree().ChangeSceneToFile("res://Scenes/Map/world1.tscn");
 		}
 		
 	}
