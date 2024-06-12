@@ -48,6 +48,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(205, 38.5)
+scale = Vector2(1.70051, 1)
+texture = ExtResource("5_051ns")
+
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -65,9 +70,13 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 40
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-position = Vector2(212, 48.5)
-texture = ExtResource("5_051ns")
+[node name="Sprite2D3" type="Sprite2D" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+position = Vector2(204, 54.5)
+texture = ExtResource("6_76gyp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+position = Vector2(202, 264.5)
+texture = ExtResource("6_76gyp")
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -81,10 +90,6 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 text = "Piste Audio ON/OFF"
-
-[node name="Sprite2D2" type="Sprite2D" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-position = Vector2(212, 271.5)
-texture = ExtResource("6_76gyp")
 
 [node name="Tutorial" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2

@@ -51,8 +51,8 @@ layout_mode = 2
 theme_override_constants/separation = 350
 
 [node name="Sprite2D" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer"]
-position = Vector2(1871, 141.25)
-scale = Vector2(4.05584, 3.38991)
+position = Vector2(1905, 145)
+scale = Vector2(5.8934, 4.93578)
 texture = ExtResource("3_gpfex")
 
 [node name="GAME OVER" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -69,13 +69,13 @@ layout_mode = 2
 theme_override_constants/separation = 300
 
 [node name="Sprite2D" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
-position = Vector2(332.5, 108.5)
-scale = Vector2(2.96746, 2.9375)
+position = Vector2(492, 137)
+scale = Vector2(4.2929, 3.15179)
 texture = ExtResource("4_lawwl")
 
 [node name="Sprite2D2" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
-position = Vector2(333, 595)
-scale = Vector2(2.96746, 2.9375)
+position = Vector2(513, 599)
+scale = Vector2(4.34172, 3.08482)
 texture = ExtResource("4_lawwl")
 
 [node name="RESTART" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
