@@ -46,7 +46,7 @@ public partial class World : Node
 			}
 		}
 
-		if (Joueur.GlobalPosition.Y >= 30000)
+		if (Joueur.GlobalPosition.Y >= 32000)
 		{
 			GetTree().ChangeSceneToFile("res://Scenes/GameOver/game_over_screen.tscn");
 		}

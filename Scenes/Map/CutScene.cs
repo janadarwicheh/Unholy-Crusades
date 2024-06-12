@@ -46,7 +46,7 @@ public partial class CutScene : Node2D
 			}
 		}
 
-		if (Joueur.GlobalPosition.X >= 30000)
+		if (Joueur.GlobalPosition.X >= 31000)
 		{
 			GetTree().ChangeSceneToFile("res://Scenes/Map/world1.tscn");
 		}
