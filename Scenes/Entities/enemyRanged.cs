@@ -27,10 +27,11 @@ public partial class enemyRanged : Entity
 	public AnimationNodeStateMachinePlayback Anim;
 	[Export] public Sprite2D Sprite2D;
 	private PackedScene Projectile;
+	public BasicCooldown ShootCooldown;
 
 	private void Shoot()
 	{
-		var Instance = (EnemyBullet)Projectile.Instantiate();
+		var Instance = (MattBullet)Projectile.Instantiate();
 		if (Sprite2D.FlipH)
 		{
 			Instance.Direction = 4.71239f;
@@ -41,20 +42,25 @@ public partial class enemyRanged : Entity
 		}
 		
 		Instance.SpawnPos = GlobalPosition;
+		Instance.Speed = 5000;
 		Instance.Parameters = new Parameters.EntityHandler(1, Parameters.CurrentStats[StatType.Attack].Amount / 2, 0, 0,
 			null, null);
-		AddChild(Instance);
+		GetParent().AddChild(Instance);
 	}
 	
 	private void _on_area_2d_area_entered_right(Godot.Area2D area)
 	{
 		MovementLock = true;
+		area_right.Monitoring = false;
+		area_left.Monitoring = false;
 		Anim.Travel("attack");
 		Shoot();
 	}
 	private void _on_area_2d_area_entered_left(Godot.Area2D area)
 	{
 		MovementLock = true;
+		area_right.Monitoring = false;
+		area_left.Monitoring = false;
 		Anim.Travel("attack");
 		Shoot();
 	}
@@ -79,6 +85,7 @@ public partial class enemyRanged : Entity
 	
 	public override void _Ready()
 	{
+		Projectile = GD.Load("res://Scenes/Entities/Projetctiles/EnemyBullet.tscn") as PackedScene;
 		AnimationTree = GetNode<AnimationTree>("AnimationTree");
 		Anim = GetNode<AnimationTree>("AnimationTree").Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();;
 		_sprite2D = Sprite2D; 

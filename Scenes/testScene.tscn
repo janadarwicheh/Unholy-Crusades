@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ddo68ekorft0"]
+[gd_scene load_steps=19 format=3 uid="uid://ddo68ekorft0"]
 
 [ext_resource type="Texture2D" uid="uid://dghoex6usqh5t" path="res://Assets/oak_woods_v1.0/oak_woods_tileset.png" id="2_bwfwl"]
 [ext_resource type="Texture2D" uid="uid://c1uuac0wbt8e6" path="res://Assets/version_one/solFoncer.png" id="3_c4kcn"]
@@ -8,8 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cjkwpl78w5li7" path="res://Assets/version_one/dirt.png" id="7_ecve7"]
 [ext_resource type="PackedScene" uid="uid://cypayl3cswcoq" path="res://Scenes/Player/Matt.tscn" id="7_q8o7u"]
 [ext_resource type="PackedScene" uid="uid://craangs3rm71j" path="res://Scenes/Entities/Dummy.tscn" id="8_r0tof"]
-[ext_resource type="PackedScene" uid="uid://cs5na5sxwlwt3" path="res://Scenes/Player/Eldric.tscn" id="10_gufcq"]
-[ext_resource type="PackedScene" uid="uid://cvswsc5882cs8" path="res://Scenes/Entities/enemyRanged.tscn" id="11_of3t0"]
+[ext_resource type="PackedScene" uid="uid://n6lxtdexlle0" path="res://Scenes/Entities/enemyRanged.tscn" id="11_of3t0"]
 [ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="12_wh66h"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ohrgn"]
@@ -1930,14 +1929,14 @@ pattern_0 = SubResource("TileMapPattern_ohrgn")
 [node name="TestScene" type="Node2D"]
 
 [node name="Matt" parent="." instance=ExtResource("7_q8o7u")]
-position = Vector2(13535, 781)
+position = Vector2(13474, 568)
 
 [node name="Camera2D" type="Camera2D" parent="Matt"]
 position = Vector2(13, -190)
 zoom = Vector2(0.5, 0.5)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
-position = Vector2(13535, 781)
+position = Vector2(13474, 568)
 remote_path = NodePath("../Matt")
 
 [node name="Map" type="Node" parent="."]
@@ -1954,9 +1953,5 @@ position = Vector2(3730, 785)
 
 [node name="Enemy" parent="." instance=ExtResource("12_wh66h")]
 
-[node name="Eldric" parent="." instance=ExtResource("10_gufcq")]
-position = Vector2(15469, 761)
-
 [node name="EnemyRanged" parent="." instance=ExtResource("11_of3t0")]
 position = Vector2(18212, 717)
-Sprite2D = null

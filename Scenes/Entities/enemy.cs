@@ -65,7 +65,7 @@ public partial class enemy : Entity
 		Down[0] = GetNode<RayCast2D>("RayCast2DDownLeft");
 		Down[1] = GetNode<RayCast2D>("RayCast2DDownRight");
 		Side = GetNode<RayCast2D>("RayCast2DSide");
-		Parameters = new Parameters.EntityHandler(30, 4, 4, 250, null, null);
+		Parameters = new Parameters.EntityHandler(31, 4, 4, 250, null, null);
 		AttackArea = GetNode<Area2D>("Attack");
 	}
 	
