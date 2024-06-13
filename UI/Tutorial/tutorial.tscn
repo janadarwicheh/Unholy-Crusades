@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/Tutorial/tutorial.cs" id="1_f0qv2"]
 [ext_resource type="Texture2D" uid="uid://cpt7swx36m5uc" path="res://Assets/UserInterface/Fantasy Wooden GUI/Fantasy Wooden GUI  Free/PNG/TextBTN_Big.png" id="2_cyj08"]
-[ext_resource type="Texture2D" uid="uid://dx61q6xfpnjib" path="res://icon.svg" id="3_wqac8"]
+[ext_resource type="Texture2D" uid="uid://bjw57cce6hvx7" path="res://Assets/contole_uc_f.png" id="2_tlcov"]
 
 [node name="tutorial" type="Node2D"]
 script = ExtResource("1_f0qv2")
@@ -19,9 +19,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="PanelContainer"]
-position = Vector2(1949.5, 1090)
-scale = Vector2(31.4609, 18.0313)
-texture = ExtResource("3_wqac8")
+position = Vector2(1970.94, 1075.29)
+scale = Vector2(1.78395, 1.61916)
+texture = ExtResource("2_tlcov")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
