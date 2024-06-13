@@ -10,7 +10,8 @@ radius = 233.0
 height = 1088.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_q2nb3"]
-a = Vector2(-3177, 4)
+a = Vector2(-7004, 10)
+b = Vector2(2, -2)
 
 [sub_resource type="Animation" id="Animation_kmx3c"]
 length = 0.001
@@ -100,6 +101,20 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [5]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Shoot"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_nyp7g"]
@@ -201,10 +216,9 @@ shape = SubResource("CapsuleShape2D_ne0vh")
 position = Vector2(248, 0)
 collision_layer = 0
 collision_mask = 2
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DRight"]
-position = Vector2(3182, 0)
+position = Vector2(7010, 8)
 shape = SubResource("SegmentShape2D_q2nb3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

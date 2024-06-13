@@ -54,7 +54,6 @@ public partial class enemyRanged : Entity
 		area_right.Monitoring = false;
 		area_left.Monitoring = false;
 		Anim.Travel("attack");
-		Shoot();
 	}
 	private void _on_area_2d_area_entered_left(Godot.Area2D area)
 	{
@@ -62,7 +61,6 @@ public partial class enemyRanged : Entity
 		area_right.Monitoring = false;
 		area_left.Monitoring = false;
 		Anim.Travel("attack");
-		Shoot();
 	}
 
 	private void _on_animation_tree_animation_finished(string name)

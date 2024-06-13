@@ -7,7 +7,7 @@ public partial class CurrentInfo : Node
 {
     public static World CurrentScene;
     public static Playeru Player;
-    public static float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle() * 20;
+    public static float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle() * 40;
     public static bool FrameCounter = false;
     public override void _Ready()
     {

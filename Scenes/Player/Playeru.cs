@@ -17,7 +17,7 @@ public partial class Playeru : Entity
 	protected AnimationTree AnimationTree;
 	public Sprite2D Sprite;
 	private float _gravity;
-	protected float JumpVelocity = -6000;
+	protected float JumpVelocity = -11000;
 	public bool jumped = false;
 	protected float Speed;
 	public Skill? CastingSkill = null;

@@ -1,16 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://chtebexkqy5ep"]
+[gd_scene load_steps=20 format=3 uid="uid://chtebexkqy5ep"]
 
 [ext_resource type="Script" path="res://Scenes/Map/world1.cs" id="1_faljg"]
-[ext_resource type="PackedScene" path="res://reversebg.tscn" id="3_ha0gi"]
+[ext_resource type="PackedScene" uid="uid://kbbo28ab7krq" path="res://reversebg.tscn" id="3_ha0gi"]
 [ext_resource type="Texture2D" uid="uid://rbjna1wydj3c" path="res://Assets/oak_woods_v1.0/TERRE.png" id="3_mdth8"]
 [ext_resource type="Texture2D" uid="uid://brcv87cke3nve" path="res://Assets/oak_woods_v1.0/TILESET.png" id="4_jip6k"]
-[ext_resource type="PackedScene" path="res://grassbg.tscn" id="5_3s1pk"]
-[ext_resource type="PackedScene" path="res://Scenes/Dialogue/actionable.tscn" id="8_jbob4"]
+[ext_resource type="PackedScene" uid="uid://cg4p5xt13dy6l" path="res://grassbg.tscn" id="5_3s1pk"]
+[ext_resource type="PackedScene" uid="uid://dwmj76tvlkphg" path="res://Scenes/Dialogue/actionable.tscn" id="8_jbob4"]
 [ext_resource type="Resource" uid="uid://cnerrbo62s1sh" path="res://Scenes/Dialogue/main.dialogue" id="9_1hplb"]
-[ext_resource type="PackedScene" path="res://Scenes/Dialogue/memory.tscn" id="10_26b2y"]
+[ext_resource type="PackedScene" uid="uid://b3gvm5y6j7rdf" path="res://Scenes/Dialogue/memory.tscn" id="10_26b2y"]
 [ext_resource type="Resource" uid="uid://bqr7q3iinnd8d" path="res://Scenes/Dialogue/intro.dialogue" id="10_kxe65"]
-[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="10_n605j"]
+[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/enemy.tscn" id="10_n605j"]
 [ext_resource type="PackedScene" uid="uid://dghuse7xns4ji" path="res://UI/PauseMenu/pause_menu.tscn" id="11_3ls61"]
+[ext_resource type="PackedScene" uid="uid://n6lxtdexlle0" path="res://Scenes/Entities/enemyRanged.tscn" id="11_eun1a"]
 [ext_resource type="Texture2D" uid="uid://b6gm7vxt0jjm3" path="res://Assets/npc/Marlene.png" id="12_4k87v"]
 [ext_resource type="Resource" uid="uid://cx6tjsmn1y1pd" path="res://Scenes/Dialogue/FIN.dialogue" id="12_dpi1x"]
 
@@ -377,7 +378,6 @@ position = Vector2(3904, 6624)
 [node name="Actionable" parent="Memories/Memory9" instance=ExtResource("8_jbob4")]
 position = Vector2(0, -743)
 DialogueRessource = ExtResource("10_kxe65")
-DialogueStart = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Memories/Memory9/Actionable"]
 position = Vector2(957, 1057)
@@ -489,9 +489,6 @@ process_mode = 1
 [node name="Enemy" parent="Ennemies" instance=ExtResource("10_n605j")]
 position = Vector2(7426, 7084)
 
-[node name="Enemy2" parent="Ennemies" instance=ExtResource("10_n605j")]
-position = Vector2(14240, 6982)
-
 [node name="Enemy3" parent="Ennemies" instance=ExtResource("10_n605j")]
 position = Vector2(26226, 5903)
 
@@ -501,6 +498,9 @@ position = Vector2(30661, 5016)
 [node name="Enemy5" parent="Ennemies" instance=ExtResource("10_n605j")]
 position = Vector2(42528, 4920)
 
+[node name="EnemyRanged" parent="Ennemies" instance=ExtResource("11_eun1a")]
+position = Vector2(13245, 6974)
+
 [node name="Player" type="Node" parent="."]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
@@ -508,6 +508,7 @@ position = Vector2(2224, 6062)
 metadata/_edit_group_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_3ls61")]
 
@@ -519,7 +520,6 @@ position = Vector2(295739, -7456)
 [node name="Actionable" parent="NPC/Amandine" instance=ExtResource("8_jbob4")]
 position = Vector2(83, 48)
 DialogueRessource = ExtResource("12_dpi1x")
-DialogueStart = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Amandine/Actionable"]
 position = Vector2(-48, 214)
