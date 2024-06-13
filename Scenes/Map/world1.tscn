@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://cnerrbo62s1sh" path="res://Scenes/Dialogue/main.dialogue" id="9_1hplb"]
 [ext_resource type="PackedScene" uid="uid://b3gvm5y6j7rdf" path="res://Scenes/Dialogue/memory.tscn" id="10_26b2y"]
 [ext_resource type="Resource" uid="uid://bqr7q3iinnd8d" path="res://Scenes/Dialogue/intro.dialogue" id="10_kxe65"]
-[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/enemy.tscn" id="10_n605j"]
+[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="10_n605j"]
 [ext_resource type="PackedScene" uid="uid://dghuse7xns4ji" path="res://UI/PauseMenu/pause_menu.tscn" id="11_3ls61"]
 [ext_resource type="PackedScene" uid="uid://n6lxtdexlle0" path="res://Scenes/Entities/enemyRanged.tscn" id="11_eun1a"]
 [ext_resource type="Texture2D" uid="uid://b6gm7vxt0jjm3" path="res://Assets/npc/Marlene.png" id="12_4k87v"]
