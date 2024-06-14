@@ -28,6 +28,8 @@ public partial class Playeru : Entity
 	public AnimationNodeStateMachinePlayback AnimationTreePlayback;
 	public AnimationNodeStateMachinePlayback AnimationTreePlaybackSkill;
 	public System.Collections.Generic.Dictionary<PlayerSkill, Skill> Skills = new System.Collections.Generic.Dictionary<PlayerSkill, Skill>();
+	public Area2D Hurtbox;
+	
 	
 	public override void _Ready()
 	{
@@ -38,8 +40,10 @@ public partial class Playeru : Entity
 		_gravity = CurrentInfo.Gravity;
 		actionableFinder = GetNode<Area2D>("Direction/ActionableFinder");
 		Attack = GetNode<Area2D>("Attack");
-		AnimationTreePlayback = GetNode<AnimationTree>("AnimationTree").Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();;
-		AnimationTreePlaybackSkill = GetNode<AnimationTree>("AnimationTree").Get("parameters/SkillUsed/playback").As<AnimationNodeStateMachinePlayback>();;
+		AnimationTreePlayback = GetNode<AnimationTree>("AnimationTree").Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
+		AnimationTreePlaybackSkill = GetNode<AnimationTree>("AnimationTree").Get("parameters/SkillUsed/playback").As<AnimationNodeStateMachinePlayback>();
+		Hurtbox = GetNode<Area2D>("Hurtbox");
+
 	}
 
 	public override void Die()

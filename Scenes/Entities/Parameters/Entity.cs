@@ -21,6 +21,8 @@ public partial class Entity : CharacterBody2D
             GD.Print("Took Damage: " + value + "\nNew Value: " + Parameters.CurrentStats[StatType.HitPoints].Amount);
             _sprite2D.Modulate = new Color(1, 0, 0);
             RedGlowCooldown.Create();
+            if (this is Playeru player)
+                player.Hurtbox.Monitoring = false;
             if (Parameters.CurrentStats[StatType.HitPoints].Amount <= 0)
             {
                 GD.Print("Dead");
@@ -48,7 +50,11 @@ public partial class Entity : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         if (RedGlowCooldown.IsStopped())
+        {
             _sprite2D.Modulate = new Color(1, 1, 1);
+            if (this is Playeru player)
+                player.Hurtbox.Monitoring = true;
+        }
         base._PhysicsProcess(delta);
     }
 }

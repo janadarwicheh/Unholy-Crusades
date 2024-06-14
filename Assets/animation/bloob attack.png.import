@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nffg76odkukc"
-path="res://.godot/imported/boss attack.png-026a0a3f332072fb82e915a87cae5f14.ctex"
+uid="uid://clxx7rkq2sdj5"
+path="res://.godot/imported/bloob attack.png-73fa6b94bf0679b1d1c50a644f32ef64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/animation/boss attack.png"
-dest_files=["res://.godot/imported/boss attack.png-026a0a3f332072fb82e915a87cae5f14.ctex"]
+source_file="res://Assets/animation/bloob attack.png"
+dest_files=["res://.godot/imported/bloob attack.png-73fa6b94bf0679b1d1c50a644f32ef64.ctex"]
 
 [params]
 
