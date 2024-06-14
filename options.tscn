@@ -93,7 +93,7 @@ text = "Piste Audio ON/OFF"
 
 [node name="Tutorial" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 70
 text = "Didactitiel"
 flat = true
 
