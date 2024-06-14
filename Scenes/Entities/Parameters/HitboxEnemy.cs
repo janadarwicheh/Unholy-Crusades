@@ -1,6 +1,6 @@
 using Godot;
-using System;
-using Skull.Scenes.Entities.Parameters;
+
+namespace Skull.Scenes.Entities.Parameters;
 
 public partial class HitboxEnemy : Area2D
 {

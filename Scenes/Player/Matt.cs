@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Xml;
 using Godot;
 using Skull.Scenes.Entities;
@@ -17,6 +18,7 @@ namespace Skull.Scenes.Player;
 
 public partial class Matt : Playeru
 {
+    private Vector2 syncPos = new Vector2(0, 0);
     
     public string CurrentForm { get; set; }
     public PackedScene Projectile { get; set; }
@@ -24,6 +26,7 @@ public partial class Matt : Playeru
     {
         base._Ready();
         Projectile = GD.Load<PackedScene>("res://Scenes/Entities/Projetctiles/MattBullet.tscn");
+        GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
     }
 
     public Matt()
@@ -36,6 +39,15 @@ public partial class Matt : Playeru
     
     public override void _PhysicsProcess(double delta)
     {
+        if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() ==
+            Multiplayer.GetUniqueId())
+        {
+            syncPos = GlobalPosition;
+        }
+        else
+        {
+            GlobalPosition = GlobalPosition.Lerp(syncPos, .1f);
+        }
         base._PhysicsProcess(delta);
     }
 }
@@ -62,7 +74,7 @@ public class MattShoot : Skill
     
     public override bool Launch()
     {
-        MattBullet Instance = (MattBullet)Projectile.Instantiate();
+        Entities.Projetctiles.MattBullet Instance = (Entities.Projetctiles.MattBullet)Projectile.Instantiate();
         if (((Playeru)User).Sprite.FlipH)
         {
             Instance.Direction = 4.71239f;
@@ -76,6 +88,5 @@ public class MattShoot : Skill
         User.GetParent().AddChild(Instance);
         return true;
     }
-
 }
 

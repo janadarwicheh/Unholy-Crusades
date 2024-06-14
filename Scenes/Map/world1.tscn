@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://chtebexkqy5ep"]
+[gd_scene load_steps=12 format=3 uid="uid://chtebexkqy5ep"]
 
 [ext_resource type="Script" path="res://Scenes/Map/world1.cs" id="1_faljg"]
-[ext_resource type="PackedScene" path="res://reversebg.tscn" id="3_ha0gi"]
+[ext_resource type="PackedScene" uid="uid://dvrd815l1dqa3" path="res://Scenes/Player/player.tscn" id="2_kgddt"]
+[ext_resource type="PackedScene" uid="uid://kbbo28ab7krq" path="res://reversebg.tscn" id="3_ha0gi"]
 [ext_resource type="Texture2D" uid="uid://rbjna1wydj3c" path="res://Assets/oak_woods_v1.0/TERRE.png" id="3_mdth8"]
 [ext_resource type="Texture2D" uid="uid://brcv87cke3nve" path="res://Assets/oak_woods_v1.0/TILESET.png" id="4_jip6k"]
-[ext_resource type="PackedScene" path="res://grassbg.tscn" id="5_3s1pk"]
+[ext_resource type="PackedScene" uid="uid://cg4p5xt13dy6l" path="res://grassbg.tscn" id="5_3s1pk"]
+[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="6_g2y8u"]
 [ext_resource type="PackedScene" uid="uid://dghuse7xns4ji" path="res://UI/PauseMenu/pause_menu.tscn" id="7_tq7nr"]
-[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/Enemy.tscn" id="8_tvih3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt4lr"]
 texture = ExtResource("4_jip6k")
@@ -318,6 +319,7 @@ sources/9 = SubResource("TileSetAtlasSource_x1t11")
 
 [node name="World" type="Node"]
 script = ExtResource("1_faljg")
+playerScene = ExtResource("2_kgddt")
 
 [node name="grassbg" parent="." instance=ExtResource("5_3s1pk")]
 position = Vector2(-24560, -20618)
@@ -346,11 +348,17 @@ layer_0/tile_data = PackedInt32Array(983040, 131079, 0, 983041, 196615, 0, 98304
 [node name="Ennemies" type="Node" parent="."]
 process_mode = 1
 
-[node name="Enemy" parent="Ennemies" instance=ExtResource("8_tvih3")]
-position = Vector2(8865, 5855)
+[node name="Enemy2" parent="Ennemies" instance=ExtResource("6_g2y8u")]
+position = Vector2(17135, 6751)
+moveDir = null
+motionRange = null
+speed = null
 
-[node name="Enemy2" parent="Ennemies" instance=ExtResource("8_tvih3")]
-position = Vector2(12641, 5759)
+[node name="Enemy" parent="Ennemies" instance=ExtResource("6_g2y8u")]
+position = Vector2(8837, 6752)
+moveDir = null
+motionRange = null
+speed = null
 
 [node name="Player" type="Node" parent="."]
 
@@ -359,5 +367,12 @@ position = Vector2(2224, 6062)
 metadata/_edit_group_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("7_tq7nr")]
+
+[node name="PlayerSpawnPoints" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"]]
+
+[node name="1" type="Node2D" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"]]

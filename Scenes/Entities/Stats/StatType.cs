@@ -1,4 +1,4 @@
-﻿namespace Skull.Scenes.Entities.Skills;
+﻿namespace Skull.Scenes.Entities.Stats;
 
 public enum StatType
 {

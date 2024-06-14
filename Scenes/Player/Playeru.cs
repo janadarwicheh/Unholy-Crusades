@@ -11,6 +11,7 @@ using Skull.Scenes.Entities.Parameters;
 using Skull.Scenes.Entities.Skills;
 using Entity = Skull.Scenes.Entities.Parameters.Entity;
 using Skull.Scenes.Entities.Skills.Player;
+using Skull.Scenes.Entities.Stats;
 
 public partial class Playeru : Entity
 {
@@ -168,4 +169,8 @@ public partial class Playeru : Entity
 		MoveAndSlide();
 	}
 	
+	public void SetUpPlayer(string name)
+	{
+		GetNode<Label>("Label").Text = name;
+	}
 }

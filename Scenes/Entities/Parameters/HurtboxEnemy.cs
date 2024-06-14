@@ -1,7 +1,6 @@
 using Godot;
-using System;
-using System.Net.Http.Headers;
-using Skull.Scenes.Entities.Parameters;
+
+namespace Skull.Scenes.Entities.Parameters;
 
 public partial class HurtboxEnemy : Area2D
 {

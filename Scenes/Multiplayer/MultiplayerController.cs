@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using Skull.Scenes.Multiplayer;
+using System.Linq;
 
 public partial class MultiplayerController : Control 
 
@@ -19,6 +21,10 @@ public partial class MultiplayerController : Control
 		Multiplayer.PeerDisconnected += PeerDisconnected;
 		Multiplayer.ConnectedToServer += ConnectedToServer;
 		Multiplayer.ConnectionFailed += ConnectionFailed;
+		if (OS.GetCmdlineArgs().Contains("--server"))
+		{
+			hostGame();
+		}
 	}
 
 	private void ConnectionFailed()
@@ -29,11 +35,22 @@ public partial class MultiplayerController : Control
 	private void ConnectedToServer()
 	{
 		GD.Print("CONNECTED TO SERVER");
+		RpcId(1,"SendPlayerInformation", GetNode<LineEdit>("LineEdit").Text, Multiplayer.GetUniqueId());
 	}
 
 	private void PeerDisconnected(long id)
 	{
 		GD.Print("PLAYER DISCONNECTED: " + id.ToString());
+		GameManager.Players.Remove(GameManager.Players.Where(i => i.Id == id).First<PlayerInfo>());
+		var players = GetTree().GetNodesInGroup("Playeru");
+		
+		foreach (var item in players)
+		{
+			if (item.Name == id.ToString())
+			{
+				item.QueueFree();
+			}
+		}
 	}
 
 	private void PeerConnected(long id)
@@ -45,8 +62,8 @@ public partial class MultiplayerController : Control
 	public override void _Process(double delta)
 	{
 	}
-	
-	public void _on_host_button_down()
+
+	private void hostGame()
 	{
 		peer = new ENetMultiplayerPeer();
 		var error = peer.CreateServer(port, 2);
@@ -61,6 +78,12 @@ public partial class MultiplayerController : Control
 
 		Multiplayer.MultiplayerPeer = peer;
 		GD.Print("WAITING FOR PLAYERS!");
+	}
+	
+	public void _on_host_button_down()
+	{
+		hostGame();
+		SendPlayerInformation(GetNode<LineEdit>("LineEdit").Text,1);
 	}
 
 	public void _on_join_button_down()
@@ -82,13 +105,35 @@ public partial class MultiplayerController : Control
 	
 	private void StartGame()
 	{
-		var scene = ResourceLoader.Load<PackedScene>("res://Scenes/Map/world1.tscn").Instantiate();
+		foreach (var item in GameManager.Players)
+		{
+			GD.Print(item.Name + " is playing");
+		}
+		var scene = ResourceLoader.Load<PackedScene>("res://Scenes/Start/Start.tscn").Instantiate();
 		GetTree().Root.AddChild(scene);
 		this.Hide();
 	}
 
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	private void SendPlayerInformation(string name, int id)
 	{
-		throw new NotImplementedException();
+		PlayerInfo playerInfo = new PlayerInfo()
+		{
+			Name = name,
+			Id = id
+		};
+
+		if (!GameManager.Players.Contains(playerInfo))
+		{
+			GameManager.Players.Add(playerInfo);
+		}
+
+		if (Multiplayer.IsServer())
+		{
+			foreach (var item in GameManager.Players)
+			{
+				Rpc("SendPlayerInformation", item.Name, item.Id);
+			}
+		}
 	}
 }

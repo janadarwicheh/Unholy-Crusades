@@ -1,9 +1,8 @@
 using Godot;
-using System;
-using Skull.Scenes.Entities.Parameters;
-using Skull.Scenes.Entities.Projetctiles;
 
-public partial class MattBullet : Entity, IProjectile
+namespace Skull.Scenes.Entities.Projetctiles;
+
+public partial class MattBullet : Parameters.Entity, IProjectile
 {
 	[Export] public float Speed = 50000;
 	public float Direction;

@@ -1,9 +1,7 @@
 using Godot;
-using System;
-using Skull.Scenes.Entities;
-using Skull.Scenes.Entities.Parameters;
 using Skull.Scenes.Entities.Projetctiles;
-using Entity = Skull.Scenes.Entities.Parameters.Entity;
+
+namespace Skull.Scenes.Entities.Parameters;
 
 public partial class Hitbox : Area2D
 {
