@@ -23,25 +23,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Fond" type="Sprite2D" parent="PanelContainer"]
-position = Vector2(1929.5, 1080.13)
-scale = Vector2(4.53588, 4.02486)
+position = Vector2(1916.25, 1070.06)
+scale = Vector2(4.56655, 4.0721)
 texture = ExtResource("2_qhuhd")
-
-[node name="Sprite2D" type="Sprite2D" parent="PanelContainer"]
-position = Vector2(961, 268)
-texture = ExtResource("3_52n17")
-
-[node name="Sprite2D2" type="Sprite2D" parent="PanelContainer"]
-position = Vector2(964, 648)
-texture = ExtResource("3_52n17")
-
-[node name="Sprite2D4" type="Sprite2D" parent="PanelContainer"]
-position = Vector2(963, 830)
-texture = ExtResource("3_52n17")
-
-[node name="Sprite2D3" type="Sprite2D" parent="PanelContainer"]
-position = Vector2(964, 466)
-texture = ExtResource("3_52n17")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 custom_minimum_size = Vector2(500, 0)
@@ -52,6 +36,22 @@ size_flags_vertical = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 100
+
+[node name="Sprite2D2" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer"]
+position = Vector2(254, 437)
+texture = ExtResource("3_52n17")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer"]
+position = Vector2(254, 255)
+texture = ExtResource("3_52n17")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer"]
+position = Vector2(253, 619)
+texture = ExtResource("3_52n17")
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer"]
+position = Vector2(251, 57)
+texture = ExtResource("3_52n17")
 
 [node name="Resume" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)

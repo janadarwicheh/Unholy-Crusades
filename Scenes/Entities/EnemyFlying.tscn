@@ -13,6 +13,38 @@ size = Vector2(17599, 5108)
 [sub_resource type="CircleShape2D" id="CircleShape2D_po3b0"]
 radius = 173.012
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_olu7d"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_34dua"]
+animation = &"Fly"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vt08u"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tw3ob"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_opg1c"]
+advance_mode = 2
+advance_condition = &"EnemyDetected"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i43rb"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0caf3"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xc5dx"]
+states/Attack/node = SubResource("AnimationNodeAnimation_olu7d")
+states/Attack/position = Vector2(723, 97)
+states/Fly/node = SubResource("AnimationNodeAnimation_34dua")
+states/Fly/position = Vector2(561, 97)
+states/Idle/node = SubResource("AnimationNodeAnimation_vt08u")
+states/Idle/position = Vector2(401, 98)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_tw3ob"), "Idle", "Fly", SubResource("AnimationNodeStateMachineTransition_opg1c"), "Fly", "Attack", SubResource("AnimationNodeStateMachineTransition_i43rb"), "Attack", "Fly", SubResource("AnimationNodeStateMachineTransition_0caf3")]
+graph_offset = Vector2(102, 55)
+
 [sub_resource type="Animation" id="Animation_svmoy"]
 resource_name = "Attack"
 length = 0.80001
@@ -217,38 +249,6 @@ _data = {
 "RESET": SubResource("Animation_dc3fv")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_olu7d"]
-animation = &"Attack"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_34dua"]
-animation = &"Fly"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vt08u"]
-animation = &"Idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tw3ob"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_opg1c"]
-advance_mode = 2
-advance_condition = &"EnemyDetected"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i43rb"]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0caf3"]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xc5dx"]
-states/Attack/node = SubResource("AnimationNodeAnimation_olu7d")
-states/Attack/position = Vector2(723, 97)
-states/Fly/node = SubResource("AnimationNodeAnimation_34dua")
-states/Fly/position = Vector2(561, 97)
-states/Idle/node = SubResource("AnimationNodeAnimation_vt08u")
-states/Idle/position = Vector2(401, 98)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_tw3ob"), "Idle", "Fly", SubResource("AnimationNodeStateMachineTransition_opg1c"), "Fly", "Attack", SubResource("AnimationNodeStateMachineTransition_i43rb"), "Attack", "Fly", SubResource("AnimationNodeStateMachineTransition_0caf3")]
-graph_offset = Vector2(102, 55)
-
 [node name="EnemyFlying" type="CharacterBody2D"]
 position = Vector2(1, -1)
 collision_layer = 0
@@ -273,9 +273,6 @@ scale = Vector2(0.333, 0.333)
 texture = ExtResource("2_6xuay")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_s8aq2")
-}
 tree_root = SubResource("AnimationNodeStateMachine_xc5dx")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/EnemyDetected = false
