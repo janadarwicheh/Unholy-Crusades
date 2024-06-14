@@ -6,6 +6,7 @@ using Godot;
 using Godot.Collections;
 using Skull.Scenes.Entities;
 using Skull.Scenes.Entities.Parameters;
+using Skull.Scenes.Entities.Projetctiles;
 using Skull.Scenes.Entities.Resources.Equipment;
 using Skull.Scenes.Entities.Skills;
 using Skull.Scenes.Entities.Skills.Player;
@@ -30,7 +31,7 @@ public partial class Matt : Playeru
     {
         base._Ready();
         Projectile = GD.Load<PackedScene>("res://Scenes/Entities/Projetctiles/MattBullet.tscn");
-        GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
+        GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(1);
     }
 
     public Matt()

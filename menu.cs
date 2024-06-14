@@ -31,6 +31,13 @@ public partial class menu : Control
         GD.Print("Play button");
         GetTree().ChangeSceneToFile("res://Scenes/Start/Start.tscn");
     }
+
+    private void _on_multiplayer_pressed()
+    {
+        GD.Print("Multiplayer button");
+        GetTree().ChangeSceneToFile("res://Scenes/Multiplayer/MultiplayerScene.tscn");
+    }
+    
     private void _on_texture_button_pressed()
     {
         GD.Print("Chat scene");

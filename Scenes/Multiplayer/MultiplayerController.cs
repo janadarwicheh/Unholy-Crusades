@@ -109,9 +109,11 @@ public partial class MultiplayerController : Control
 		{
 			GD.Print(item.Name + " is playing");
 		}
-		var scene = ResourceLoader.Load<PackedScene>("res://Scenes/Start/Start.tscn").Instantiate();
-		GetTree().Root.AddChild(scene);
-		this.Hide();
+
+		GetTree().ChangeSceneToFile("res://Scenes/Start/Start.tscn");
+		// var scene = ResourceLoader.Load<PackedScene>("res://Scenes/Start/Start.tscn").Instantiate();
+		// GetTree().Root.AddChild(scene);
+		// this.Hide();
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]

@@ -2,6 +2,7 @@ using Godot;
 using Skull.Scenes.Entities.Parameters;
 using Skull.Scenes.Entities.Projetctiles;
 using Skull.Scenes.Entities.Skills;
+using Skull.Scenes.Entities.Stats;
 using Skull.Scenes.Player;
 using Skull.Scenes.Timers;
 using EntityHandler = Skull.Scenes.Entities.Parameters.EntityHandler;

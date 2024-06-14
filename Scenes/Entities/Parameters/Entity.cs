@@ -2,6 +2,8 @@ using System;
 using Godot;
 using Godot.Collections;
 using Skull.Scenes.Entities.Skills;
+using Skull.Scenes.Entities.Stats;
+using Skull.Scenes.Timers;
 
 namespace Skull.Scenes.Entities.Parameters;
 
