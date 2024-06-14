@@ -4,7 +4,7 @@ namespace Skull.Scenes.Entities.Projetctiles;
 
 public partial class MattBullet : Parameters.Entity, IProjectile
 {
-	[Export] public float Speed = 50000;
+	[Export] public float Speed = 100000;
 	public float Direction;
 	public void AreaEntered()
 	{

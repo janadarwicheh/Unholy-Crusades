@@ -38,15 +38,15 @@ layout_mode = 2
 theme_override_constants/separation = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer"]
-position = Vector2(1883, 42.9999)
-scale = Vector2(2.56827, 1.69266)
+position = Vector2(1892.5, 40.875)
+scale = Vector2(3.25904, 1.65367)
 texture = ExtResource("2_hxf7w")
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_h3bfw")
 theme_override_font_sizes/font_size = 100
-text = "Choose your character"
+text = "Choisissez votre personnage"
 horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -96,7 +96,7 @@ texture = ExtResource("7_8sn68")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_h3bfw")
 theme_override_font_sizes/font_size = 100
-text = "QUIT"
+text = "quitter"
 flat = true
 script = ExtResource("3_l0owj")
 

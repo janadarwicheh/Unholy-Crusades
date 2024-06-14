@@ -3,7 +3,7 @@ using Skull.Scenes.Entities.Projetctiles;
 
 namespace Skull.Scenes.Entities.Parameters;
 
-public partial class Hitbox : Area2D
+public partial class Hitbox : Godot.Area2D
 {
 	// Called when the node enters the scene tree for the first time.
 	public int SKillID;
@@ -22,7 +22,7 @@ public partial class Hitbox : Area2D
 	}
 	
 
-	private void OnAreaEntered(Area2D area)
+	private void OnAreaEntered(Godot.Area2D area)
 	{
 		if (GetParent() is IProjectile)
 		{

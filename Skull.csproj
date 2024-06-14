@@ -1,13 +1,15 @@
+<<<<<<< HEAD
 <Project Sdk="Godot.NET.Sdk/4.2.1">
+=======
+<Project Sdk="Godot.NET.Sdk/4.1.1">
+>>>>>>> origin/main
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Scenes\Start\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scenes\Dialogue\DataDialogue.json" />
+<Project Sdk="Godot.NET.Sdk/4.2.1">
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />

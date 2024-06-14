@@ -1,6 +1,6 @@
 using Godot;
-
-namespace Skull.Scenes.Entities.Parameters;
+using System;
+using Skull.Scenes.Entities.Parameters;
 
 public partial class HitboxEnemy : Area2D
 {
@@ -19,6 +19,11 @@ public partial class HitboxEnemy : Area2D
 	
 	private void OnAreaEntered(Area2D area)
 	{
+		if (GetParent() is IProjectile)
+		{
+			GD.Print("bullet entered");
+			((IProjectile)GetParent()).AreaEntered();
+		}
 		GD.Print(area.Name + " Area Entered HitBox enemy of "+ GetParent().Name);
 		((Entity)(area.Owner)).TakeDamage((Entity)Owner, 0, 1);
 	}

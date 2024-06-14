@@ -1,12 +1,12 @@
 using Godot;
+using System;
+using Skull.Scenes;
+using Skull.Scenes.Entities.Parameters;
 
-namespace Skull.Scenes.Entities;
-
-public partial class Enemy : Parameters.Entity
+public partial class Enemy : Entity
 {
-	// Called when the node enters the scene tree for the first time.
-	Area2D area_right;
-	Area2D area_left;
+	Godot.Area2D area_right;
+	Godot.Area2D area_left;
 	bool MovementLock = false;
 	public Sprite2D Sprite2D;
 	public AnimationTree AnimationTree;
@@ -20,18 +20,25 @@ public partial class Enemy : Parameters.Entity
 	public float speed = 400.0f;
 	Vector2 velocity;
 	public float gravity = CurrentInfo.Gravity;
+	public AnimationNodeStateMachinePlayback Anim;
+	public Area2D AttackArea;
 	
-	private void _on_area_2d_area_entered_right(Area2D area)
+	private void _on_area_2d_area_entered_right(Godot.Area2D area)
 	{
 		MovementLock = true;
-		AnimationTree.Set("parameters/conditions/InRange", true);
-		AnimationTree.Set("parameters/conditions/InRange", false);
+		Anim.Travel("attack");
 	}
-	private void _on_area_2d_area_entered_left(Area2D area)
+	private void _on_area_2d_area_entered_left(Godot.Area2D area)
 	{
 		MovementLock = true;
-		AnimationTree.Set("parameters/conditions/InRange", true);
-		AnimationTree.Set("parameters/conditions/InRange", false);
+		Anim.Travel("attack");
+	}
+
+	private void _on_animation_tree_animation_finished(string name)
+	{
+		MovementLock = false;
+		area_right.Monitoring = false;
+		area_left.Monitoring = false;
 	}
 	
 	private bool ShouldTurn()
@@ -47,31 +54,37 @@ public partial class Enemy : Parameters.Entity
 	
 	public override void _Ready()
 	{
+		base._Ready();
 		AnimationTree = GetNode<AnimationTree>("AnimationTree");
+		Anim = GetNode<AnimationTree>("AnimationTree").Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();;
 		Sprite2D = GetNode<Sprite2D>("Sprite2D");
 		velocity = Vector2.Zero;
 		velocity.X = speed;
-		area_right = GetNode<Area2D>("Area2DRight");
-		area_left = GetNode<Area2D>("Area2DLeft");
+		area_right = GetNode<Godot.Area2D>("Area2DRight");
+		area_left = GetNode<Godot.Area2D>("Area2DLeft");
 		Down[0] = GetNode<RayCast2D>("RayCast2DDownLeft");
 		Down[1] = GetNode<RayCast2D>("RayCast2DDownRight");
 		Side = GetNode<RayCast2D>("RayCast2DSide");
-		Parameters = new Parameters.EntityHandler(30, 4, 2, 250, null, null);
+		Parameters = new Parameters.EntityHandler(31, 4, 4, 250, null, null);
+		AttackArea = GetNode<Area2D>("Attack");
 	}
 	
 	
 	public override void _PhysicsProcess(double delta)
 	{
+		base._PhysicsProcess(delta);
 		velocity = Velocity;
 		if (ShouldTurn())
 			moveDir *= -1;
 		if (moveDir == -1)
 		{
 			Sprite2D.FlipH = true;
+			AttackArea.RotationDegrees = 180;
 		}
 		else
 		{
 			Sprite2D.FlipH = false;
+			AttackArea.RotationDegrees = 0;
 		}
 		if (Sprite2D.FlipH)
 		{

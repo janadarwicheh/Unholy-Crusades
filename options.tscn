@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnkn1mmjh8jbt"]
+[gd_scene load_steps=8 format=3 uid="uid://bnkn1mmjh8jbt"]
 
 [ext_resource type="Script" path="res://menu.cs" id="1_rgn7i"]
 [ext_resource type="AudioStream" uid="uid://coyad3sgym314" path="res://ship-radar.wav" id="2_1ybuk"]
 [ext_resource type="Texture2D" uid="uid://hwdukkrkkuvx" path="res://Assets/UserInterface/Fantasy Wooden GUI/Fantasy Wooden GUI  Free/PNG/UI board Large  parchment.png" id="2_sxgol"]
 [ext_resource type="FontFile" uid="uid://cfexm7qgcg0jh" path="res://Assets/UserInterface/Fantasy Wooden GUI/Fantasy Wooden GUI  Free/Font/Fonts/buddychampionbold.ttf" id="3_hp10b"]
 [ext_resource type="Texture2D" uid="uid://bloh0w3bvsp0e" path="res://Assets/UserInterface/Fantasy Wooden GUI/Fantasy Wooden GUI  Free/PNG/IRONY TITLE  empty.png" id="5_051ns"]
+[ext_resource type="Texture2D" uid="uid://cpt7swx36m5uc" path="res://Assets/UserInterface/Fantasy Wooden GUI/Fantasy Wooden GUI  Free/PNG/TextBTN_Big.png" id="6_76gyp"]
 
 [sub_resource type="Theme" id="Theme_77hn4"]
 default_font = ExtResource("3_hp10b")
@@ -47,6 +48,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(205, 38.5)
+scale = Vector2(1.70051, 1)
+texture = ExtResource("5_051ns")
+
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -62,23 +68,35 @@ item_1/text = "Item002"
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_constants/separation = 40
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-position = Vector2(212, 48.5)
-texture = ExtResource("5_051ns")
+[node name="Sprite2D3" type="Sprite2D" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+position = Vector2(204, 54.5)
+texture = ExtResource("6_76gyp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+position = Vector2(202, 264.5)
+texture = ExtResource("6_76gyp")
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 100
-text = "Back"
+text = "Retour"
 flat = true
 
 [node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
-text = "Audio select ON/OFF"
+text = "Piste Audio ON/OFF"
+
+[node name="Tutorial" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Didactitiel"
+flat = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]

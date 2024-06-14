@@ -2,9 +2,9 @@
 using Skull.Scenes.Entities.Skills.Player;
 using Godot;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using Godot.Collections;
 using Skull.Scenes;
 using Skull.Scenes.Entities;
 using Skull.Scenes.Entities.Parameters;
@@ -18,13 +18,41 @@ public partial class Playeru : Entity
 	protected AnimationTree AnimationTree;
 	public Sprite2D Sprite;
 	private float _gravity;
-	protected float JumpVelocity = -6000;
+	protected float JumpVelocity = -11000;
 	public bool jumped = false;
 	protected float Speed;
 	public Skill? CastingSkill = null;
 	float run_mult = 1.5f;
 	private Vector2 currentdir;
-	public Dictionary<PlayerSkill, Skill> Skills = new Dictionary<PlayerSkill, Skill>();
+	private Area2D actionableFinder;
+	public Area2D Attack;
+	public AnimationNodeStateMachinePlayback AnimationTreePlayback;
+	public AnimationNodeStateMachinePlayback AnimationTreePlaybackSkill;
+	public System.Collections.Generic.Dictionary<PlayerSkill, Skill> Skills = new System.Collections.Generic.Dictionary<PlayerSkill, Skill>();
+	public Area2D Hurtbox;
+	
+	
+	public override void _Ready()
+	{
+		base._Ready();
+		Sprite = GetNode<Sprite2D>("Sprite2D");
+		AnimationTree = GetNode<AnimationTree>("AnimationTree");
+		AnimationTree.Active = true;
+		_gravity = CurrentInfo.Gravity;
+		actionableFinder = GetNode<Area2D>("Direction/ActionableFinder");
+		Attack = GetNode<Area2D>("Attack");
+		AnimationTreePlayback = GetNode<AnimationTree>("AnimationTree").Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();
+		AnimationTreePlaybackSkill = GetNode<AnimationTree>("AnimationTree").Get("parameters/SkillUsed/playback").As<AnimationNodeStateMachinePlayback>();
+		Hurtbox = GetNode<Area2D>("Hurtbox");
+
+	}
+
+	public override void Die()
+	{
+		GetTree().ChangeSceneToFile("res://Scenes/GameOver/game_over_screen.tscn");
+	}
+
+
 	public void UpdateAnimationParamaters()
 	{
 		if (IsOnFloor())
@@ -34,9 +62,7 @@ public partial class Playeru : Entity
 			AnimationTree.Set("parameters/conditions/Jump", false);
 			if (CastingSkill!=null)
 			{
-				AnimationTree.Set("parameters/conditions/SkillUsed", true);
-				AnimationTree.Set("parameters/conditions/Idle", false);
-				AnimationTree.Set("parameters/conditions/IsMoving", false);
+				AnimationTreePlayback.Travel("SkillUsed");
 			}
 			else
 			{
@@ -46,12 +72,14 @@ public partial class Playeru : Entity
 					AnimationTree.Set("parameters/conditions/Idle", false);
 					AnimationTree.Set("parameters/conditions/IsMoving", true);
 					Sprite.FlipH = false;
+					Attack.RotationDegrees = 0;
 				}
 				else if (Velocity.X < 0)
 				{
 					AnimationTree.Set("parameters/conditions/Idle", false);
 					AnimationTree.Set("parameters/conditions/IsMoving", true);
 					Sprite.FlipH = true;
+					Attack.RotationDegrees = 180;
 				}
 				else
 				{
@@ -64,7 +92,7 @@ public partial class Playeru : Entity
 		{
 				if (CastingSkill!=null)
 				{
-					AnimationTree.Set("parameters/conditions/SkillUsed", true);
+					AnimationTreePlayback.Travel("SkillUsed");
 					AnimationTree.Set("parameters/conditions/Idle", false);
 					AnimationTree.Set("parameters/conditions/IsMoving", false);
 				}
@@ -98,13 +126,6 @@ public partial class Playeru : Entity
 		}
 		
 	}
-	public override void _Ready()
-	{
-		Sprite = GetNode<Sprite2D>("Sprite2D");
-		AnimationTree = GetNode<AnimationTree>("AnimationTree");
-		AnimationTree.Active = true;
-		_gravity = CurrentInfo.Gravity;
-	}
 
 	protected void Reload()
 	{
@@ -112,57 +133,60 @@ public partial class Playeru : Entity
 		_gravity = CurrentInfo.Gravity;
 		CurrentInfo.Player = this;
 	}
+	
+	public void on_f_pressed()
+	{
+		Array<Area2D> actionables = actionableFinder.GetOverlappingAreas();
+		if (actionables.Count > 0)
+		{
+			(actionables[0] as actionable).Action();
+		}
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		base._PhysicsProcess(delta);
+		AnimationTree.Set("parameters/conditions/SkillUsed", false);	
 		CastingSkill = null;
 		Vector2 velocity = Velocity;
+		if (Input.IsActionJustPressed("ui_accepted"))
 		{
-			if (Input.IsActionJustPressed("attack"))
-			{
-				SkillUsed(PlayerSkill.Attack);
-			}
-			else if (Input.IsActionJustPressed("special1"))
-			{
-				SkillUsed(PlayerSkill.Special1);
-			}
+			on_f_pressed();
+		}
+		if (Input.IsActionJustPressed("attack"))
+		{
+			SkillUsed(PlayerSkill.Attack);
+		}
+		else if (Input.IsActionJustPressed("special1"))
+		{
+			SkillUsed(PlayerSkill.Special1);
+		}
 
-			if (Input.IsActionPressed("shift"))
-			{
-				Speed = (Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000)*run_mult;
-			}
-			else
-			{
-				Speed = Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000;
-			}
-			if (!IsOnFloor())
-			{
-				velocity.Y += _gravity * (float)delta;
-			}
-			if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			{
-				velocity.Y = JumpVelocity;
-				jumped = true;
-			}
-			Vector2 direction = Input.GetVector("move_left", "move_right", "ui_up", "ui_down");
-			if (direction != Vector2.Zero && Math.Abs(velocity.X)< Math.Abs(Speed))
-			{
-				currentdir = direction;
-				velocity.X += direction.X * Speed/10;
-			}
-			else if (Math.Abs(velocity.X)>Math.Abs(Speed))
-			{
-				velocity.X -= Speed;
-			}
-			else if (direction != Vector2.Zero && currentdir == direction)
-			{
-				
-			}
-			
-			else 
-			{
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-			}
+		if (Input.IsActionPressed("shift"))
+		{
+			Speed = (Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000)*run_mult;
+		}
+		else
+		{
+			Speed = Parameters.CurrentStats[StatType.Speed].Amount * 3 + 2000;
+		}
+		if (!IsOnFloor())
+		{
+			velocity.Y += _gravity * (float)delta;
+		}
+		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+		{
+			velocity.Y = JumpVelocity;
+			jumped = true;
+		}
+		Vector2 direction = Input.GetVector("move_left", "move_right", "ui_up", "ui_down");
+		if (direction != Vector2.Zero)
+		{
+			velocity.X = Mathf.MoveToward(Velocity.X, Speed * direction.X, Speed/8);
+		}
+		else 
+		{
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed/8);
 		}
 		Velocity = velocity;
 		UpdateAnimationParamaters();

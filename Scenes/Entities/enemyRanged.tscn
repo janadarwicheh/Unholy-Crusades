@@ -1,0 +1,273 @@
+[gd_scene load_steps=17 format=3 uid="uid://n6lxtdexlle0"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/enemyRanged.cs" id="1_6q8ch"]
+[ext_resource type="Script" path="res://Scenes/Entities/Parameters/HurtboxEnemy.cs" id="2_miuxb"]
+[ext_resource type="Texture2D" uid="uid://bmk2glt845sdy" path="res://Installer/demon-courte/Marche Melee.png" id="3_06yik"]
+[ext_resource type="Texture2D" uid="uid://xyy0fhdd8j81" path="res://Installer/demon-courte-attaque/demon-courte-attaque.png" id="4_p8hkr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ne0vh"]
+radius = 233.0
+height = 1088.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_q2nb3"]
+a = Vector2(-7004, 10)
+b = Vector2(2, -2)
+
+[sub_resource type="Animation" id="Animation_kmx3c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_06yik")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_5quib"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_p8hkr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Shoot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nyp7g"]
+resource_name = "walk"
+length = 1.15
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_06yik")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ifyp7"]
+_data = {
+"RESET": SubResource("Animation_kmx3c"),
+"attack": SubResource("Animation_5quib"),
+"walk": SubResource("Animation_nyp7g")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lsu8r"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_te0yg"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7f0m7"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d6j31"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_viwvo"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6n4xr"]
+states/attack/node = SubResource("AnimationNodeAnimation_lsu8r")
+states/attack/position = Vector2(604, 100)
+states/walk/node = SubResource("AnimationNodeAnimation_te0yg")
+states/walk/position = Vector2(359, 100)
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_7f0m7"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_d6j31"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_viwvo")]
+
+[node name="EnemyRanged" type="CharacterBody2D" node_paths=PackedStringArray("Sprite2D")]
+position = Vector2(1, -1)
+collision_layer = 4
+collision_mask = 3
+floor_constant_speed = true
+script = ExtResource("1_6q8ch")
+Sprite2D = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, 0)
+shape = SubResource("CapsuleShape2D_ne0vh")
+
+[node name="Area2DRight" type="Area2D" parent="."]
+position = Vector2(248, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DRight"]
+position = Vector2(7010, 8)
+shape = SubResource("SegmentShape2D_q2nb3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("3_06yik")
+hframes = 12
+
+[node name="Area2DLeft" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DLeft"]
+position = Vector2(-219, 1)
+shape = SubResource("SegmentShape2D_q2nb3")
+
+[node name="RayCast2DDownLeft" type="RayCast2D" parent="."]
+position = Vector2(-221, 141)
+target_position = Vector2(-7, 566)
+
+[node name="RayCast2DDownRight" type="RayCast2D" parent="."]
+position = Vector2(248, 140)
+target_position = Vector2(-2, 567)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_miuxb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(14, 0)
+shape = SubResource("CapsuleShape2D_ne0vh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ifyp7")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ifyp7")
+}
+tree_root = SubResource("AnimationNodeStateMachine_6n4xr")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="RayCast2DSide" type="RayCast2D" parent="."]
+position = Vector2(6, 502)
+target_position = Vector2(387, -11)
+
+[connection signal="area_entered" from="Area2DRight" to="." method="_on_area_2d_area_entered_right"]
+[connection signal="area_entered" from="Area2DLeft" to="." method="_on_area_2d_area_entered_left"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_attacked"]
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

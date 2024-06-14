@@ -2,7 +2,7 @@ using Godot;
 
 namespace Skull.Scenes.Entities.Parameters;
 
-public partial class Hurtbox : Area2D
+public partial class Hurtbox : Godot.Area2D
 {
 	// Called when the node enters the scene tree for the first time.
 	public Hurtbox()
@@ -16,7 +16,7 @@ public partial class Hurtbox : Area2D
 		AreaEntered += OnAreaEntered;
 	}
 
-	private void OnAreaEntered(Area2D area)
+	private void OnAreaEntered(Godot.Area2D area)
 	{
 		GD.Print(Owner.Name+"'s Hurtbox has been Entered by " + area.Name);
 		((Entity)(Owner)).TakeDamage((Entity)area.Owner, 0, 1);
