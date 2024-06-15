@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://chtebexkqy5ep"]
+[gd_scene load_steps=26 format=3 uid="uid://chtebexkqy5ep"]
 
 [ext_resource type="Script" path="res://Scenes/Map/world1.cs" id="1_faljg"]
 [ext_resource type="PackedScene" uid="uid://kbbo28ab7krq" path="res://reversebg.tscn" id="3_ha0gi"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b6gm7vxt0jjm3" path="res://Assets/npc/Marlene.png" id="12_4k87v"]
 [ext_resource type="Resource" uid="uid://cx6tjsmn1y1pd" path="res://Scenes/Dialogue/FIN.dialogue" id="12_dpi1x"]
 [ext_resource type="PackedScene" uid="uid://cx27r16aoaya3" path="res://Scenes/Entities/Boss.tscn" id="16_vubl4"]
+[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="18_hlu4x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt4lr"]
 texture = ExtResource("4_jip6k")
@@ -791,16 +792,171 @@ one_way_collision_margin = 0.0
 [node name="Ennemies" type="Node" parent="."]
 process_mode = 1
 
-[node name="EnemyRanged" parent="Ennemies" instance=ExtResource("11_eun1a")]
-position = Vector2(13245, 6974)
-
-[node name="Enemy" parent="Ennemies" instance=ExtResource("16_vubl4")]
+[node name="Boss" parent="Ennemies" instance=ExtResource("16_vubl4")]
 position = Vector2(111503, 5364)
+
+[node name="EnemyFlying" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(27823, 9785)
+
+[node name="EnemyFlying2" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(55940, 11358)
+
+[node name="EnemyFlying3" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(69219, 10970)
+
+[node name="EnemyFlying4" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(62819, 9787)
+
+[node name="EnemyFlying5" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(82652, 8926)
+
+[node name="EnemyFlying6" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(85960, 8375)
+
+[node name="EnemyFlying7" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(88754, -961)
+
+[node name="EnemyFlying8" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(90976, -3024)
+
+[node name="EnemyFlying9" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(98864, -805)
+
+[node name="EnemyFlying10" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(126259, 1158)
+
+[node name="EnemyFlying16" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(109110, 562)
+
+[node name="EnemyFlying17" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(112953, -262)
+
+[node name="EnemyFlying18" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(114942, 559)
+
+[node name="EnemyFlying11" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(134806, 5704)
+
+[node name="EnemyFlying12" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(142090, 9146)
+
+[node name="EnemyFlying13" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(151135, 9176)
+
+[node name="EnemyFlying14" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(159798, 15391)
+
+[node name="EnemyFlying15" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(172306, 9565)
+
+[node name="EnemyFlying19" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(183663, 12888)
+
+[node name="EnemyFlying21" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(186609, 12634)
+
+[node name="EnemyFlying22" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(196304, 12906)
+
+[node name="EnemyFlying23" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(200575, 16814)
+
+[node name="EnemyFlying24" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(212144, 12438)
+
+[node name="EnemyFlying25" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(221648, 10402)
+
+[node name="EnemyFlying26" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(229839, 10674)
+
+[node name="EnemyFlying27" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(238890, 10674)
+
+[node name="EnemyFlying28" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(234470, -12645)
+
+[node name="EnemyFlying29" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(220208, -13829)
+
+[node name="EnemyFlying30" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(204186, -11263)
+
+[node name="EnemyFlying31" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(186206, -10293)
+
+[node name="EnemyFlying32" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(171842, -11259)
+
+[node name="EnemyFlying33" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(152450, -9787)
+
+[node name="EnemyFlying34" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(141559, -7743)
+
+[node name="EnemyFlying35" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(160664, -10326)
+
+[node name="EnemyFlying20" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(185248, 6634)
+
+[node name="EnemyRanged" parent="Ennemies" instance=ExtResource("11_eun1a")]
+position = Vector2(21040, 7126)
+
+[node name="EnemyRanged2" parent="Ennemies" node_paths=PackedStringArray("Sprite2D") instance=ExtResource("11_eun1a")]
+position = Vector2(35760, 5014)
+Sprite2D = NodePath("../EnemyRanged/Sprite2D")
+
+[node name="EnemyRanged3" parent="Ennemies" node_paths=PackedStringArray("Sprite2D") instance=ExtResource("11_eun1a")]
+position = Vector2(53374, 4032)
+Sprite2D = NodePath("../EnemyRanged/Sprite2D")
+
+[node name="Enemy" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(14097, 7107)
+
+[node name="Enemy2" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(17540, 7107)
+
+[node name="Enemy3" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(26511, 6020)
+
+[node name="Enemy4" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(30619, 4993)
+
+[node name="Enemy5" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(42550, 5053)
+
+[node name="Enemy6" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(50728, 5078)
+
+[node name="Enemy7" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(45936, 14458)
+
+[node name="Enemy8" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(54546, 14601)
+
+[node name="Enemy9" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(59512, 14601)
+
+[node name="Enemy10" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(68822, 14547)
+
+[node name="Enemy11" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(66334, 5357)
+
+[node name="Enemy12" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(80700, 4625)
+
+[node name="Enemy13" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(90279, 1261)
+
+[node name="Enemy14" parent="Ennemies" instance=ExtResource("18_hlu4x")]
+position = Vector2(92808, 238)
 
 [node name="Player" type="Node" parent="."]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
-position = Vector2(2224, 6062)
+position = Vector2(2181, 6418)
 metadata/_edit_group_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

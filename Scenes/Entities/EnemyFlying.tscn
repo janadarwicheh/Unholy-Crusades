@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/HitboxEnemy.cs" id="4_3mb2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bsvvm"]
-size = Vector2(17599, 5108)
+size = Vector2(10700, 5108)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_po3b0"]
 radius = 173.012
@@ -261,7 +261,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(17.5, 2379)
+position = Vector2(18, 2379)
 shape = SubResource("RectangleShape2D_bsvvm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
