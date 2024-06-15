@@ -35,7 +35,7 @@ public partial class World : Node
 				Joueur = (Playeru)Tamer.Instantiate();
 				Camera2D cam = new Camera2D();
 				cam.PositionSmoothingEnabled = true;
-				cam.Zoom = new Vector2(0.125f, 0.125f);
+				cam.Zoom = new Vector2(0.150f, 0.150f);
 				Joueur.AddChild(cam);
 				Joueur.GlobalPosition = new Vector2(0,0);
 				GetNode("Player/RemoteTransform2D").AddChild(Joueur);
