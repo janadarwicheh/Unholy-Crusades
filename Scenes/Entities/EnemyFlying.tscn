@@ -247,7 +247,7 @@ states/Fly/position = Vector2(561, 97)
 states/Idle/node = SubResource("AnimationNodeAnimation_vt08u")
 states/Idle/position = Vector2(401, 98)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_tw3ob"), "Idle", "Fly", SubResource("AnimationNodeStateMachineTransition_opg1c"), "Fly", "Attack", SubResource("AnimationNodeStateMachineTransition_i43rb"), "Attack", "Fly", SubResource("AnimationNodeStateMachineTransition_0caf3")]
-graph_offset = Vector2(102, 55)
+graph_offset = Vector2(74, -19)
 
 [node name="EnemyFlying" type="CharacterBody2D"]
 position = Vector2(1, -1)
