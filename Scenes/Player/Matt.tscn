@@ -587,7 +587,8 @@ radius = 761.032
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vgu0a"]
 properties/0/path = NodePath(".:syncPos")
 properties/0/spawn = true
-properties/0/replication_mode = 1
+properties/0/sync = true
+properties/0/watch = false
 
 [node name="Matt" type="CharacterBody2D" groups=["Playeru"]]
 collision_layer = 2
@@ -618,9 +619,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_a7i13")
-}
 tree_root = SubResource("AnimationNodeStateMachine_wqtuk")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/Airborne = false

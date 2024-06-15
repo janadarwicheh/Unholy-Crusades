@@ -358,6 +358,12 @@ position = Vector2(309951, -20480)
 [node name="reversebg" parent="Background" instance=ExtResource("3_ha0gi")]
 position = Vector2(132091, 19251)
 
+[node name="reversebg5" parent="Background" instance=ExtResource("3_ha0gi")]
+position = Vector2(133371, -57805)
+
+[node name="reversebg6" parent="Background" instance=ExtResource("3_ha0gi")]
+position = Vector2(263803, -57549)
+
 [node name="reversebg4" parent="Background" instance=ExtResource("3_ha0gi")]
 position = Vector2(262779, 19123)
 

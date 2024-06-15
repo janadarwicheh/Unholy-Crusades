@@ -479,7 +479,8 @@ graph_offset = Vector2(41, 27)
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0cvwb"]
 properties/0/path = NodePath(".:syncPos")
 properties/0/spawn = true
-properties/0/replication_mode = 1
+properties/0/sync = true
+properties/0/watch = false
 
 [node name="Eldric" type="CharacterBody2D"]
 collision_layer = 2
@@ -532,15 +533,12 @@ shape = SubResource("CircleShape2D_i1mfh")
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 1.5
 libraries = {
 "": SubResource("AnimationLibrary_p5hk1")
 }
-speed_scale = 1.5
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_p5hk1")
-}
 tree_root = SubResource("AnimationNodeStateMachine_j034s")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/Airborne = false
