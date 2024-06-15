@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cs5na5sxwlwt3"]
+[gd_scene load_steps=46 format=3 uid="uid://cs5na5sxwlwt3"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Eldric.cs" id="1_lv8su"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/Hurtbox.cs" id="2_p07vv"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/Hitbox.cs" id="4_77gdc"]
 [ext_resource type="Texture2D" uid="uid://chtoqi42yu30q" path="res://Assets/animation/eledrich attaque/eledrich_attaque.png" id="5_4cxbq"]
 [ext_resource type="Texture2D" uid="uid://n00p7lgj3051" path="res://Assets/animation/eldrich saute/eldrich_saute.png" id="6_j2mcy"]
+[ext_resource type="AudioStream" uid="uid://b5dinv8g22pfe" path="res://Assets/son/metal-blade-slice-76-200891.mp3" id="7_b27bc"]
+[ext_resource type="AudioStream" uid="uid://cwdyplnf6ou5q" path="res://Assets/son/Single-footstep-on-concrete-with-sneaker-shoes-4-www.FesliyanStudios.com.mp3" id="8_3inig"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yce85"]
 radius = 221.0
@@ -182,6 +184,21 @@ tracks/5/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_b27bc")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_chh5q"]
 resource_name = "idle"
@@ -302,6 +319,25 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_3inig")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_3inig")
+}],
+"times": PackedFloat32Array(-0.4545, 0.2727)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p5hk1"]
 _data = {
@@ -427,7 +463,8 @@ graph_offset = Vector2(41, 27)
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0cvwb"]
 properties/0/path = NodePath(".:syncPos")
 properties/0/spawn = true
-properties/0/replication_mode = 1
+properties/0/sync = true
+properties/0/watch = false
 
 [node name="Eldric" type="CharacterBody2D"]
 collision_layer = 2
@@ -480,15 +517,12 @@ shape = SubResource("CircleShape2D_i1mfh")
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 1.5
 libraries = {
 "": SubResource("AnimationLibrary_p5hk1")
 }
-speed_scale = 1.5
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_p5hk1")
-}
 tree_root = SubResource("AnimationNodeStateMachine_j034s")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/Airborne = false
@@ -500,3 +534,5 @@ parameters/conditions/SkillUsed = false
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_0cvwb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
