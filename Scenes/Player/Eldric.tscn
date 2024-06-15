@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cs5na5sxwlwt3"]
+[gd_scene load_steps=44 format=3 uid="uid://cs5na5sxwlwt3"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Eldric.cs" id="1_lv8su"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/Hurtbox.cs" id="2_p07vv"]
@@ -424,6 +424,11 @@ states/walk/position = Vector2(655, 98)
 transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_45vlj"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_d6esb"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ugxvt"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_tkta3"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_xkopi"), "jump", "walk", SubResource("AnimationNodeStateMachineTransition_0fbdj"), "walk", "jump", SubResource("AnimationNodeStateMachineTransition_gteqq"), "idle", "airborne", SubResource("AnimationNodeStateMachineTransition_mvw2w"), "airborne", "idle", SubResource("AnimationNodeStateMachineTransition_qn3h4"), "walk", "airborne", SubResource("AnimationNodeStateMachineTransition_eb6u2"), "jump", "airborne", SubResource("AnimationNodeStateMachineTransition_jbnr5"), "idle", "SkillUsed", SubResource("AnimationNodeStateMachineTransition_784km"), "SkillUsed", "idle", SubResource("AnimationNodeStateMachineTransition_bneuj"), "walk", "SkillUsed", SubResource("AnimationNodeStateMachineTransition_xoua4"), "jump", "SkillUsed", SubResource("AnimationNodeStateMachineTransition_ixeij"), "airborne", "SkillUsed", SubResource("AnimationNodeStateMachineTransition_yf51i"), "SkillUsed", "airborne", SubResource("AnimationNodeStateMachineTransition_odp4j")]
 graph_offset = Vector2(41, 27)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0cvwb"]
+properties/0/path = NodePath(".:syncPos")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="Eldric" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
@@ -492,3 +497,6 @@ parameters/conditions/Idle = false
 parameters/conditions/IsMoving = false
 parameters/conditions/Jump = false
 parameters/conditions/SkillUsed = false
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0cvwb")

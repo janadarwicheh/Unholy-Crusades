@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://uojkct58vaq2"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Projetctiles/MattBullet.cs" id="1_qtnue"]
-[ext_resource type="Texture2D" uid="uid://dx61q6xfpnjib" path="res://icon.svg" id="2_63pji"]
+[ext_resource type="Texture2D" uid="uid://ryi0t5sltssu" path="res://Assets/projectile4-3.png" id="2_6sivc"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/Hitbox.cs" id="3_6jhjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv5ji"]
@@ -12,7 +12,9 @@ script = ExtResource("1_qtnue")
 Speed = 2000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_63pji")
+position = Vector2(-1, -0.999998)
+scale = Vector2(6.1, 7.875)
+texture = ExtResource("2_6sivc")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("3_6jhjw")
