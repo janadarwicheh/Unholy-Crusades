@@ -286,6 +286,7 @@ libraries = {
 }
 
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 script = ExtResource("3_w6o4m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -293,6 +294,7 @@ position = Vector2(52, -19)
 shape = SubResource("CircleShape2D_po3b0")
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 script = ExtResource("4_3mb2a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

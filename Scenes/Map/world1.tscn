@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://chtebexkqy5ep"]
+[gd_scene load_steps=25 format=3 uid="uid://chtebexkqy5ep"]
 
 [ext_resource type="Script" path="res://Scenes/Map/world1.cs" id="1_faljg"]
 [ext_resource type="PackedScene" uid="uid://kbbo28ab7krq" path="res://reversebg.tscn" id="3_ha0gi"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://n6lxtdexlle0" path="res://Scenes/Entities/enemyRanged.tscn" id="11_eun1a"]
 [ext_resource type="Texture2D" uid="uid://b6gm7vxt0jjm3" path="res://Assets/npc/Marlene.png" id="12_4k87v"]
 [ext_resource type="Resource" uid="uid://cx6tjsmn1y1pd" path="res://Scenes/Dialogue/FIN.dialogue" id="12_dpi1x"]
+[ext_resource type="PackedScene" uid="uid://cx27r16aoaya3" path="res://Scenes/Entities/Boss.tscn" id="16_vubl4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt4lr"]
 texture = ExtResource("4_jip6k")
@@ -789,6 +790,9 @@ process_mode = 1
 
 [node name="EnemyRanged" parent="Ennemies" instance=ExtResource("11_eun1a")]
 position = Vector2(13245, 6974)
+
+[node name="Enemy" parent="Ennemies" instance=ExtResource("16_vubl4")]
+position = Vector2(111503, 5364)
 
 [node name="Player" type="Node" parent="."]
 

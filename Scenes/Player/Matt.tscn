@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cypayl3cswcoq"]
+[gd_scene load_steps=67 format=3 uid="uid://cypayl3cswcoq"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Matt.cs" id="1_vbc3d"]
 [ext_resource type="Texture2D" uid="uid://btt543yogbbcc" path="res://Installer/matt marche/Matt_Marche.png" id="2_1yj73"]
