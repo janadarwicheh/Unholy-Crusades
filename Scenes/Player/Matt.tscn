@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cypayl3cswcoq"]
+[gd_scene load_steps=70 format=3 uid="uid://cypayl3cswcoq"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Matt.cs" id="1_vbc3d"]
 [ext_resource type="Texture2D" uid="uid://btt543yogbbcc" path="res://Installer/matt marche/Matt_Marche.png" id="2_1yj73"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://dxf2cf3m77ktd" path="res://Assets/Assets/animation/matt range/Matt_Attaque_Mousquet-6.png" id="9_h17m0"]
 [ext_resource type="Texture2D" uid="uid://bvbr65rvxoknv" path="res://Assets/Assets/animation/matt range/Matt_Attaque_Mousquet-7.png" id="10_wgms2"]
 [ext_resource type="Texture2D" uid="uid://qhfu0xguva32" path="res://Assets/Assets/animation/matt range/Matt_Attaque_Mousquet-8.png" id="11_d56qo"]
+[ext_resource type="AudioStream" uid="uid://67g7naweccgd" path="res://Assets/son/punch-1-166694.mp3" id="11_fdklx"]
+[ext_resource type="AudioStream" uid="uid://dj0gqk8io631j" path="res://Assets/son/FEETHmn_Jumping-on-grass-1-_ID-1839__BSB.mp3" id="13_o0d0u"]
+[ext_resource type="AudioStream" uid="uid://bvdak485eehfx" path="res://Assets/son/Single-footstep-on-concrete-with-sneaker-shoes-1-www.FesliyanStudios.com.mp3" id="14_4d14m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_joesv"]
 radius = 221.0
@@ -203,6 +206,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, true, false, false, true, true]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_fdklx")
+}],
+"times": PackedFloat32Array(0.1666)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_gkr2o"]
 resource_name = "idle"
@@ -285,6 +303,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_o0d0u")
+}],
+"times": PackedFloat32Array(-0.5625)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_6wmme"]
 resource_name = "walk"
@@ -327,6 +360,25 @@ tracks/2/keys = {
 "update": 1,
 "values": [ExtResource("2_1yj73")]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_4d14m")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_4d14m")
+}],
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a7i13"]
 _data = {
@@ -535,7 +587,8 @@ radius = 761.032
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vgu0a"]
 properties/0/path = NodePath(".:syncPos")
 properties/0/spawn = true
-properties/0/replication_mode = 1
+properties/0/sync = true
+properties/0/watch = false
 
 [node name="Matt" type="CharacterBody2D" groups=["Playeru"]]
 collision_layer = 2
@@ -566,9 +619,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_a7i13")
-}
 tree_root = SubResource("AnimationNodeStateMachine_wqtuk")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/Airborne = false
@@ -606,3 +656,5 @@ disabled = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vgu0a")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
