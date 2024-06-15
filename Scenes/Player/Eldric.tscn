@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cs5na5sxwlwt3"]
+[gd_scene load_steps=47 format=3 uid="uid://cs5na5sxwlwt3"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Eldric.cs" id="1_lv8su"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/Hurtbox.cs" id="2_p07vv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://n00p7lgj3051" path="res://Assets/animation/eldrich saute/eldrich_saute.png" id="6_j2mcy"]
 [ext_resource type="AudioStream" uid="uid://b5dinv8g22pfe" path="res://Assets/son/metal-blade-slice-76-200891.mp3" id="7_b27bc"]
 [ext_resource type="AudioStream" uid="uid://cwdyplnf6ou5q" path="res://Assets/son/Single-footstep-on-concrete-with-sneaker-shoes-4-www.FesliyanStudios.com.mp3" id="8_3inig"]
+[ext_resource type="AudioStream" uid="uid://dj0gqk8io631j" path="res://Assets/son/FEETHmn_Jumping-on-grass-1-_ID-1839__BSB.mp3" id="8_ue6ja"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yce85"]
 radius = 221.0
@@ -278,6 +279,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [9]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_ue6ja")
+}],
+"times": PackedFloat32Array(-0.6)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_jqcm7"]
 resource_name = "walk"
