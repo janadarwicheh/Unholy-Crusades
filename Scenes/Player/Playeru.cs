@@ -192,9 +192,4 @@ public partial class Playeru : Entity
 		UpdateAnimationParamaters();
 		MoveAndSlide();
 	}
-	
-	public void SetUpPlayer(string name)
-	{
-		GetNode<Label>("Label").Text = name;
-	}
 }

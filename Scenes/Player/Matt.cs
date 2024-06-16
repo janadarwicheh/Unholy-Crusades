@@ -22,7 +22,6 @@ namespace Skull.Scenes.Player;
 
 public partial class Matt : Playeru
 {
-    private Vector2 syncPos = new Vector2(0, 0);
     
     
     public string CurrentForm { get; set; }
@@ -31,7 +30,6 @@ public partial class Matt : Playeru
     {
         base._Ready();
         Projectile = GD.Load<PackedScene>("res://Scenes/Entities/Projetctiles/MattBullet.tscn");
-        GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(1);
     }
 
     public Matt()
@@ -40,7 +38,7 @@ public partial class Matt : Playeru
         CurrentForm = "Melee";
         Skills.Add(PlayerSkill.Attack, new MattAttack(this, "Basic Attack", 10, null));
         Skills.Add(PlayerSkill.Special1, new MattShoot(this, "shoot", 3, new BasicCooldown(1)));
-        foreach (var (skillId, skill) in Skills)
+        foreach (var (_, skill) in Skills)
         {
             if(skill.Cooldown != null)
             {
@@ -49,19 +47,6 @@ public partial class Matt : Playeru
         }
     }
     
-    public override void _PhysicsProcess(double delta)
-    {
-        if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() ==
-            Multiplayer.GetUniqueId())
-        {
-            syncPos = GlobalPosition;
-        }
-        else
-        {
-            GlobalPosition = GlobalPosition.Lerp(syncPos, .1f);
-        }
-        base._PhysicsProcess(delta);
-    }
 }
 public class MattAttack: Skill
 {

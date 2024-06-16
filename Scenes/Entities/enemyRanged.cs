@@ -22,7 +22,7 @@ public partial class enemyRanged : Entity
 	[Export]
 	public int motionRange;
 	[Export]
-	public float speed = 400.0f;
+	public float speed = 4000.0f;
 	Vector2 velocity;
 	public float gravity = CurrentInfo.Gravity;
 	public AnimationNodeStateMachinePlayback Anim;
@@ -84,12 +84,13 @@ public partial class enemyRanged : Entity
 	
 	public override void _Ready()
 	{
+		base._Ready();
 		Projectile = GD.Load("res://Scenes/Entities/Projetctiles/EnemyBullet.tscn") as PackedScene;
 		AnimationTree = GetNode<AnimationTree>("AnimationTree");
 		Anim = GetNode<AnimationTree>("AnimationTree").Get("parameters/playback").As<AnimationNodeStateMachinePlayback>();;
-		_sprite2D = Sprite2D; 
 		velocity = Vector2.Zero;
 		velocity.X = speed;
+		Sprite2D = _sprite2D;
 		area_right = GetNode<Godot.Area2D>("Area2DRight");
 		area_left = GetNode<Godot.Area2D>("Area2DLeft");
 		Down[0] = GetNode<RayCast2D>("RayCast2DDownLeft");

@@ -17,7 +17,6 @@ namespace Skull.Scenes.Player;
 
 public partial class Eldric : Playeru
 {
-	private Vector2 syncPos = new Vector2(0, 0);
 
 	public Eldric()
 	{
@@ -28,21 +27,6 @@ public partial class Eldric : Playeru
 	public override void _Ready()
 	{
 		base._Ready();
-		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
-	}
-
-	public override void _PhysicsProcess(double delta)
-	{
-		if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() ==
-		    Multiplayer.GetUniqueId())
-		{
-			syncPos = GlobalPosition;
-		}
-		else
-		{
-			GlobalPosition = GlobalPosition.Lerp(syncPos, .1f);
-		}
-		base._PhysicsProcess(delta);
 	}
 }
 

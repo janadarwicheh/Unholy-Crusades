@@ -200,13 +200,15 @@ states/walk/node = SubResource("AnimationNodeAnimation_te0yg")
 states/walk/position = Vector2(359, 100)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_7f0m7"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_d6j31"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_viwvo")]
 
-[node name="EnemyRanged" type="CharacterBody2D" node_paths=PackedStringArray("Sprite2D")]
+[node name="EnemyRanged" type="CharacterBody2D"]
 position = Vector2(1, -1)
 collision_layer = 4
 collision_mask = 3
 floor_constant_speed = true
 script = ExtResource("1_6q8ch")
-Sprite2D = NodePath("Sprite2D")
+moveDir = null
+motionRange = null
+speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(14, 0)

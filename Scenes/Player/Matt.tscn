@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cypayl3cswcoq"]
+[gd_scene load_steps=68 format=3 uid="uid://cypayl3cswcoq"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Matt.cs" id="1_vbc3d"]
 [ext_resource type="Texture2D" uid="uid://btt543yogbbcc" path="res://Installer/matt marche/Matt_Marche.png" id="2_1yj73"]
@@ -286,6 +286,10 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_6fjxh"]
+resource_name = "special1"
+length = 0.80001
+
 [sub_resource type="Animation" id="Animation_6wmme"]
 resource_name = "walk"
 length = 1.00001
@@ -336,6 +340,7 @@ _data = {
 "attack": SubResource("Animation_y0syo"),
 "idle": SubResource("Animation_gkr2o"),
 "jump": SubResource("Animation_2132q"),
+"special1": SubResource("Animation_6fjxh"),
 "walk": SubResource("Animation_6wmme")
 }
 
@@ -354,7 +359,7 @@ states/Start/position = Vector2(-9, 100)
 states/attack/node = SubResource("AnimationNodeAnimation_2xrfn")
 states/attack/position = Vector2(359, 100)
 transitions = ["attack", "End", SubResource("AnimationNodeStateMachineTransition_a3feu"), "Start", "attack", SubResource("AnimationNodeStateMachineTransition_rkeu3")]
-graph_offset = Vector2(-94, -18)
+graph_offset = Vector2(-164, 45)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cd801"]
 animation = &"Airborne"
@@ -516,7 +521,7 @@ advance_condition = &"SkillUsed"
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wqtuk"]
 states/End/position = Vector2(801, 95)
 states/SkillUsed/node = SubResource("AnimationNodeStateMachine_wj6wa")
-states/SkillUsed/position = Vector2(448, 264)
+states/SkillUsed/position = Vector2(456, 264)
 states/Start/position = Vector2(155, 95)
 states/airborne/node = SubResource("AnimationNodeBlendSpace2D_dhp5m")
 states/airborne/position = Vector2(448, -178)
@@ -527,7 +532,7 @@ states/jump/position = Vector2(448, -30)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_ybcpj")
 states/walk/position = Vector2(597, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_b2v0c"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_qbq4n"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_bonow"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_bitv8"), "jump", "walk", SubResource("AnimationNodeStateMachineTransition_3cg10"), "walk", "jump", SubResource("AnimationNodeStateMachineTransition_w7xsq"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_smkb6"), "jump", "airborne", SubResource("AnimationNodeStateMachineTransition_y6p6d"), "airborne", "idle", SubResource("AnimationNodeStateMachineTransition_jo6kn"), "idle", "airborne", SubResource("AnimationNodeStateMachineTransition_euho1"), "walk", "airborne", SubResource("AnimationNodeStateMachineTransition_lhxu7"), "SkillUsed", "idle", SubResource("AnimationNodeStateMachineTransition_whhdf"), "idle", "SkillUsed", SubResource("AnimationNodeStateMachineTransition_blux1"), "walk", "SkillUsed", SubResource("AnimationNodeStateMachineTransition_x4ds6"), "jump", "SkillUsed", SubResource("AnimationNodeStateMachineTransition_ir5jo"), "airborne", "SkillUsed", SubResource("AnimationNodeStateMachineTransition_i5acp")]
-graph_offset = Vector2(103, -177.176)
+graph_offset = Vector2(-113, 125)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqf5d"]
 radius = 761.032
@@ -606,13 +611,3 @@ disabled = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vgu0a")
-
-[node name="Label" type="Label" parent="."]
-offset_left = -273.0
-offset_top = -908.0
-offset_right = 251.0
-offset_bottom = -581.0
-theme_override_font_sizes/font_size = 200
-text = "test"
-horizontal_alignment = 1
-vertical_alignment = 1

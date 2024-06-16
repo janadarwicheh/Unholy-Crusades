@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cx27r16aoaya3"]
+[gd_scene load_steps=18 format=3 uid="uid://cx27r16aoaya3"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Boss.cs" id="1_opvye"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/HurtboxEnemy.cs" id="2_3cgo4"]
-[ext_resource type="Texture2D" uid="uid://bmk2glt845sdy" path="res://Installer/demon-courte/Marche Melee.png" id="3_jjwrq"]
+[ext_resource type="Texture2D" uid="uid://ci48yosrwwxcp" path="res://Assets/Assets/animation/boss walk.png" id="3_p33g3"]
 [ext_resource type="Texture2D" uid="uid://da5hjstd4exrl" path="res://Assets/Assets/animation/boss attack.png" id="4_7gq2h"]
-[ext_resource type="Texture2D" uid="uid://ci48yosrwwxcp" path="res://Assets/Assets/animation/boss walk.png" id="5_e37ok"]
 [ext_resource type="Script" path="res://Scenes/Entities/Parameters/HitboxEnemy.cs" id="5_hord6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ne0vh"]
@@ -26,7 +25,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_jjwrq")]
+"values": [ExtResource("3_p33g3")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -143,7 +142,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_e37ok")]
+"values": [ExtResource("3_p33g3")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -218,6 +217,9 @@ collision_layer = 4
 collision_mask = 3
 floor_constant_speed = true
 script = ExtResource("1_opvye")
+moveDir = null
+motionRange = null
+speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(14, 0)
@@ -260,7 +262,7 @@ shape = SubResource("CapsuleShape2D_ne0vh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-14, -9)
-texture = ExtResource("3_jjwrq")
+texture = ExtResource("3_p33g3")
 hframes = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
