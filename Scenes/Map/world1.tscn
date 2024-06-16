@@ -799,6 +799,9 @@ one_way_collision_margin = 0.0
 
 [node name="EnemyRanged" parent="Ennemies" instance=ExtResource("16_jyq5c")]
 position = Vector2(7928, 7148)
+moveDir = 1
+motionRange = 0
+speed = 400.0
 
 [node name="Boss" parent="Ennemies" instance=ExtResource("17_hceqc")]
 position = Vector2(9312, 6968)
@@ -829,7 +832,6 @@ position = Vector2(295739, -7456)
 [node name="Actionable" parent="NPC/Amandine" instance=ExtResource("8_jbob4")]
 position = Vector2(83, 48)
 DialogueRessource = ExtResource("12_dpi1x")
-DialogueStart = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Amandine/Actionable"]
 position = Vector2(-48, 214)
