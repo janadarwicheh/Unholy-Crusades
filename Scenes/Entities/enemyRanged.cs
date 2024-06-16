@@ -22,7 +22,7 @@ public partial class enemyRanged : Entity
 	[Export]
 	public int motionRange;
 	[Export]
-	public float speed = 4000.0f;
+	public float speed = 400.0f;
 	Vector2 velocity;
 	public float gravity = CurrentInfo.Gravity;
 	public AnimationNodeStateMachinePlayback Anim;
