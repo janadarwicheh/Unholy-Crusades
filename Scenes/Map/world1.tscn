@@ -19,7 +19,7 @@
 [ext_resource type="Resource" uid="uid://cx6tjsmn1y1pd" path="res://Scenes/Dialogue/FIN.dialogue" id="12_dpi1x"]
 [ext_resource type="PackedScene" uid="uid://n6lxtdexlle0" path="res://Scenes/Entities/enemyRanged.tscn" id="16_jyq5c"]
 [ext_resource type="PackedScene" uid="uid://cx27r16aoaya3" path="res://Scenes/Entities/Boss.tscn" id="17_hceqc"]
-[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/enemy.tscn" id="18_etic8"]
+[ext_resource type="PackedScene" uid="uid://de8q5mo127ymg" path="res://Scenes/Entities/EnemyFlying.tscn" id="18_etic8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt4lr"]
 texture = ExtResource("4_jip6k")
