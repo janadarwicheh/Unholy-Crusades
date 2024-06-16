@@ -829,6 +829,7 @@ position = Vector2(295739, -7456)
 [node name="Actionable" parent="NPC/Amandine" instance=ExtResource("8_jbob4")]
 position = Vector2(83, 48)
 DialogueRessource = ExtResource("12_dpi1x")
+DialogueStart = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Amandine/Actionable"]
 position = Vector2(-48, 214)
